@@ -10570,22 +10570,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_Interface
       objectReference: {fileID: 0}
-    - target: {fileID: 7054774096918814564, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_FillAmount
-      value: 0.099
-      objectReference: {fileID: 0}
-    - target: {fileID: 8165054875330479112, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8165054875330479112, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8165054875330479112, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1664879054324111308, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
