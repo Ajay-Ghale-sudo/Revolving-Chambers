@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapon;
 
 namespace Player
 {
@@ -37,6 +38,9 @@ namespace Player
         /// The speed at which the player moves.
         /// </summary>
         [SerializeField] private float MoveSpeed = 15f;
+        
+        
+        private IWeapon _weapon;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -44,6 +48,9 @@ namespace Player
             _mainCamera ??= GetComponent<Camera>();
             _rb = GetComponent<Rigidbody>();
             _capsule = GetComponentInChildren<CapsuleCollider>();
+            
+            // TEMP FOR TESTING
+            _weapon = GetComponentInChildren<IWeapon>();
         }
 
         // Update is called once per frame
@@ -73,6 +80,13 @@ namespace Player
             _moveInput = _moveInput.normalized;
             _moveVelocity = _moveInput * MoveSpeed;
         }
+
+        void OnAttack()
+        {
+            _weapon?.Fire();
+        }
+        
+        
 
         /// <summary>
         /// Rotate player to look towards the cursor.
