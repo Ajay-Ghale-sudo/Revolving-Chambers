@@ -115,6 +115,8 @@ namespace Weapon
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * DefaultAmmo.velocity;
+                var bulletComponent = bullet.GetComponent<Bullet>();
+                bulletComponent?.SetAmmo(DefaultAmmo);
             }
             NextChamber();
         }

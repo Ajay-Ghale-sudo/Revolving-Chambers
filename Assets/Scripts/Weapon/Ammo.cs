@@ -13,7 +13,7 @@ namespace Weapon
         /// The damage the ammo does.
         /// </summary>
         [SerializeField]
-        private int damage = 10;
+        public int damage = 10;
         
         /// <summary>
         /// The prefab for the projectile.
