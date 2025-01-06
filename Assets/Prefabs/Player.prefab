@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 8727054744509253310}
   - component: {fileID: 6724154638837680450}
   - component: {fileID: 749573683520441295}
-  - component: {fileID: 7621773313120277265}
+  - component: {fileID: 3534221663278327586}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -383,7 +383,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &7621773313120277265
+--- !u!114 &3534221663278327586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,18 +392,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5039480847701049303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542c433490734fa19d147db2e3a60393, type: 3}
+  m_Script: {fileID: 11500000, guid: 3217e33a09ab4b8eb65731dbfd4ef90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 6425268712241805465}
-  _viewBox:
+  target: {fileID: 6425268712241805465}
+  currentArmLength: 15
+  minZoomDistance: 4
+  maxZoomDistance: 20
+  zoomSpeed: 0.8
+  smoothSpeed: 0.125
+  heightOffset: 2
+  pitchAngle: 45
+  enableCollision: 1
+  collisionLayers:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  _boundaryThreshold: 0.338
-  _cameraSpeed: 3.5
+    m_Bits: 4294967295
+  collisionRadius: 0.2
 --- !u!1 &6651217265798743259
 GameObject:
   m_ObjectHideFlags: 0
