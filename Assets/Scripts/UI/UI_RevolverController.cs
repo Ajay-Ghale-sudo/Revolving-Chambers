@@ -24,11 +24,6 @@ namespace UI
         public GameObject[] BulletPositions;
 
         /// <summary>
-        /// The current chamber at the top
-        /// </summary>
-        private int _currentChamber = 0;
-
-        /// <summary>
         /// Cache rotate chamber routine for management
         /// </summary>
         Coroutine _rotateChamberRoutine;
@@ -66,7 +61,7 @@ namespace UI
             //Calculate velocity required to travers shortest path within time
             float rotVel = diff / time;
 
-            //Jumt to start point before we start
+            //Jump to start point before we start
             Chamber.transform.rotation = Quaternion.Euler(0, 0, curDeg);
 
             float timePassed = 0.0f;
