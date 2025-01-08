@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Weapon
@@ -12,6 +13,11 @@ namespace Weapon
         /// Fire the weapon.
         /// </summary>
         void Fire();
+
+        /// <summary>
+        /// Reload the weapon.
+        /// </summary>
+        void Reload();
         
         /// <summary>
         /// Get the direction the weapon is firing.
@@ -28,14 +34,34 @@ namespace Weapon
         /// <summary>
         /// Event invoked when the weapon is fired.
         /// </summary>
-        public UnityEvent OnFire;
+        public UnityAction OnFire;
         
+        /// <summary>
+        ///  Event invoked when the weapon is reloaded.
+        /// </summary>
+        public UnityAction OnReload;
+
+        private void Start()
+        {
+            ReloadManager.Instance.RegisterWeapon(this); 
+        }
+
+        private void OnDestroy()
+        {
+            ReloadManager.Instance.DeregisterWeapon(this);
+        }
+
         /// <summary>
         /// Fire the weapon.
         /// </summary>
         public virtual void Fire()
         {
             Debug.Log("Firing weapon");
+        }
+
+        public virtual void Reload()
+        {
+            
         }
         
         public virtual Vector3 GetFireDirection()

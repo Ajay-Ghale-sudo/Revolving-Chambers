@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using Props;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -53,8 +54,9 @@ namespace Weapon
             ///  Fire the <see cref="Ammo"/> in the chamber.
             /// </summary>
             /// <returns><see cref="GameObject"/> of the created bullet</returns>
-            protected internal GameObject Fire()
+            protected internal GameObject Fire(out Ammo ammo)
             {
+                ammo = Ammo;
                 if (IsEmpty) return null;
                 OnFire?.Invoke();
                 var bulletObj = Instantiate(Ammo.projectilePrefab, Vector3.zero, Quaternion.identity);
@@ -74,13 +76,6 @@ namespace Weapon
         /// </summary>
         private List<RevolverChamber> chambers;
         
-        // TEMP FOR TESTING
-        /// <summary>
-        /// Default ammo for the revolver.
-        /// </summary>
-        [Obsolete("This is temporary for testing purposes.")]
-        public Ammo DefaultAmmo;
-
         /// <summary>
         /// Transform of the muzzle. Where the bullet will be fired from.
         /// </summary>
@@ -103,27 +98,39 @@ namespace Weapon
         /// </summary>
         [SerializeField]
         private int fireRate = 1;
+
+        /// <summary>
+        /// Wheel used for reloading.
+        /// </summary>
+        [SerializeField] private ReloadWheel reloadWheel;
         
         public override void Fire()
         {
-            Debug.Log("Firing revolver");
-            var bullet = CurrentChamber.Fire();
-            if (bullet != null)
+            var bullet = CurrentChamber.Fire(out var ammo);
+            if (bullet != null && ammo != null)
             {
                 bullet.transform.position = muzzleTransform.position;
                 bullet.transform.rotation = Quaternion.LookRotation(GetFireDirection());
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
-                rb.linearVelocity = muzzleTransform.forward * DefaultAmmo.velocity;
-                var bulletComponent = bullet.GetComponent<Bullet>();
-                bulletComponent?.SetAmmo(DefaultAmmo);
+                rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
             }
             NextChamber();
+        }
+        
+        /// <summary>
+        /// Trigger the weapon to reload.
+        /// </summary>
+        public override void Reload()
+        {
+            OnReload?.Invoke();
         }
 
         private void Awake()
         {
             InitChambers();
+            
+            ReloadManager.Instance.OnLoadAmmo += LoadCurrentChamber;
         }
 
         /// <summary>
@@ -135,7 +142,6 @@ namespace Weapon
             for (var i = 0; i < chamberCount; i++)
             {
                 var chamber = new RevolverChamber();
-                chamber.LoadChamber(DefaultAmmo);
                 chambers.Add(chamber);
             }
         }
@@ -165,6 +171,15 @@ namespace Weapon
             var targetChamber = index ?? CurrentChamberIndex;
             if (targetChamber < 0 || targetChamber >= chambers.Count) return;
             chambers[targetChamber].LoadChamber(ammo);
+        }
+        
+        /// <summary>
+        /// Load the specified ammo into the current chamber.
+        /// </summary>
+        /// <param name="ammo">Ammo to load</param>
+        private void LoadCurrentChamber(Ammo ammo)
+        {
+            LoadChamber(ammo, CurrentChamberIndex);
         }
         
         /// <summary>

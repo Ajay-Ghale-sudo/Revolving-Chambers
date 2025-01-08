@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6425268712241805465}
+  zoomEnabled: 1
   currentArmLength: 15
   minZoomDistance: 4
   maxZoomDistance: 20
@@ -493,13 +494,88 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6247063595010272664, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+      propertyPath: reloadWheel
+      value: 
+      objectReference: {fileID: 6256609344162424772}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1024054603652091059, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6256609344162424772}
   m_SourcePrefab: {fileID: 100100000, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
 --- !u!4 &7341760713009291771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1155779810289118879, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
   m_PrefabInstance: {fileID: 8496335252234407780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8925896803648717783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1024054603652091059, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+  m_PrefabInstance: {fileID: 8496335252234407780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6256609344162424772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925896803648717783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdba95eabe0420cae30d3a407f098f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SectionImage: {fileID: 0}
+  wheelSections:
+  - rewards: Base
+    probability: 0.3
+    sectionColor: {r: 1, g: 1, b: 1, a: 1}
+    ammo: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  - rewards: Bad
+    probability: 0.2
+    sectionColor: {r: 1, g: 0.039973576, b: 0, a: 1}
+    ammo: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
+  - rewards: Good
+    probability: 0.1
+    sectionColor: {r: 0, g: 1, b: 0.037703037, a: 1}
+    ammo: {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
+  - rewards: Bad
+    probability: 0.2
+    sectionColor: {r: 1, g: 0, b: 0.029678345, a: 1}
+    ammo: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
+  - rewards: Base
+    probability: 0.2
+    sectionColor: {r: 1, g: 1, b: 1, a: 1}
+    ammo: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  spinDuration: 1
+  maxSpinSpeed: 1440
+  spinCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnWheelStop:
+    m_PersistentCalls:
+      m_Calls: []

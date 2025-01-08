@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Weapon;
 
 namespace UI
 {
@@ -17,12 +19,12 @@ namespace UI
         /// <summary>
         /// Max number of 'notches' on the wheel
         /// </summary>
-        private int Notch_Max;
+        private int Notch_Max = 360;
 
         /// <summary>
         /// Current notch on the wheel
         /// </summary>
-        private int Notch_Current;
+        private int Notch_Current = 0;
 
         /// <summary>
         /// Cache this gameobject's RectTransform
@@ -37,19 +39,19 @@ namespace UI
         private void Awake()
         {
             _transform = GetComponent<RectTransform>();
-            Notch_Max = 1;
-            Notch_Current = 0;
             _allFills = new List<GameObject>();
+            
+            UpdateWheel(Notch_Max);
+            ReloadManager.Instance.OnSpinSectionAdded += AddSection;
+            ReloadManager.Instance.OnClearSections += ClearSections;
+            ReloadManager.Instance.OnSpinUpdate += UpdateRotation;
         }
 
-        private void Start()
+        private void OnDestroy()
         {
-            UpdateWheel(360, 0);
-            
-            AddSection(0, 90, Color.white);
-            AddSection(90, 180, Color.red);
-            AddSection(180, 270, Color.green);
-            AddSection(270, 360, Color.blue);
+           ReloadManager.Instance.OnSpinSectionAdded -= AddSection;
+           ReloadManager.Instance.OnClearSections -= ClearSections;
+           ReloadManager.Instance.OnSpinUpdate -= UpdateRotation;
         }
 
         /// <summary>

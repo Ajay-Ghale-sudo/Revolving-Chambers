@@ -81,12 +81,29 @@ namespace Player
             _moveVelocity = _moveInput * MoveSpeed;
         }
 
+        /// <summary>
+        ///  Handle the attack input.
+        /// </summary>
         void OnAttack()
         {
             _weapon?.Fire();
         }
         
+        /// <summary>
+        ///  Handle the right click input.
+        /// </summary>
+        void OnRightClick()
+        {
+            ReloadManager.Instance.OnSpinEnd?.Invoke();
+        }
         
+        /// <summary>
+        /// Handle the reload input.
+        /// </summary>
+        void OnReload()
+        {
+            _weapon?.Reload();
+        }
 
         /// <summary>
         /// Rotate player to look towards the cursor.
