@@ -37,7 +37,8 @@ namespace Weapon
            OnHit?.Invoke(this);
            if (other.gameObject.TryGetComponent(out IDamageable damageable))
            {
-               damageable.TakeDamage(Ammo.damage);
+                damageable.TakeDamage(Ammo.damage);
+                damageable.PlayDamageEffect(Color.red);
            }
            
            Destroy(gameObject);

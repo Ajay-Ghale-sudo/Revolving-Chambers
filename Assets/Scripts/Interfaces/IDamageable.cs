@@ -12,5 +12,12 @@ namespace Interfaces
         /// </summary>
         /// <param name="damage">Amount of damage to apply</param>
         public void TakeDamage(int damage);
+
+        /// <summary>
+        /// Play damage effects.
+        /// TODO: ammo/hit data can go here
+        /// </summary>
+        /// <param name="colour">Colour to flash</param>
+        public void PlayDamageEffect(Color colour);
     }
 }
