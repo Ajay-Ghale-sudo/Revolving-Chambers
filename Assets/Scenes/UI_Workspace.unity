@@ -387,22 +387,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_Interface
       objectReference: {fileID: 0}
-    - target: {fileID: 5170223930253144149, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616676631982901688, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616676631982901688, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616676631982901688, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

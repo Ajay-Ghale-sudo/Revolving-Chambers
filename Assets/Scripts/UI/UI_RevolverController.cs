@@ -86,7 +86,7 @@ namespace UI
         /// <returns></returns>
         float GetChamberRotation(int chamberNum)
         {
-            return chamberNum * -72.0f;
+            return chamberNum * 72.0f;
         }
     }
 }
