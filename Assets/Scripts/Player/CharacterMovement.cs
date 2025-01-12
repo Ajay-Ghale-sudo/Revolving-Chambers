@@ -72,9 +72,9 @@ namespace Player
         [SerializeField] private float MoveSpeed = 15f;
 
         /// <summary>
-        /// Health of the player.
+        /// Health of the player. Represented in hits they can take.
         /// </summary>
-        [SerializeField] private float Health = 100f;
+        [SerializeField] private int Health = 5;
 
         /// <summary>
         /// Settings for the dash ability.
