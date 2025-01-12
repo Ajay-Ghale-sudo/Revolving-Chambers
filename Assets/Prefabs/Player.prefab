@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 8727054744509253310}
   MoveSpeed: 5
+  Health: 100
 --- !u!1 &5039480847701049303
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +405,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   heightOffset: 2
   pitchAngle: 45
-  enableCollision: 1
+  enableCollision: 0
   collisionLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -420,7 +421,7 @@ GameObject:
   - component: {fileID: 130699728661263206}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,30 +529,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdba95eabe0420cae30d3a407f098f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SectionImage: {fileID: 0}
   wheelSections:
-  - rewards: Base
+  - name: 
     probability: 0.3
     sectionColor: {r: 1, g: 1, b: 1, a: 1}
     ammo: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
-  - rewards: Bad
+  - name: 
     probability: 0.2
     sectionColor: {r: 1, g: 0.039973576, b: 0, a: 1}
     ammo: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
-  - rewards: Good
+  - name: 
     probability: 0.1
     sectionColor: {r: 0, g: 1, b: 0.037703037, a: 1}
     ammo: {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
-  - rewards: Bad
+  - name: 
     probability: 0.2
     sectionColor: {r: 1, g: 0, b: 0.029678345, a: 1}
     ammo: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
-  - rewards: Base
+  - name: 
     probability: 0.2
     sectionColor: {r: 1, g: 1, b: 1, a: 1}
     ammo: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
   spinDuration: 1
-  maxSpinSpeed: 1440
   spinCurve:
     serializedVersion: 2
     m_Curve:

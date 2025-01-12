@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Events;
+using Interfaces;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Weapon
@@ -10,10 +13,9 @@ namespace Weapon
     public class Ammo : ScriptableObject
     {
         /// <summary>
-        /// The damage the ammo does.
+        /// The damage data used by this ammo.
         /// </summary>
-        [SerializeField]
-        public int damage = 10;
+        [SerializeField] public DamageData damage;
         
         /// <summary>
         /// The prefab for the projectile.
@@ -31,5 +33,11 @@ namespace Weapon
         /// </summary>
         [SerializeField]
         public float lifetime = 5f;
+        
+        /// <summary>
+        /// Events to trigger when this bullet is destructed.
+        /// </summary>
+        [SerializeReference]
+        public List<ScriptableObject> OnEndEvents;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Props;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -59,10 +60,9 @@ namespace Weapon
                 ammo = Ammo;
                 if (IsEmpty) return null;
                 OnFire?.Invoke();
-                var bulletObj = Instantiate(Ammo.projectilePrefab, Vector3.zero, Quaternion.identity);
-                Destroy(bulletObj, Ammo.lifetime);
+                var bullet = BulletManager.Instance.SpawnBullet(ammo, Vector3.zero, Quaternion.identity);
                 Ammo = null;
-                return bulletObj;
+                return bullet.gameObject;
             }
         }
         

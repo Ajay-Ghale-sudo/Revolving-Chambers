@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89589dba04ef49f9b440023588627625, type: 3}
-  m_Name: Ammo_Basic
+  m_Script: {fileID: 11500000, guid: aa28458300914ad7806d61e489f897ba, type: 3}
+  m_Name: Event_SpawnTargetDummy
   m_EditorClassIdentifier: 
-  damage:
-    damage: 15
-    type: 1
-  projectilePrefab: {fileID: 8576117351993674856, guid: 9b5f432abb4030849b1fe9a317764c28, type: 3}
-  velocity: 50
-  lifetime: 5
-  OnEndEvents: []
+  data:
+    objectToSpawn: {fileID: 5618560078075913999, guid: 0d98104f869ad61418aa47a45acfdf18, type: 3}
+    spawnPoint: {fileID: 0}

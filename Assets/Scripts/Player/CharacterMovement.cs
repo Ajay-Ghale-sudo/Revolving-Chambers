@@ -1,4 +1,6 @@
+using Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Weapon;
 
@@ -7,7 +9,7 @@ namespace Player
     /// <summary>
     /// Player movement.
     /// </summary>
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovement : MonoBehaviour, IDamageable
     {
         /// <summary>
         /// The movement input vector.
@@ -38,7 +40,11 @@ namespace Player
         /// The speed at which the player moves.
         /// </summary>
         [SerializeField] private float MoveSpeed = 15f;
-        
+
+        /// <summary>
+        /// Health of the player.
+        /// </summary>
+        [SerializeField] private float Health = 100f;
         
         private IWeapon _weapon;
 
@@ -122,5 +128,23 @@ namespace Player
                 _capsule.transform.LookAt(new Vector3(point.x, _capsule.transform.position.y, point.z));
             }
         }
+
+        // IDamageable implementation \\
+        public UnityEvent OnDeath { get; set; }
+        public UnityEvent OnDamage { get; set; }
+        public void TakeDamage(DamageData damage)
+        {
+            Health -= damage.damage;
+            OnDamage?.Invoke();
+            if (Health > 0) return;
+            OnDeath?.Invoke();
+        }
+
+        public void PlayDamageEffect(Color colour)
+        {
+            // Move to event
+        }
+        
+        // End IDamageable implementation \\
     }
 }
