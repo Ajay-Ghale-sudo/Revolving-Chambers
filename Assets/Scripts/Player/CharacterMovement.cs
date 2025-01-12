@@ -1,5 +1,6 @@
 using System;
 using Interfaces;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -72,9 +73,9 @@ namespace Player
         [SerializeField] private float MoveSpeed = 15f;
 
         /// <summary>
-        /// Health of the player.
+        /// Health of the player. Represented in hits they can take.
         /// </summary>
-        [SerializeField] private float Health = 100f;
+        [SerializeField] private int Health = 5;
 
         /// <summary>
         /// Settings for the dash ability.
@@ -254,6 +255,8 @@ namespace Player
         {
             Health -= damage.damage;
             OnDamage?.Invoke();
+            // TODO: This likely doesn't need a direct reference to UI Manager. Low priority cleanup for later.
+            UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
             if (Health > 0) return;
             OnDeath?.Invoke();
         }

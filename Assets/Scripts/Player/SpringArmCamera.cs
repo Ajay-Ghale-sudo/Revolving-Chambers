@@ -92,12 +92,28 @@ namespace Player
         /// <summary>
         /// Camera shake duration.
         /// </summary>
+        [Header("Camera Shake Settings")]
         [SerializeField] private float shakeDuration = 0.2f;
         
         /// <summary>
         /// Camera shake strength.
         /// </summary>
         [SerializeField] private float shakeStrength = 1f;
+        
+        /// <summary>
+        /// Camera shake randomness.
+        /// </summary>
+        [SerializeField] private float shakeRandomness = 150f;
+        
+        /// <summary>
+        /// Camera shake randomness mode.
+        /// </summary>
+        [SerializeField] private ShakeRandomnessMode shakeRandomnessMode = ShakeRandomnessMode.Harmonic;
+        
+        /// <summary>
+        /// How much the screen will shake.
+        /// </summary>
+        [SerializeField] private int shakeVibrato = 10;
         
         /// <summary>
         /// Target position of the camera.
@@ -198,8 +214,13 @@ namespace Player
         /// </summary>
         private void CameraShake()
         {
-            _shakeTween ??= _camera?.DOShakePosition(shakeDuration, shakeStrength);
-            _shakeTween?.Restart();
+            _shakeTween = _camera?.DOShakePosition(
+                shakeDuration,
+                shakeStrength,
+                shakeVibrato,
+                randomness: shakeRandomness,
+                randomnessMode: shakeRandomnessMode)
+                .SetId("CameraShake");
         }
         
         /// <summary>
