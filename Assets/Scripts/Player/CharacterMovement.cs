@@ -1,11 +1,41 @@
+using System;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Weapon;
 
 namespace Player
 {
+
+    /// <summary>
+    /// Settings for the dash ability.
+    /// </summary>
+    [Serializable]
+    public struct DashSettings
+    {
+        /// <summary>
+        /// The duration of the dash.
+        /// </summary>
+        public float duration;
+        
+        /// <summary>
+        /// The velocity of the dash.
+        /// </summary>
+        public float velocity;
+        
+        /// <summary>
+        /// The cooldown of the dash.
+        /// </summary>
+        public float cooldown;
+        
+        /// <summary>
+        /// The curve for the dash.
+        /// </summary>
+        public AnimationCurve curve;
+    }
+    
     /// <summary>
     /// Player movement.
     /// </summary>
@@ -45,7 +75,40 @@ namespace Player
         /// Health of the player.
         /// </summary>
         [SerializeField] private float Health = 100f;
+
+        /// <summary>
+        /// Settings for the dash ability.
+        /// </summary>
+        [SerializeField] private DashSettings dashSettings = new()
+        {
+            duration = 0.2f,
+            velocity = 20f,
+            cooldown = 3f
+        };
         
+        /// <summary>
+        /// The coroutine for the dash.
+        /// </summary>
+        private Coroutine _dashCoroutine;
+        
+        /// <summary>
+        /// If the player is dashing.
+        /// </summary>
+        private bool _isDashing = false;
+        
+        /// <summary>
+        /// If the player can dash.
+        /// </summary>
+        private bool _canDash = true;
+
+        /// <summary>
+        /// Event invoked when the player dashes.
+        /// </summary>
+        [SerializeField] public UnityEvent OnDashEvent;
+        
+        /// <summary>
+        /// The weapon the player is using.
+        /// </summary>
         private IWeapon _weapon;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -93,6 +156,61 @@ namespace Player
         void OnAttack()
         {
             _weapon?.Fire();
+        }
+
+        /// <summary>
+        /// Handle the dash input.
+        /// </summary>
+        void OnDash()
+        {
+            Dash();
+        }
+
+        /// <summary>
+        /// Dash the player.
+        /// </summary>
+        void Dash()
+        {
+            if (_dashCoroutine != null) return;
+            if (!_canDash) return;
+            _dashCoroutine = StartCoroutine(DashRoutine());
+        }
+        
+        /// <summary>
+        /// Enable the dash ability.
+        /// </summary>
+        private void EnableDash()
+        {
+            _canDash = true;
+        }
+        
+        /// <summary>
+        /// Coroutine for the dash ability.
+        /// </summary>
+        /// <returns></returns>
+        private System.Collections.IEnumerator DashRoutine()
+        {
+            Debug.Log("Dashing");
+            float time = 0;
+            float startTime = Time.time;
+            _canDash = false;
+            _isDashing = true;
+            
+            // Dash direction based on last movement input, if 0 then dash forward
+            var dashDirection = _moveInput == Vector3.zero ? transform.forward : _moveInput;
+            
+            while (time < dashSettings.duration)
+            {
+                time = Time.time - startTime;
+                float t = time / dashSettings.duration;
+                float curveValue = dashSettings.curve.Evaluate(t);
+                transform.parent.Translate(dashDirection * (dashSettings.velocity * curveValue * Time.deltaTime), Space.World);
+                yield return null;
+            }
+
+            _isDashing = false;
+            _dashCoroutine = null;
+            Invoke(nameof(EnableDash), dashSettings.cooldown);
         }
         
         /// <summary>
