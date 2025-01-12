@@ -248,8 +248,8 @@ namespace Player
         }
 
         // IDamageable implementation \\
-        public UnityEvent OnDeath { get; set; }
-        public UnityEvent OnDamage { get; set; }
+        public UnityEvent OnDeath { get; } = new();
+        public UnityEvent OnDamage { get; } = new();
         public void TakeDamage(DamageData damage)
         {
             Health -= damage.damage;

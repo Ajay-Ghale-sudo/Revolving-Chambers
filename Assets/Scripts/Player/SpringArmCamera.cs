@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -89,6 +90,16 @@ namespace Player
         [SerializeField] private float collisionRadius = 0.2f;
         
         /// <summary>
+        /// Camera shake duration.
+        /// </summary>
+        [SerializeField] private float shakeDuration = 0.2f;
+        
+        /// <summary>
+        /// Camera shake strength.
+        /// </summary>
+        [SerializeField] private float shakeStrength = 1f;
+        
+        /// <summary>
         /// Target position of the camera.
         /// </summary>
         private Vector3 targetPosition;
@@ -112,6 +123,17 @@ namespace Player
         ///  Camera zoom velocity.
         /// </summary>
         private float zoomVelocity = 0f;
+        
+        /// <summary>
+        /// Tween for camera shake.
+        /// </summary>
+        private Tweener _shakeTween;
+        
+        /// <summary>
+        /// The camera component.
+        /// </summary>
+        private Camera _camera;
+        
 
         private void Start()
         {
@@ -122,12 +144,33 @@ namespace Player
            }
            
            zoomAction = InputSystem.actions.FindAction("Zoom");
+           _camera = GetComponent<Camera>();
            
            currentPosition = transform.position;
            targetArmLength = currentArmLength;
            
            // Set initial rotation based on pitch angle
            transform.rotation = Quaternion.Euler(pitchAngle, 0, 0);
+           
+           BindCameraShake();
+        }
+
+        void BindCameraShake()
+        {
+            if (target.TryGetComponent(out IDamageable damageable))
+            {
+                if (damageable.OnDamage == null)
+                {
+                    // Wait for the OnDamage event to be created
+                    Invoke(nameof(BindCameraShake), 0.1f);
+                    return;
+                }
+                damageable.OnDamage?.AddListener(CameraShake);
+            }
+            else
+            {
+                Debug.LogWarning("Target does not have IDamageable component.");
+            }
         }
 
         private void Update()
@@ -140,6 +183,23 @@ namespace Player
            
            // Smoothly interpolate the current arm length
            currentArmLength = Mathf.SmoothDamp(currentArmLength, targetArmLength, ref zoomVelocity, smoothSpeed);
+        }
+
+        private void OnDestroy()
+        {
+            if (target.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.OnDamage?.RemoveListener(CameraShake);
+            }
+        }
+
+        /// <summary>
+        /// Camera shake effect.
+        /// </summary>
+        private void CameraShake()
+        {
+            _shakeTween ??= _camera?.DOShakePosition(shakeDuration, shakeStrength);
+            _shakeTween?.Restart();
         }
         
         /// <summary>
@@ -171,7 +231,9 @@ namespace Player
            // Handle camera collision
            if (enableCollision) HandleCollision(ref desiredPosition);
            currentPosition = desiredPosition;
-           
+
+           // No zooming while camera shaking for now
+           if (_shakeTween?.IsActive() ?? false) return;
            transform.position = currentPosition;
            transform.rotation = Quaternion.LookRotation(targetPosition - currentPosition, Vector3.up);
         }
