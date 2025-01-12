@@ -19,14 +19,56 @@ namespace UI
         public GameObject Chamber;
 
         /// <summary>
-        /// List of bullet positions. Pos1 = top chamber
+        /// List of bullet scripts. index 0 = top chamber; increasing in the clockwise direction
         /// </summary>
-        public GameObject[] BulletPositions;
+        public UI_Bullet[] BulletScripts;
 
         /// <summary>
         /// Cache rotate chamber routine for management
         /// </summary>
         Coroutine _rotateChamberRoutine;
+
+        /// <summary>
+        /// Shows ammo in a chamber with a colour setting
+        /// </summary>
+        /// <param name="chamber">Chamber index</param>
+        /// <param name="color">Colour of the bullet</param>
+        /// <param name="emission">Should the material be emissive</param>
+        public void SetAmmo(int chamber, Color color, bool emission = false)
+        {
+            UI_Bullet bulletScript = GetBulletScript(chamber);
+            if (bulletScript == null) return;
+
+            bulletScript.SetColour(color, emission);
+            bulletScript.SetVisible(true);
+        }
+
+        /// <summary>
+        /// Hides the ammo in a chamber
+        /// </summary>
+        /// <param name="chamber">Chamber index</param>
+        public void RemoveAmmo(int chamber)
+        {
+            UI_Bullet bulletScript = GetBulletScript(chamber);
+            if (bulletScript == null) return;
+
+            bulletScript.ResetMaterials();
+            bulletScript.SetVisible(false);
+        }
+
+        /// <summary>
+        /// Hide all ammo.
+        /// </summary>
+        public void RemoveAll()
+        {
+            if (BulletScripts == null) return;
+
+            foreach (UI_Bullet bullet in BulletScripts)
+            {
+                bullet.ResetMaterials();
+                bullet.SetVisible(false);
+            }
+        }
 
         /// <summary>
         /// Animates chamber using a coroutine.
@@ -64,6 +106,7 @@ namespace UI
             //Jump to start point before we start
             Chamber.transform.rotation = Quaternion.Euler(0, 0, curDeg);
 
+            //Rotate over time
             float timePassed = 0.0f;
             while (timePassed <= time) 
             {
@@ -87,6 +130,18 @@ namespace UI
         float GetChamberRotation(int chamberNum)
         {
             return chamberNum * 72.0f;
+        }
+
+        /// <summary>
+        /// Gets a UI_Bullet script in specified chamber
+        /// </summary>
+        /// <param name="chamber">Chamber index</param>
+        /// <returns>Found UI_Bullet script</returns>
+        UI_Bullet GetBulletScript(int chamber)
+        {
+            if (BulletScripts == null || chamber >= BulletScripts.Length) return null;
+
+            return BulletScripts[chamber];
         }
     }
 }

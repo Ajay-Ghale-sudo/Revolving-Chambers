@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 248878605414304517}
   - component: {fileID: 5877112802420548323}
   - component: {fileID: 7021012555679811062}
+  - component: {fileID: 6770085502388327395}
   m_Layer: 5
   m_Name: UIBullet_Default
   m_TagString: Untagged
@@ -87,3 +88,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6770085502388327395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313033577303453484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc05ce67dea8af1498efc4abc421d941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Color_Mat: {fileID: 2100000, guid: a1d77b75ed8f4a142b90d89214663491, type: 2}
