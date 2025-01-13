@@ -46,7 +46,7 @@ namespace Weapon
         /// <param name="weapon"></param>
         public void RegisterWeapon(WeaponBase weapon)
         {
-            weapon.OnReload += OnSpinStart;
+            weapon.OnReload += SpinWheel;
         }
         
         /// <summary>
@@ -55,7 +55,23 @@ namespace Weapon
         /// <param name="weapon"></param>
         public void DeregisterWeapon(WeaponBase weapon)
         {
-            weapon.OnReload -= OnSpinStart;
+            weapon.OnReload -= SpinWheel;
+        }
+        
+        /// <summary>
+        /// Spin the reload wheel.
+        /// </summary>
+        public void SpinWheel()
+        {
+            OnSpinStart?.Invoke();
+        }
+        
+        /// <summary>
+        /// Stop the reload wheel.
+        /// </summary>
+        public void StopWheel()
+        {
+            OnSpinEnd?.Invoke();
         }
     }
 }
