@@ -71,6 +71,11 @@ namespace Weapon
         /// Event invoked when the chamber is changed.
         /// </summary>
         public UnityEvent OnChamberChanged;
+
+        /// <summary>
+        /// Event invoked when the revolver can fire.
+        /// </summary>
+        public UnityEvent OnCanFire;
         
         /// <summary>
         /// List of chambers in the revolver.
@@ -87,6 +92,11 @@ namespace Weapon
         /// If the revolver is currently reloading.
         /// </summary>
         private bool _isReloading = false;
+
+        /// <summary>
+        /// If the revolver can fire.
+        /// </summary>
+        private bool _canFire = true;
         
         /// <summary>
         /// The current chamber index.
@@ -100,10 +110,10 @@ namespace Weapon
         private int chamberCount = 5;
         
         /// <summary>
-        /// The fire rate of the revolver.
+        /// The fire rate of the revolver in seconds.
         /// </summary>
         [SerializeField]
-        private int fireRate = 1;
+        private float fireRate = .2f;
 
         /// <summary>
         /// Wheel used for reloading.
@@ -112,10 +122,12 @@ namespace Weapon
         
         public override void Fire()
         {
-            if (_isReloading) return;
+            if (_isReloading || !_canFire) return;
             var bullet = CurrentChamber.Fire(out var ammo);
             if (bullet != null && ammo != null)
             {
+                _canFire = false;
+                Invoke(nameof(EnableFire), fireRate);
                 bullet.transform.position = muzzleTransform.position;
                 bullet.transform.rotation = Quaternion.LookRotation(GetFireDirection());
                 var rb = bullet.GetComponent<Rigidbody>();
@@ -161,8 +173,15 @@ namespace Weapon
                 UIManager.Instance.OnRevolverAmmoChange?.Invoke(index, chamber);
             }
         }
-        
-        
+
+        /// <summary>
+        /// Enable the revolver to fire.
+        /// </summary>
+        private void EnableFire()
+        {
+            _canFire = true;
+            OnCanFire?.Invoke();
+        }
 
         /// <summary>
         /// Initialize the chambers of the revolver.
