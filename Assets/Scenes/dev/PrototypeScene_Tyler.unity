@@ -10301,30 +10301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[0].inSlope
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[1].inSlope
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[0].outSlope
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[1].outSlope
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[0].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 6256609344162424772, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
-      propertyPath: spinCurve.m_Curve.Array.data[1].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
     - target: {fileID: 6651217265798743259, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_Name
       value: Player

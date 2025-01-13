@@ -40,6 +40,7 @@ namespace Player
     /// <summary>
     /// Player movement.
     /// </summary>
+    [RequireComponent(typeof(CharacterController))]
     public class CharacterMovement : MonoBehaviour, IDamageable
     {
         /// <summary>
@@ -112,12 +113,18 @@ namespace Player
         /// </summary>
         private IWeapon _weapon;
 
+        /// <summary>
+        /// The character controller.
+        /// </summary>
+        private CharacterController _characterController;
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             _mainCamera ??= GetComponent<Camera>();
             _rb = GetComponent<Rigidbody>();
             _capsule = GetComponentInChildren<CapsuleCollider>();
+            _characterController = GetComponent<CharacterController>();
             
             // TEMP FOR TESTING
             _weapon = GetComponentInChildren<IWeapon>();
@@ -136,7 +143,7 @@ namespace Player
         void Move()
         {
             // Move the player
-            transform.parent.Translate(_moveVelocity * Time.deltaTime, Space.World);
+            _characterController.Move(_moveVelocity * Time.deltaTime);
         }
 
         /// <summary>
@@ -191,7 +198,6 @@ namespace Player
         /// <returns></returns>
         private System.Collections.IEnumerator DashRoutine()
         {
-            Debug.Log("Dashing");
             float time = 0;
             float startTime = Time.time;
             _canDash = false;
@@ -205,7 +211,7 @@ namespace Player
                 time = Time.time - startTime;
                 float t = time / dashSettings.duration;
                 float curveValue = dashSettings.curve.Evaluate(t);
-                transform.parent.Translate(dashDirection * (dashSettings.velocity * curveValue * Time.deltaTime), Space.World);
+                _characterController.Move(dashDirection * (dashSettings.velocity * curveValue * Time.deltaTime));
                 yield return null;
             }
 
