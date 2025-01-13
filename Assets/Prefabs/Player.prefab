@@ -441,6 +441,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   collisionRadius: 0.2
+  shakeDuration: 0.2
+  shakeStrength: 1
+  shakeRandomness: 150
+  shakeRandomnessMode: 1
+  shakeVibrato: 10
 --- !u!1 &6651217265798743259
 GameObject:
   m_ObjectHideFlags: 0

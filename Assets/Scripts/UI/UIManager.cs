@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Utility;
+using Weapon;
 
 namespace UI
 {
@@ -25,5 +26,15 @@ namespace UI
        /// Action for when the player's health changes.
        /// </summary>
        public Action<int> OnPlayerHealthChange;
+       
+       /// <summary>
+       /// Action for when a <see cref="Revolver"/>'s ammo changes.
+       /// </summary>
+       public Action<int, Revolver.RevolverChamber> OnRevolverAmmoChange;
+
+       /// <summary>
+       /// Action for when the chamber of the <see cref="Revolver"/> changes.
+       /// </summary>
+       public Action<int> OnChamberChanged;
     }
 }

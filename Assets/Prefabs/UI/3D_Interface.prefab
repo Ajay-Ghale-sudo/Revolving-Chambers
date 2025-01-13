@@ -314,7 +314,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3009233844971356590}
   - component: {fileID: 6668209808276034303}
-  - component: {fileID: 3609496921204097938}
   m_Layer: 5
   m_Name: SpinningPart
   m_TagString: Untagged
@@ -354,59 +353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WheelFillPrefab: {fileID: 4320030746577285480, guid: c3e66eb0f10ca7f44bd577aa4a0c4461, type: 3}
---- !u!114 &3609496921204097938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3664357748865699150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdba95eabe0420cae30d3a407f098f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelSections:
-  - name: 
-    probability: 0.5
-    sectionColor: {r: 1, g: 1, b: 1, a: 0}
-    ammo: {fileID: 0}
-  - name: 
-    probability: 0.2
-    sectionColor: {r: 0.025150657, g: 1, b: 0, a: 0}
-    ammo: {fileID: 0}
-  - name: 
-    probability: 0.3
-    sectionColor: {r: 1, g: 0, b: 0, a: 0}
-    ammo: {fileID: 0}
-  spinDuration: 4
-  spinCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  OnWheelStop:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4211817043669625812
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,12 +563,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cover: {fileID: 8816841988705587357}
   Chamber: {fileID: 8971545027577201950}
-  BulletPositions:
-  - {fileID: 7491626714364307939}
-  - {fileID: 6782573893224878260}
-  - {fileID: 1079912878280020054}
-  - {fileID: 1651593675555202333}
-  - {fileID: 6640443585391793635}
   BulletScripts:
   - {fileID: 3103564595015998407}
   - {fileID: 4917583140371914873}
