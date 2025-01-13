@@ -173,7 +173,7 @@ namespace Player
 
         void BindCameraShake()
         {
-            if (target.TryGetComponent(out IDamageable damageable))
+            if (target.TryGetComponent(out Damageable damageable))
             {
                 if (damageable.OnDamage == null)
                 {
@@ -203,7 +203,7 @@ namespace Player
 
         private void OnDestroy()
         {
-            if (target.TryGetComponent(out IDamageable damageable))
+            if (target.TryGetComponent(out Damageable damageable))
             {
                 damageable.OnDamage?.RemoveListener(CameraShake);
             }

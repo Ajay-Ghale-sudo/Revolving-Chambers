@@ -1,5 +1,6 @@
 using System;
 using Interfaces;
+using State;
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -41,7 +42,7 @@ namespace Player
     /// Player movement.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
-    public class CharacterMovement : MonoBehaviour, IDamageable
+    public class CharacterMovement : Damageable
     {
         /// <summary>
         /// The movement input vector.
@@ -254,20 +255,26 @@ namespace Player
             }
         }
 
+        /// <summary>
+        /// Kill the player.
+        /// </summary>
+        private void Die()
+        {
+            OnDeath?.Invoke();
+            GameStateManager.Instance.OnPlayerDeath?.Invoke();
+        }
+
         // IDamageable implementation \\
-        public UnityEvent OnDeath { get; } = new();
-        public UnityEvent OnDamage { get; } = new();
-        public void TakeDamage(DamageData damage)
+        public override void TakeDamage(DamageData damage)
         {
             Health -= damage.damage;
             OnDamage?.Invoke();
             // TODO: This likely doesn't need a direct reference to UI Manager. Low priority cleanup for later.
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
-            if (Health > 0) return;
-            OnDeath?.Invoke();
+            if (Health <= 0) Die();
         }
 
-        public void PlayDamageEffect(Color colour)
+        public override void PlayDamageEffect(Color colour)
         {
             // Move to event
         }
