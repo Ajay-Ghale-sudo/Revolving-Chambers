@@ -68,13 +68,15 @@ namespace Weapon
         /// </summary>
         public void Destruct()
         {
-            foreach (var endEvent in Ammo.OnEndEvents)
-            {
-                if (endEvent is not IGameEvent gameEvent) continue;
-                Debug.Log("Invoking game event " + gameEvent);
-                if (gameObject)
-                    gameEvent.Invoke(gameObject);
-            }
+            if (Ammo?.OnEndEvents != null)
+                foreach (var endEvent in Ammo.OnEndEvents)
+                {
+                    if (endEvent is not IGameEvent gameEvent) continue;
+                    Debug.Log("Invoking game event " + gameEvent);
+                    if (gameObject)
+                        gameEvent.Invoke(gameObject);
+                }
+
             OnEnd?.Invoke();
             enabled = false;
             gameObject.SetActive(false);
