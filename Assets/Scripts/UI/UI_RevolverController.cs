@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -27,6 +28,31 @@ namespace UI
         /// Cache rotate chamber routine for management
         /// </summary>
         Coroutine _rotateChamberRoutine;
+        
+        /// <summary>
+        /// Current chamber index
+        /// </summary>
+        private int _currentChamber = 0;
+
+        private void Awake()
+        {
+            UIManager.Instance.OnChamberChanged += (i) => RotateChamber(_currentChamber, i, 0.1f);
+            UIManager.Instance.OnRevolverAmmoChange += (i, chamber) =>
+            {
+                if (chamber == null) return;
+                chamber.OnFire?.AddListener(() => RemoveAmmo(i));
+                chamber.OnLoaded?.AddListener(() => SetAmmo(i, chamber.Ammo.color));
+                
+                if (chamber?.Ammo == null)
+                {
+                    RemoveAmmo(i);
+                }
+                else
+                {
+                    SetAmmo(i, chamber.Ammo.color);
+                }
+            };
+        }
 
         /// <summary>
         /// Shows ammo in a chamber with a colour setting
@@ -86,7 +112,8 @@ namespace UI
             {
                 StopCoroutine(_rotateChamberRoutine);
             }
-
+            
+            _currentChamber = to;
             _rotateChamberRoutine = StartCoroutine(RotateChamberRoutine(from, to, time));
         }
 

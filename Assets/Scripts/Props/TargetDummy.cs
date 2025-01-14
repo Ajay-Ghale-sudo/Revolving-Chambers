@@ -10,7 +10,7 @@ namespace Props
     /// Target dummy that can take damage.
     /// </summary>
     [RequireComponent(typeof(DamageableVFX))]
-    public class TargetDummy : MonoBehaviour, IDamageable
+    public class TargetDummy : Damageable
     {
         /// <summary>
         /// The health of the target dummy.
@@ -51,20 +51,10 @@ namespace Props
         }
 
         /// <summary>
-        /// Event invoked when the target dummy dies.
-        /// </summary>
-        public UnityEvent OnDeath { get; set; }
-        
-        /// <summary>
-        /// Event invoked when the target dummy takes damage.
-        /// </summary>
-        public UnityEvent OnDamage { get; set;  }
-
-        /// <summary>
         /// Take damage.
         /// </summary>
         /// <param name="damage">Amount of damage to take</param>
-        public void TakeDamage(DamageData damage)
+        public override void TakeDamage(DamageData damage)
         {
             if (damage.type != DamageType.Player) return;
             health -= damage.damage;
@@ -77,7 +67,7 @@ namespace Props
         /// <summary>
         /// Plays damage effects
         /// </summary>
-        public void PlayDamageEffect(Color colour)
+        public override void PlayDamageEffect(Color colour)
         {
             if (_vfxPlayer == null) return;
 

@@ -135,7 +135,7 @@ namespace Props
                 section.End = currentAngle;
                 
                 OnSectionCreated?.Invoke(section);
-                ReloadManager.Instance.OnSpinSectionAdded?.Invoke((int)section.Start, (int)section.End, section.sectionColor);
+                ReloadManager.Instance.OnSpinSectionAdded?.Invoke((int)section.Start, (int)section.End, section.ammo.color);
             }
         }
 
@@ -148,6 +148,7 @@ namespace Props
 
             _isSpinning = true;
             _spinTween = DOVirtual.Float(0f, 360f, spinDuration, WheelUpdate)
+                .SetLoops(-1, LoopType.Restart)
                 .SetEase(spinCurve)
                 .OnKill(HandleWheelStop);
         }
@@ -159,7 +160,6 @@ namespace Props
         /// <param name="value">Current notch value of the wheel</param>
         private void WheelUpdate(float value)
         {
-            Debug.Log($"WheelUpdate: {value}");
             _currentValue = value;
             ReloadManager.Instance.OnSpinUpdate?.Invoke((int)_currentValue);
         }
@@ -170,10 +170,15 @@ namespace Props
         private void HandleWheelStop()
         {
             _isSpinning = false;
-            
-            // Calculate the selected section
+            SelectSection();
+        }
+
+        /// <summary>
+        /// Select the section of the wheel at the current value.
+        /// </summary>
+        private void SelectSection()
+        {
             _selectedSection =  wheelSections.First(section => _currentValue >= section.Start && _currentValue <= section.End);
-            
             OnWheelStop?.Invoke(_selectedSection);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.ammo);
         }

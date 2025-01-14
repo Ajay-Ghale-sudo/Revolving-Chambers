@@ -18,4 +18,5 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8576117351993674856, guid: 9b5f432abb4030849b1fe9a317764c28, type: 3}
   velocity: 10
   lifetime: 5
+  color: {r: 1, g: 0, b: 0, a: 1}
   OnEndEvents: []

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1847904391885413053}
   - component: {fileID: 3411714386892427186}
   - component: {fileID: 7812817317002423959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,3 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671ff5701cd64cc586441bfdffe3e963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls: []

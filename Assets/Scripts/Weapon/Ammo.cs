@@ -35,6 +35,12 @@ namespace Weapon
         public float lifetime = 5f;
         
         /// <summary>
+        /// The color of the ammo.
+        /// </summary>
+        [SerializeField] 
+        public Color color = Color.white;
+            
+        /// <summary>
         /// Events to trigger when this bullet is destructed.
         /// </summary>
         [SerializeReference]

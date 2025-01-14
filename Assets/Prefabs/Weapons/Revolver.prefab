@@ -100,16 +100,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122b02fb1f634cd3a860a1dbf0a299a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFire:
-    m_PersistentCalls:
-      m_Calls: []
   OnChamberChanged:
     m_PersistentCalls:
       m_Calls: []
-  DefaultAmmo: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  OnCanFire:
+    m_PersistentCalls:
+      m_Calls: []
   muzzleTransform: {fileID: 1481065562610895091}
-  chamberCount: 6
-  fireRate: 1
+  chamberCount: 5
+  fireRate: 0.2
+  reloadWheel: {fileID: 0}
 --- !u!1 &5253306214395512921
 GameObject:
   m_ObjectHideFlags: 0

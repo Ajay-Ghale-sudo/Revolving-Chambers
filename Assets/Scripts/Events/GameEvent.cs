@@ -28,14 +28,8 @@ namespace Events
     /// Base class for GameEvents.
     /// </summary>
     /// <typeparam name="T"><see cref="GameEventData"/> for the Event.</typeparam>
-    public abstract class GameEvent<T> : ScriptableObject, IGameEvent where T : GameEventData, new()
+    public abstract class GameEvent : ScriptableObject, IGameEvent
     {
-        /// <summary>
-        /// Data for the GameEvent.
-        /// </summary>
-        [SerializeField]
-        protected T data;
-        
         public void Invoke(GameObject invoker = null)
         {
             OnInvoke(invoker);
@@ -54,8 +48,12 @@ namespace Events
     /// <summary>
     /// Default implementation of GameEvent that uses <see cref="GameEventData"/>.
     /// </summary>
-    public abstract class GameEvent : GameEvent<GameEventData>
+    public abstract partial class GameEvent<T> : GameEvent where T : GameEventData
     {
+        /// <summary>
+        /// Data for the GameEvent.
+        /// </summary>
+        [SerializeField]
+        protected T data;
     }
-    
 }

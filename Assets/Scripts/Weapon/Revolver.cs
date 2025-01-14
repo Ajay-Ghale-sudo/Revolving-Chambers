@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Props;
+using UI;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,12 +24,12 @@ namespace Weapon
             /// <summary>
             /// Event invoked when the chamber is loaded.
             /// </summary>
-            public UnityEvent OnLoaded;
+            public UnityEvent OnLoaded = new();
             
             /// <summary>
             /// Event invoked when the chamber is fired.
             /// </summary>
-            public UnityEvent OnFire;
+            public UnityEvent OnFire = new();
             
             /// <summary>
             /// Whether the chamber is empty.
@@ -70,6 +71,11 @@ namespace Weapon
         /// Event invoked when the chamber is changed.
         /// </summary>
         public UnityEvent OnChamberChanged;
+
+        /// <summary>
+        /// Event invoked when the revolver can fire.
+        /// </summary>
+        public UnityEvent OnCanFire;
         
         /// <summary>
         /// List of chambers in the revolver.
@@ -81,6 +87,16 @@ namespace Weapon
         /// </summary>
         [SerializeField]
         private Transform muzzleTransform;
+
+        /// <summary>
+        /// If the revolver is currently reloading.
+        /// </summary>
+        private bool _isReloading = false;
+
+        /// <summary>
+        /// If the revolver can fire.
+        /// </summary>
+        private bool _canFire = true;
         
         /// <summary>
         /// The current chamber index.
@@ -91,13 +107,13 @@ namespace Weapon
         /// The number of chambers the revolver has.
         /// </summary>
         [SerializeField]
-        private int chamberCount = 6;
+        private int chamberCount = 5;
         
         /// <summary>
-        /// The fire rate of the revolver.
+        /// The fire rate of the revolver in seconds.
         /// </summary>
         [SerializeField]
-        private int fireRate = 1;
+        private float fireRate = .2f;
 
         /// <summary>
         /// Wheel used for reloading.
@@ -106,9 +122,12 @@ namespace Weapon
         
         public override void Fire()
         {
+            if (_isReloading || !_canFire) return;
             var bullet = CurrentChamber.Fire(out var ammo);
             if (bullet != null && ammo != null)
             {
+                _canFire = false;
+                Invoke(nameof(EnableFire), fireRate);
                 bullet.transform.position = muzzleTransform.position;
                 bullet.transform.rotation = Quaternion.LookRotation(GetFireDirection());
                 var rb = bullet.GetComponent<Rigidbody>();
@@ -116,6 +135,12 @@ namespace Weapon
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
             }
             NextChamber();
+            
+            // If the next chamber is empty, trigger reload
+            if (CurrentChamber.IsEmpty)
+            {
+                Reload();
+            }
         }
         
         /// <summary>
@@ -123,6 +148,7 @@ namespace Weapon
         /// </summary>
         public override void Reload()
         {
+            _isReloading = true;
             OnReload?.Invoke();
         }
 
@@ -130,7 +156,31 @@ namespace Weapon
         {
             InitChambers();
             
-            ReloadManager.Instance.OnLoadAmmo += LoadCurrentChamber;
+            ReloadManager.Instance.OnLoadAmmo += LoadAllChambers;
+            
+            Invoke(nameof(BroadcastAmmoState), 0.1f);
+        }
+
+        
+        /// <summary>
+        /// Broadcast the state of the ammo in the chambers.
+        /// </summary>
+        private void BroadcastAmmoState()
+        {
+            for (var index = 0; index < chambers.Count; index++)
+            {
+                var chamber = chambers[index];
+                UIManager.Instance.OnRevolverAmmoChange?.Invoke(index, chamber);
+            }
+        }
+
+        /// <summary>
+        /// Enable the revolver to fire.
+        /// </summary>
+        private void EnableFire()
+        {
+            _canFire = true;
+            OnCanFire?.Invoke();
         }
 
         /// <summary>
@@ -170,7 +220,9 @@ namespace Weapon
         {
             var targetChamber = index ?? CurrentChamberIndex;
             if (targetChamber < 0 || targetChamber >= chambers.Count) return;
+            
             chambers[targetChamber].LoadChamber(ammo);
+            UIManager.Instance.OnRevolverAmmoChange?.Invoke(targetChamber, chambers[targetChamber]);
         }
         
         /// <summary>
@@ -189,6 +241,17 @@ namespace Weapon
         {
             CurrentChamberIndex = (CurrentChamberIndex + 1) % chambers.Count;
             OnChamberChanged?.Invoke();
+            UIManager.Instance.OnChamberChanged?.Invoke(CurrentChamberIndex);
+        }
+
+        private void LoadAllChambers(Ammo ammo)
+        {
+            foreach (var t in chambers)
+            {
+                t.LoadChamber(ammo);
+            }
+
+            _isReloading = false;
         }
     }
 }
