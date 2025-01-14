@@ -36,5 +36,17 @@ namespace UI
        /// Action for when the chamber of the <see cref="Revolver"/> changes.
        /// </summary>
        public Action<int> OnChamberChanged;
+
+       /// <summary>
+       /// Action for when a Boss is spawned.
+       /// 'string' Name of boss
+       /// </summary>
+       public Action<string> OnBossSpawned;
+
+       /// <summary>
+       /// Action for when Boss health changes.
+       /// 'float' Boss health represented in 0.0f - 1.0f
+       /// </summary>
+       public Action<float> OnBossHealthChange;
     }
 }
