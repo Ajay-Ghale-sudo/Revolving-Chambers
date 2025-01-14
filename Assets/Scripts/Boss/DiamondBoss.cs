@@ -40,15 +40,16 @@ namespace Boss
         public SplineContainer spline;
         public float moveSpeed = 1f;
         private float currentDistance = 0f;
+        private float movement = 0f;
 
         
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            /*transform.DORotate
+            transform.DORotate
                     (new Vector3(0f, 360.0f, 0.0f), 1f, RotateMode.FastBeyond360)
-                .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);*/
+                .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
             // Upon completion of x rotation, fire bullets in y pattern
             StartCoroutine(AttackPatternCoroutine());
             //StartCoroutine(MovementCoroutine());
@@ -57,6 +58,7 @@ namespace Boss
         void Update()
         {
             // Calculate the target position on the spline.
+            // Sets the world position for the player to move to calculated by the normalized value currentDistance.
             Vector3 targetPosition = spline.EvaluatePosition(currentDistance);
             
             // Move the character towards the target position on the spline.
@@ -74,22 +76,6 @@ namespace Boss
                 float movement = moveSpeed * Time.deltaTime / splineLength;
                 currentDistance += movement;
             }
-        }
-
-        IEnumerator MovementCoroutine()
-        {
-            /*currentTime = 0;
-            while (currentTime < 1)
-            {
-                currentTime += Time.deltaTime;
-                var locAlongCurve = speedCurve.Evaluate(currentTime / 5.0f);
-                splineAnimate.MaxSpeed = locAlongCurve * maxSpeed;
-                //splineAnimate.MaxSpeed += Time.deltaTime;
-                print(splineAnimate.MaxSpeed);
-                yield return new WaitForSeconds(2.0f);
-            }
-            */
-            yield return new WaitForSeconds(2.0f);
         }
 
         IEnumerator AttackPatternCoroutine()
