@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6181206967702203957}
   - component: {fileID: 903314531422502862}
   - component: {fileID: 1848139696280222226}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TargetDummy_BossChild
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -124,6 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facac0a29398454da3e4ffc11ffcd648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
   health: 20
   ammo: {fileID: 11400000, guid: 73eeaf8972485d34487761a6d3c21ec5, type: 2}
   fireRate: 1
