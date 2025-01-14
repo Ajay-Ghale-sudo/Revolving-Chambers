@@ -23,6 +23,7 @@ namespace Boss
         // List of transforms for the projectiles to spawn at.
         [SerializeField] 
         public List<Transform> projectileSpawnTargets;
+        [SerializeField]
         public List<Transform> projectileDiagSpawnTargets;
         
         // Projectile attack data.
@@ -42,17 +43,12 @@ namespace Boss
         private float currentDistance = 0f;
         private float movement = 0f;
 
-        
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             transform.DORotate
                     (new Vector3(0f, 360.0f, 0.0f), 1f, RotateMode.FastBeyond360)
                 .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
-            // Upon completion of x rotation, fire bullets in y pattern
             StartCoroutine(AttackPatternCoroutine());
-            //StartCoroutine(MovementCoroutine());
 
         }
         void Update()
@@ -85,7 +81,7 @@ namespace Boss
             {
                 SpawnBulletPattern();
                 testPattern = !testPattern;
-                Invoke("SpawnBulletPattern", .5f);
+                Invoke(nameof(SpawnBulletPattern), .5f);
                 yield return new WaitForSeconds(2);
             }
         }
@@ -112,8 +108,6 @@ namespace Boss
                 }
             }
         }
-        
-
         public UnityEvent OnDamage { get; } = new();
         public UnityEvent OnDeath { get; } = new();
         public void TakeDamage(DamageData damage)
