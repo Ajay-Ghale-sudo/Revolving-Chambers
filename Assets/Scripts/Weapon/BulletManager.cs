@@ -18,7 +18,6 @@ namespace Weapon
         public Bullet SpawnBullet(Ammo ammo, Vector3 position, Quaternion rotation)
         {
             var bulletObject = Instantiate(ammo.projectilePrefab, position, rotation);
-            
             if (!bulletObject.TryGetComponent(out Bullet bullet)) return null;
             bullet.SetAmmo(ammo);
             
