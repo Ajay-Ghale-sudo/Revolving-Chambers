@@ -48,5 +48,15 @@ namespace UI
        /// 'float' Boss health represented in 0.0f - 1.0f
        /// </summary>
        public Action<float> OnBossHealthChange;
+
+        /// <summary>
+        /// Action to show/hide the Title Screen
+        /// </summary>
+        public Action<bool> OnShowTitleScreen;
+
+        /// <summary>
+        /// Action to Show/Hide the End Screen
+        /// </summary>
+        public Action<bool> OnShowEndScreen;
     }
 }
