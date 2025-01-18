@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Weapon;
 
-namespace Wheel.Reload
+namespace Wheel
 {
     /// <summary>
     /// Section of the wheel. Reward is Ammo to load into the weapon.

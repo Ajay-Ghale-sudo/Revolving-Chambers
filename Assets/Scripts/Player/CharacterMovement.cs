@@ -44,6 +44,16 @@ namespace Player
     public class CharacterMovement : Damageable
     {
         /// <summary>
+        /// Event invoked when the dash starts.
+        /// </summary>
+        public UnityEvent OnDashStart;
+        
+        /// <summary>
+        /// Event invoked when the dash ends.
+        /// </summary>
+        public UnityEvent OnDashEnd;
+        
+        /// <summary>
         /// The movement input vector.
         /// </summary>
         private Vector3 _moveInput;
@@ -215,9 +225,10 @@ namespace Player
             _canDash = false;
             _isDashing = true;
             
+            OnDashStart?.Invoke();
+            
             // Dash direction based on last movement input, if 0 then dash forward
             var dashDirection = _moveInput == Vector3.zero ? transform.forward : _moveInput;
-            
             while (time < dashSettings.duration)
             {
                 time = Time.time - startTime;
@@ -229,6 +240,7 @@ namespace Player
 
             _isDashing = false;
             _dashCoroutine = null;
+            OnDashEnd?.Invoke();
             Invoke(nameof(EnableDash), dashSettings.cooldown);
         }
         

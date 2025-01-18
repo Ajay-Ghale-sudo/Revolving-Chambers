@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Wheel.Reload;
+using Wheel;
 
 namespace Weapon
 {
