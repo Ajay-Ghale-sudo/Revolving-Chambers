@@ -69,7 +69,29 @@ namespace Interfaces
         /// Event invoked when the object takes damage.
         /// </summary>
         public UnityEvent OnDamage;
-
+        
+        /// <summary>
+        /// Health of the object.
+        /// </summary>
+        [SerializeField]
+        protected float health = 100;
+        
+        /// <summary>
+        /// Health of the object.
+        /// </summary>
+        public float Health => health;
+        
+        /// <summary>
+        /// Maximum health of the object.
+        /// </summary>
+        [SerializeField]
+        protected float maxHealth = 100;
+        
+        /// <summary>
+        /// Maximum health of the object.
+        /// </summary>
+        public float MaxHealth => maxHealth;
+        
         public UnityEvent GetOnDeathEvent()
         {
             return OnDeath;
@@ -82,10 +104,21 @@ namespace Interfaces
 
         public virtual void TakeDamage(DamageData damage)
         {
+            health -= damage.damage;
+            OnDamage?.Invoke();
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
         public virtual void PlayDamageEffect(Color colour)
         {
+        }
+
+        protected virtual void Die()
+        {
+            OnDeath?.Invoke();
         }
     }
 }

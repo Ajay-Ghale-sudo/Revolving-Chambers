@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Interfaces;
+using State;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Splines;
@@ -111,6 +113,9 @@ namespace Boss
             StartCoroutine(AttackPatternCoroutine());
 
             _splineLength = spline.CalculateLength();
+            
+            UIManager.Instance.OnBossSpawned?.Invoke(name);
+            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
 
         }
         void Update()
@@ -154,6 +159,26 @@ namespace Boss
                 var direction = target.position - transform.position;
                 var projectile = BulletManager.Instance.SpawnBullet(attackData.ammo, spawnPosition, Quaternion.LookRotation(direction));
             }
+        }
+
+
+        public override void TakeDamage(DamageData damage)
+        {
+            if (damage.type != DamageType.Player) return;
+            health -= damage.damage;
+            OnDamage?.Invoke();
+            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
+            PlayDamageEffect(Color.red);
+            if (health > 0) return;
+            Die();
+        }
+
+        protected override void Die()
+        {
+            _running = false;
+            OnDeath?.Invoke();
+            GameStateManager.Instance.OnBossDeath?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

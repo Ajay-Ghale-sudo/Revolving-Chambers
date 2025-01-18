@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,9 +19,14 @@ namespace UI
         [Tooltip("Image for displaying boss health.")]
         [SerializeField] private Image HealthBarImage;
 
-        private void Start()
+
+        private void Awake()
         {
             BindUIEvents();
+        }
+
+        private void Start()
+        {
         }
 
         private void OnDestroy()

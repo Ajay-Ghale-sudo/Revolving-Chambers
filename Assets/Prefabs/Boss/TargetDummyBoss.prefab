@@ -125,7 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facac0a29398454da3e4ffc11ffcd648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
   health: 500
+  maxHealth: 500
+  ammo: {fileID: 0}
+  fireRate: 1
+  projectileCount: 5
 --- !u!114 &1848139696280222226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   target: {fileID: 0}
-  primaryAmmo: {fileID: 11400000, guid: 73eeaf8972485d34487761a6d3c21ec5, type: 2}
-  fireRate: 1
-  fireVariation: 0.3
+  primaryAttackData:
+    ammo: {fileID: 0}
+    fireRate: 0
+    fireVariation: 0
+  secondaryAttackData:
+    ammo: {fileID: 0}
+    fireRate: 0
+    fireVariation: 0

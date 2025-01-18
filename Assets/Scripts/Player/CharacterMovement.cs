@@ -86,7 +86,7 @@ namespace Player
         /// <summary>
         /// Health of the player. Represented in hits they can take.
         /// </summary>
-        [SerializeField] private int Health = 5;
+        [SerializeField] private new int Health = 5;
 
         /// <summary>
         /// Health restored on revive.

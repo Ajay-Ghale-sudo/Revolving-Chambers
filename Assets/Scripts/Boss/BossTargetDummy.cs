@@ -1,6 +1,7 @@
 ﻿using System;
 using Props;
 using State;
+using UI;
 using UnityEngine;
 using Weapon;
 
@@ -73,13 +74,18 @@ namespace Boss
 
         private void Start()
         {
+            UIManager.Instance.OnBossSpawned?.Invoke(name);
+            UIManager.Instance.OnBossHealthChange?.Invoke(_targetDummy.Health / _targetDummy.MaxHealth);
+            _targetDummy.OnDamage?.AddListener(HandleDamage);
+            _targetDummy?.OnDeath?.AddListener(Die);
+            
             UpdateTarget();
 
-            _targetDummy?.OnDeath?.AddListener(Die);
         }
-
+        
         private void OnDestroy()
         {
+            _targetDummy?.OnDamage?.RemoveListener(HandleDamage);
             _targetDummy?.OnDeath?.RemoveListener(Die);
         }
 
@@ -93,6 +99,14 @@ namespace Boss
         private void Die()
         {
             GameStateManager.Instance.OnBossDeath?.Invoke();
+        }
+        
+        /// <summary>
+        /// Process damage taken.
+        /// </summary>
+        private void HandleDamage()
+        {
+            UIManager.Instance.OnBossHealthChange?.Invoke(_targetDummy.Health / _targetDummy.MaxHealth);
         }
 
         /// <summary>

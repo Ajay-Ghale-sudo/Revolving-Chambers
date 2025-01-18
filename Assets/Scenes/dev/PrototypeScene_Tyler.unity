@@ -8115,7 +8115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618560078075913999, guid: 2a0b4909d88ceed4a8dfc7e62a3dcf0a, type: 3}
       propertyPath: m_Name
-      value: TargetDummyBoss
+      value: Target Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5618560078075913999, guid: 2a0b4909d88ceed4a8dfc7e62a3dcf0a, type: 3}
       propertyPath: m_Layer

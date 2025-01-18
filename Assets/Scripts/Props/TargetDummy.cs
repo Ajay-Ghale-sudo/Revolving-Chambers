@@ -13,12 +13,6 @@ namespace Props
     public class TargetDummy : Damageable
     {
         /// <summary>
-        /// The health of the target dummy.
-        /// </summary>
-        [SerializeField]
-        private float health = 20f;
-
-        /// <summary>
         /// VFX script attached to this gameobject
         /// </summary>
         DamageableVFX _vfxPlayer;
