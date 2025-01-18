@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Splines;
 using Weapon;
+using Object = UnityEngine.Object;
+using StateMachine = State.StateMachine;
 
 namespace Boss
 {
@@ -72,7 +74,7 @@ namespace Boss
         /// <summary>
         /// Cached length of the current spline
         /// </summary>
-        private float _splineLength = 0f;
+        internal float _splineLength = 0f;
         
         /// <summary>
         /// The movement speed of the boss.
@@ -82,60 +84,77 @@ namespace Boss
         /// <summary>
         /// The current distance along the spline.
         /// </summary>
-        private float _currentDistance = 0f;
+        internal float _currentDistance = 0f;
 
         
         /// <summary>
         /// Time between boss attacks.
         /// </summary>
-        [SerializeField] private float attackInterval = 2f;
+        [SerializeField] internal float attackInterval = 2f;
 
         /// <summary>
         /// The rotation vector for the boss.
         /// </summary>
-        [SerializeField] private Vector3 rotationVector = new Vector3(0f, 360f, 0f);
+        [SerializeField] internal Vector3 rotationVector = new Vector3(0f, 360f, 0f);
 
         /// <summary>
         /// The duration of the rotation. Shorter duration, faster spin.
         /// </summary>
-        [SerializeField] private float rotationDuration = 1f;
+        [SerializeField] internal float rotationDuration = 1f;
         
         /// <summary>
         /// The mode of rotation for the boss.
         /// </summary>
-        [SerializeField] private RotateMode rotateMode = RotateMode.FastBeyond360;
+        [SerializeField] internal RotateMode rotateMode = RotateMode.FastBeyond360;
 
+        /// <summary>
+        /// The state machine for the boss.
+        /// </summary>
+        StateMachine _stateMachine;
         
+        /// <summary>
+        /// Coroutine for the attack pattern.
+        /// </summary>
+        Coroutine _attackPatternCoroutine;
+
+        private void Awake()
+        {
+            _stateMachine = new StateMachine();
+            
+            var idleState = new DefaultAttackState(this);
+            _stateMachine.SetState(idleState);
+            
+            var deathState = new DeadState(this);
+            deathState._onDeathFinished = Die;
+            _stateMachine.AddTransition(idleState, deathState, new FuncPredicate(() => health <= 0));
+            
+            // Example of what a transition would look like.
+            // var attack2 = new AttackState2(this);
+            // _stateMachine.AddTransition(idleState, attack2, new FuncPredicate(() => health < maxHealth * 0.7f));
+            
+        }
+
         void Start()
         {
-            transform.DORotate(rotationVector, rotationDuration, rotateMode)
-                .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
-            StartCoroutine(AttackPatternCoroutine());
-
-            _splineLength = spline.CalculateLength();
-            
             UIManager.Instance.OnBossSpawned?.Invoke(name);
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
 
         }
         void Update()
         {
-            // Calculate the target position on the spline.
-            // Sets the world position for the player to move to calculated by the normalized value currentDistance.
-            Vector3 targetPosition = spline.EvaluatePosition(_currentDistance);
-            
-            // Move the character towards the target position on the spline.
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            
-            // calculate how far along we are 0 -> 1.0
-            _currentDistance = (_currentDistance + ((moveSpeed * Time.deltaTime) / _splineLength)) % 1f;
+            _stateMachine.Update();
+        }
+
+        private void FixedUpdate()
+        {
+           _stateMachine.FixedUpdate(); 
         }
 
         /// <summary>
         /// Coroutine for the attack pattern.
         /// </summary>
         /// <returns></returns>
-        IEnumerator AttackPatternCoroutine()
+        private IEnumerator AttackPatternCoroutine()
         {
             _running = true;
             while (_running)
@@ -144,6 +163,19 @@ namespace Boss
                 _useAltAttackPattern = !_useAltAttackPattern;
                 Invoke(nameof(SpawnBulletPattern), .5f);
                 yield return new WaitForSeconds(attackInterval);
+            }
+        }
+
+        public void StartAttackPattern()
+        {
+            _attackPatternCoroutine = StartCoroutine(AttackPatternCoroutine());
+        }
+
+        public void StopAttackPattern()
+        {
+            if (_attackPatternCoroutine != null)
+            {
+                StopCoroutine(_attackPatternCoroutine);
             }
         }
 
@@ -169,16 +201,85 @@ namespace Boss
             OnDamage?.Invoke();
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
             PlayDamageEffect(Color.red);
-            if (health > 0) return;
-            Die();
         }
 
-        protected override void Die()
+        protected sealed override void Die()
         {
             _running = false;
             OnDeath?.Invoke();
             GameStateManager.Instance.OnBossDeath?.Invoke();
             Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// State for the default attack pattern.
+    /// </summary>
+    class DefaultAttackState : BaseState<DiamondBoss>
+    {
+        public DefaultAttackState(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            _owner.transform.DORotate(_owner.rotationVector, _owner.rotationDuration, _owner.rotateMode)
+                .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
+
+            _owner._splineLength = _owner.spline.CalculateLength();
+            
+            _owner.StartAttackPattern();
+        }
+
+        public override void OnExit()
+        {
+            _owner.StopAttackPattern();
+            _owner.transform.DOPause();
+        }
+
+        public override void Update()
+        {
+            // Calculate the target position on the spline.
+            // Sets the world position for the player to move to calculated by the normalized value currentDistance.
+            Vector3 targetPosition = _owner.spline.EvaluatePosition(_owner._currentDistance);
+            
+            // Move the character towards the target position on the spline.
+            _owner.transform.position = Vector3.MoveTowards(_owner.transform.position, targetPosition, _owner.moveSpeed * Time.deltaTime);
+            
+            // calculate how far along we are 0 -> 1.0
+            _owner._currentDistance = (_owner._currentDistance + ((_owner.moveSpeed * Time.deltaTime) / _owner._splineLength)) % 1f;
+        }
+    }
+    
+    /// <summary>
+    /// State for when the boss is dead.
+    /// </summary>
+    class DeadState : BaseState<DiamondBoss>
+    {
+        /// <summary>
+        /// Event invoked when the death animation is finished.
+        /// </summary>
+        internal Action _onDeathFinished;
+        
+        public DeadState(DiamondBoss owner) : base(owner)
+        {
+        }
+        
+        /// <summary>
+        /// Invokes the death finished event.
+        /// </summary>
+        private void OnDeathFinished()
+        {
+            _onDeathFinished?.Invoke();
+        }
+
+        /// <summary>
+        /// Called when the state is entered.
+        /// </summary>
+        public override void OnEnter()
+        {
+            _owner.transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
+            _owner.transform.DOShakeScale(2f, 2.5f, 10, 90f);
         }
     }
 }
