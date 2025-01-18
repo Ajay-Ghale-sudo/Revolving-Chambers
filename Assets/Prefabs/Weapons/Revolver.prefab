@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1815357144104868597}
   - component: {fileID: 1414528297528053760}
   - component: {fileID: 6247063595010272664}
+  - component: {fileID: 4597473847999530873}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -109,7 +110,63 @@ MonoBehaviour:
   muzzleTransform: {fileID: 1481065562610895091}
   chamberCount: 5
   fireRate: 0.2
-  reloadWheel: {fileID: 0}
+  reloadWheel: {fileID: 4597473847999530873}
+--- !u!114 &4597473847999530873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024054603652091059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdba95eabe0420cae30d3a407f098f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelSections:
+  - name: 
+    probability: 0.3
+    Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  - name: 
+    probability: 0.2
+    Reward: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
+  - name: 
+    probability: 0.1
+    Reward: {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
+  - name: 
+    probability: 0.2
+    Reward: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
+  - name: 
+    probability: 0.2
+    Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  spinDuration: 1
+  spinCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnWheelStop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5253306214395512921
 GameObject:
   m_ObjectHideFlags: 0

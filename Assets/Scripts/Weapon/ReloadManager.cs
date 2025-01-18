@@ -1,4 +1,5 @@
 ﻿using System;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using Utility;
@@ -64,6 +65,7 @@ namespace Weapon
         public void SpinWheel()
         {
             OnSpinStart?.Invoke();
+            UIManager.Instance.OnSpinEnd += StopWheel;
         }
         
         /// <summary>
@@ -72,6 +74,7 @@ namespace Weapon
         public void StopWheel()
         {
             OnSpinEnd?.Invoke();
+            UIManager.Instance.OnSpinEnd -= StopWheel;
         }
     }
 }

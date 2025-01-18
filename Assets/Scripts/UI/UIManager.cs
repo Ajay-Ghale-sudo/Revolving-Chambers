@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 using Utility;
 using Weapon;
 
@@ -48,6 +47,11 @@ namespace UI
        /// 'float' Boss health represented in 0.0f - 1.0f
        /// </summary>
        public Action<float> OnBossHealthChange;
+
+       /// <summary>
+       /// Action to stop the reward wheel from spinning.
+       /// </summary>
+       public Action OnSpinEnd;
 
         /// <summary>
         /// Action to show/hide the Title Screen

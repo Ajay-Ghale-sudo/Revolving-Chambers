@@ -4,61 +4,47 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using Weapon;
 
-namespace Props
+namespace Wheel
 {
-    
     /// <summary>
-    /// Reload wheel for selecting ammo.
+    /// Section of the wheel.
     /// </summary>
-    public class ReloadWheel : MonoBehaviour
+    [Serializable]
+    public class WheelSection
     {
+        /// <summary>
+        /// Rewards for this section.
+        /// </summary>
+        public string name;
 
         /// <summary>
-        /// Section of the wheel.
+        /// Probability of this section.
         /// </summary>
-        [Serializable]
-        public class WheelSection
-        {
-            /// <summary>
-            /// Rewards for this section.
-            /// </summary>
-            public string name;
-            
-            /// <summary>
-            /// Probability of this section.
-            /// </summary>
-            public float probability;
-            
-            /// <summary>
-            /// Color of the section.
-            /// </summary>
-            // TODO: Should this come from the ammo object?
-            public Color sectionColor;
-            
-            /// <summary>
-            /// Ammo for this section.
-            /// </summary>
-            public Ammo ammo;
-
-            /// <summary>
-            /// Start angle of the section.
-            /// </summary>
-            internal float Start;
-            
-            /// <summary>
-            /// End angle of the section.
-            /// </summary>
-            internal float End;
-        }
+        public float probability;
 
         /// <summary>
-        /// Sections of the wheel.
+        /// Color of the section. Typically derived from the payload.
         /// </summary>
-        [SerializeField]
-        private List<WheelSection> wheelSections = new();
+        // public virtual Color SectionColor => Color.clear;
+
+        public virtual Color SectionColor => Color.clear;
+        
+        /// <summary>
+        /// Start angle of the section.
+        /// </summary>
+        internal float Start;
+
+        /// <summary>
+        /// End angle of the section.
+        /// </summary>
+        internal float End;
+    }
+
+    public abstract class RewardWheel<T> : MonoBehaviour where T : WheelSection
+    {
+        [SerializeField] private List<T> wheelSections = new();
         
         /// <summary>
         /// Duration of the spin.
@@ -85,7 +71,7 @@ namespace Props
         /// <summary>
         /// Selected section of the wheel.
         /// </summary>
-        private WheelSection _selectedSection;
+        protected T _selectedSection;
         
         /// <summary>
         /// Tween for spinning the wheel.
@@ -95,14 +81,19 @@ namespace Props
         /// <summary>
         /// Event invoked when the wheel stops spinning.
         /// </summary>
-        public UnityEvent<WheelSection> OnWheelStop;
+        public UnityEvent<T> OnWheelStop;
         
         /// <summary>
         /// Event invoked when a section is created.
         /// </summary>
-        public Action<WheelSection> OnSectionCreated;
+        public Action<T> OnSectionCreated;
 
         private void Start()
+        {
+            SetupWheel();
+        }
+
+        protected virtual void SetupWheel()
         {
             var totalProbability = 0f;
             foreach (var wheelSection in wheelSections)
@@ -115,12 +106,9 @@ namespace Props
                 Debug.LogError("Wheel section probabilities do not add up to 1.");
             }
             
-            ReloadManager.Instance.OnSpinStart += SpinWheel;
-            ReloadManager.Instance.OnSpinEnd += StopWheel;
-            
             CreateWheelSections();
         }
-
+        
         /// <summary>
         /// Create the wheel sections.
         /// </summary>
@@ -135,14 +123,14 @@ namespace Props
                 section.End = currentAngle;
                 
                 OnSectionCreated?.Invoke(section);
-                ReloadManager.Instance.OnSpinSectionAdded?.Invoke((int)section.Start, (int)section.End, section.ammo.color);
+                ReloadManager.Instance.OnSpinSectionAdded?.Invoke((int)section.Start, (int)section.End, section.SectionColor);
             }
         }
-
+        
         /// <summary>
         /// Start the wheel spinning tween.
         /// </summary>
-        private void SpinWheel()
+        protected void SpinWheel()
         {
             if (_isSpinning) return;
 
@@ -150,15 +138,24 @@ namespace Props
             _spinTween = DOVirtual.Float(0f, 360f, spinDuration, WheelUpdate)
                 .SetLoops(-1, LoopType.Restart)
                 .SetEase(spinCurve)
+                .SetUpdate(true)
                 .OnKill(HandleWheelStop);
         }
 
+        /// <summary>
+        /// Stop the wheel spinning tween.
+        /// </summary>
+        protected void StopWheel()
+        {
+            if (!_isSpinning) return;
+            _spinTween?.Kill();
+        }
         
         /// <summary>
         /// Update tick of the wheel spin.
         /// </summary>
         /// <param name="value">Current notch value of the wheel</param>
-        private void WheelUpdate(float value)
+        protected void WheelUpdate(float value)
         {
             _currentValue = value;
             ReloadManager.Instance.OnSpinUpdate?.Invoke((int)_currentValue);
@@ -180,16 +177,11 @@ namespace Props
         {
             _selectedSection =  wheelSections.First(section => _currentValue >= section.Start && _currentValue <= section.End);
             OnWheelStop?.Invoke(_selectedSection);
-            ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.ammo);
+            SectionSelected(_selectedSection);
         }
-
-        /// <summary>
-        /// Stop the wheel spinning tween.
-        /// </summary>
-        private void StopWheel()
+        
+        protected virtual void SectionSelected(T section)
         {
-            if (!_isSpinning) return;
-            _spinTween?.Kill();
         }
     }
 }

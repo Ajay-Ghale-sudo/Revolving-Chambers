@@ -10,7 +10,6 @@ using Weapon;
 
 namespace Player
 {
-
     /// <summary>
     /// Settings for the dash ability.
     /// </summary>
@@ -80,6 +79,11 @@ namespace Player
         [SerializeField] private int Health = 5;
 
         /// <summary>
+        /// Health restored on revive.
+        /// </summary>
+        [SerializeField] private int healthRestoredOnRevive = 3;
+
+        /// <summary>
         /// Settings for the dash ability.
         /// </summary>
         [SerializeField] private DashSettings dashSettings = new()
@@ -118,6 +122,11 @@ namespace Player
         /// The character controller.
         /// </summary>
         private CharacterController _characterController;
+
+        /// <summary>
+        /// If the player is currently dying.
+        /// </summary>
+        private bool _isDying = false;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -126,6 +135,8 @@ namespace Player
             _rb = GetComponent<Rigidbody>();
             _capsule = GetComponentInChildren<CapsuleCollider>();
             _characterController = GetComponent<CharacterController>();
+            
+            GameStateManager.Instance.OnPlayerRevive += Revive;
             
             // TEMP FOR TESTING
             _weapon = GetComponentInChildren<IWeapon>();
@@ -226,7 +237,7 @@ namespace Player
         /// </summary>
         void OnRightClick()
         {
-            ReloadManager.Instance.OnSpinEnd?.Invoke();
+            UIManager.Instance.OnSpinEnd?.Invoke();
         }
         
         /// <summary>
@@ -256,10 +267,22 @@ namespace Player
         }
 
         /// <summary>
+        /// Revive the player.
+        /// </summary>
+        private void Revive()
+        {
+            _isDying = false;
+            Health = 5;
+            UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
+        }
+
+        /// <summary>
         /// Kill the player.
         /// </summary>
         private void Die()
         {
+            if (_isDying) return;
+            _isDying = true;
             OnDeath?.Invoke();
             GameStateManager.Instance.OnPlayerDeath?.Invoke();
         }
@@ -267,6 +290,7 @@ namespace Player
         // IDamageable implementation \\
         public override void TakeDamage(DamageData damage)
         {
+            if (_isDashing) return;
             Health -= damage.damage;
             OnDamage?.Invoke();
             // TODO: This likely doesn't need a direct reference to UI Manager. Low priority cleanup for later.
