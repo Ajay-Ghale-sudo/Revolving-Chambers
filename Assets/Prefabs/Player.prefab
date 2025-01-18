@@ -254,6 +254,7 @@ MonoBehaviour:
   _mainCamera: {fileID: 8727054744509253310}
   MoveSpeed: 5
   Health: 5
+  healthRestoredOnRevive: 3
   dashSettings:
     duration: 0.1
     velocity: 35
@@ -614,6 +615,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+      propertyPath: ammoLoadouts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+      propertyPath: 'ammoLoadouts.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c64f2b3596785041afac34d887adc4d, type: 2}
+    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
+      propertyPath: 'ammoLoadouts.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0464d23045dcfd04cab5737dfd88eac8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

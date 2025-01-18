@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using Wheel;
+using Wheel.Reload;
 using UI;
 using Unity.Mathematics;
 using UnityEngine;

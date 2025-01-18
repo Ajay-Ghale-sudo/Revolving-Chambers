@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Weapon;
 
-namespace Wheel
+namespace Wheel.Reload
 {
     /// <summary>
     /// Section of the wheel. Reward is Ammo to load into the weapon.
@@ -25,15 +25,34 @@ namespace Wheel
     /// </summary>
     public class ReloadWheel : RewardWheel<AmmoWheelSection>
     {
+        /// <summary>
+        /// Ammo loadouts for the wheel.
+        /// TODO: configured in editor for now, but should be driven from the game itself.
+        /// </summary>
+        [SerializeField] private List<AmmoLoadout> ammoLoadouts;
+        
         protected override void SetupWheel()
         {
-            base.SetupWheel();
+            // Update the wheel sections with the ammo loadouts.
+            ChooseRandomAmmoLoadout();
             
             GameStateManager.Instance.OnPlayerRevive -= SetupWheel;
             GameStateManager.Instance.OnPlayerDeath += PlayerDied;
             
             ReloadManager.Instance.OnSpinStart += SpinWheel;
             ReloadManager.Instance.OnSpinEnd += StopWheel;
+        }
+        
+        /// <summary>
+        /// Choose a random ammo loadout.
+        /// </summary>
+        private void ChooseRandomAmmoLoadout()
+        {
+            wheelSections.Clear();
+            var loadout = ammoLoadouts[UnityEngine.Random.Range(0, ammoLoadouts.Count)];
+            wheelSections.AddRange(loadout.ammoSections);
+            
+            CreateWheelSections();
         }
 
         /// <summary>
@@ -67,6 +86,9 @@ namespace Wheel
         {
             base.SectionSelected(section);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.Reward);
+            
+            ChooseRandomAmmoLoadout();
+            
         }
     }
 }

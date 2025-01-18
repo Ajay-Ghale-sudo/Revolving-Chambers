@@ -27,8 +27,6 @@ namespace Wheel
         /// <summary>
         /// Color of the section. Typically derived from the payload.
         /// </summary>
-        // public virtual Color SectionColor => Color.clear;
-
         public virtual Color SectionColor => Color.clear;
         
         /// <summary>
@@ -44,7 +42,10 @@ namespace Wheel
 
     public abstract class RewardWheel<T> : MonoBehaviour where T : WheelSection
     {
-        [SerializeField] private List<T> wheelSections = new();
+        /// <summary>
+        /// Active wheel sections.
+        /// </summary>
+        [SerializeField] protected List<T> wheelSections = new();
         
         /// <summary>
         /// Duration of the spin.
@@ -112,8 +113,9 @@ namespace Wheel
         /// <summary>
         /// Create the wheel sections.
         /// </summary>
-        void CreateWheelSections()
+        protected void CreateWheelSections()
         {
+            ReloadManager.Instance.OnClearSections?.Invoke();
             var currentAngle = 0f;
             foreach (var section in wheelSections)
             {
