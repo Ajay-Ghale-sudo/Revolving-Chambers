@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Ammo_DiamondBoss
   m_EditorClassIdentifier: 
   damage:
-    damage: 0
-    type: 0
+    damage: 1
+    type: 2
   projectilePrefab: {fileID: 8576117351993674856, guid: 9f600bb3d06972146a7ec70b8c5be9c2, type: 3}
   velocity: 15
-  lifetime: 15
+  lifetime: 25
+  color: {r: 1, g: 1, b: 1, a: 1}
   OnEndEvents: []

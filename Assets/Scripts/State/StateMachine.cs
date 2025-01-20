@@ -15,6 +15,11 @@ namespace State
         private StateNode current;
         
         /// <summary>
+        /// The previous state.
+        /// </summary>
+        private StateNode previous;
+        
+        /// <summary>
         /// The nodes for the state machine.
         /// </summary>
         private Dictionary<Type, StateNode> nodes = new();
@@ -49,6 +54,7 @@ namespace State
             if (current != null)
             {
                 current.State?.OnExit();
+                previous = current;
             }
             
             current = GetOrAddNode(state);
@@ -63,10 +69,10 @@ namespace State
         {
             if (state == current.State) return;
 
-            var previousSate = current.State;
+            previous = current;
             var nextState = nodes[state.GetType()];
             
-            previousSate?.OnExit();
+            previous.State?.OnExit();
             nextState.State.OnEnter();
             current = nodes[state.GetType()];
         }
