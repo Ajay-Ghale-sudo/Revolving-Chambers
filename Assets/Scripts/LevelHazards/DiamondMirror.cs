@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using Interfaces;
 using Props;
+using State;
 using UnityEngine;
 using Weapon;
 
@@ -33,7 +34,13 @@ namespace LevelHazards
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             _bossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
             _initialYPos = transform.position.y;
-            // transform.DORotate(new Vector3(0f, -360.0f, 0.0f), 30f, RotateMode.FastBeyond360).SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
+
+            GameStateManager.Instance.OnBossDeath += HandleBossDeath;
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnBossDeath -= HandleBossDeath;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -63,6 +70,15 @@ namespace LevelHazards
             _broken = true;
             Invoke(nameof(Rise), 3f);
             OnDamage?.Invoke();
+        }
+
+        
+        /// <summary>
+        /// Cleanup when the boss dies.
+        /// </summary>
+        private void HandleBossDeath()
+        {
+            _shootAtPlayer = false;
         }
 
         private void Shoot()
