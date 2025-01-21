@@ -185,6 +185,7 @@ namespace Player
         /// </summary>
         void OnAttack()
         {
+            if (_isDashing) return;
             _weapon?.Fire();
         }
 
