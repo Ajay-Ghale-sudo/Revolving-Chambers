@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 namespace UI
 {
@@ -9,11 +10,6 @@ namespace UI
     /// </summary>
     public class UI_RevolverController : MonoBehaviour
     {
-        /// <summary>
-        /// Chamber cover gameobject
-        /// </summary>
-        public GameObject Cover;
-
         /// <summary>
         /// Chamber gameobject
         /// </summary>
@@ -40,7 +36,7 @@ namespace UI
             UIManager.Instance.OnRevolverAmmoChange += (i, chamber) =>
             {
                 if (chamber == null) return;
-                chamber.OnFire?.AddListener(() => RemoveAmmo(i));
+                chamber.OnFire?.AddListener(() => { RemoveAmmo(i); PlayFireAnimation();});
                 chamber.OnLoaded?.AddListener(() => SetAmmo(i, chamber.Ammo.color));
                 
                 if (chamber?.Ammo == null)
@@ -60,7 +56,7 @@ namespace UI
         /// <param name="chamber">Chamber index</param>
         /// <param name="color">Colour of the bullet</param>
         /// <param name="emission">Should the material be emissive</param>
-        public void SetAmmo(int chamber, Color color, bool emission = false)
+        public void SetAmmo(int chamber, Color color, bool emission = true)
         {
             UI_Bullet bulletScript = GetBulletScript(chamber);
             if (bulletScript == null) return;
@@ -131,7 +127,7 @@ namespace UI
             float rotVel = diff / time;
 
             //Jump to start point before we start
-            Chamber.transform.rotation = Quaternion.Euler(0, 0, curDeg);
+            Chamber.transform.localRotation = Quaternion.Euler(0, 0, curDeg);
 
             //Rotate over time
             float timePassed = 0.0f;
@@ -139,13 +135,29 @@ namespace UI
             {
                 timePassed += Time.deltaTime;
 
-                Chamber.transform.Rotate(0, 0, rotVel * Time.deltaTime);
+                Chamber.transform.Rotate(0, 0, rotVel * Time.deltaTime, Space.Self);
                 yield return null;
             }
 
             //Jump to end point when done
-            Chamber.transform.rotation = Quaternion.Euler(0, 0, targetDeg);
+            Chamber.transform.localRotation = Quaternion.Euler(0, 0, targetDeg);
             _rotateChamberRoutine = null;
+        }
+
+        /// <summary>
+        /// Plays the firing animation
+        /// </summary>
+        public void PlayFireAnimation(float fireRate = 0.2f)
+        {
+            float xRot = UnityEngine.Random.Range(9.0f, 16.0f);
+            float yRot = UnityEngine.Random.Range(-8.0f, 8.0f);
+            float zRot = UnityEngine.Random.Range(-7.0f, 7.0f);
+
+            //Tween rotate the transform
+            transform.DORotate(new Vector3(xRot, yRot, zRot), fireRate / 2).OnComplete(() => {
+                //Rotate back on complete
+                transform.DORotate(new Vector3(0.0f, 0.0f, 0.0f), fireRate / 2); 
+            });
         }
 
         /// <summary>

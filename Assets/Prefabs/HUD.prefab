@@ -2403,7 +2403,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8111119486487663473
 CanvasRenderer:
@@ -3361,7 +3361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ContentPanel: {fileID: 7855036792489667535}
-  ScreenText: {fileID: 4392246367228685409}
 --- !u!1 &7855036792489667535
 GameObject:
   m_ObjectHideFlags: 0
