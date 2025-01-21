@@ -74,6 +74,11 @@ namespace Player
         [SerializeField] private Camera _mainCamera;
 
         /// <summary>
+        /// The script for handling character animator controls
+        /// </summary>
+        [SerializeField] private CharacterAnimationHandler _animationHandler;
+
+        /// <summary>
         /// The capsule collider.
         /// </summary>
         private CapsuleCollider _capsule;
@@ -157,6 +162,7 @@ namespace Player
         {
             LookTowardsCursor();
             Move();
+            UpdateAnimations();
         }
 
         /// <summary>
@@ -277,6 +283,33 @@ namespace Player
                 Debug.DrawLine(ray.origin, point, Color.red);
                 _capsule.transform.LookAt(new Vector3(point.x, _capsule.transform.position.y, point.z));
             }
+        }
+
+        private void UpdateAnimations()
+        {
+            if (_capsule == null) return;
+
+            //Current facing direction normalized
+            Vector2 facingDir = new Vector2(_capsule.transform.forward.x, _capsule.transform.forward.z);
+            //Last movement input direction normalized
+            Vector2 targetDir = new Vector2(_moveInput.x, _moveInput.z).normalized;
+
+            //We need to find the movement direction relative to our facing direction.
+            //Example: facing North + moving South = backwards animation
+            //         facing South + moving South = forwards animation
+            //         facing East + moving South = strafe right animation
+
+            //Find the angle that will orient our facingDir with Forward animation property (0, 1)
+            float angle = Vector2.SignedAngle(facingDir, new Vector2(0.0f, 1.0f)) * Mathf.Deg2Rad;
+
+            //Rotate targetDir by angle amount to get our direction vector for animator
+            Vector2 mappedDir = new Vector2(
+                (targetDir.x * Mathf.Cos(angle)) - (targetDir.y * Mathf.Sin(angle)),
+                (targetDir.x * Mathf.Sin(angle)) + (targetDir.y * Mathf.Cos(angle)));
+
+            //Set animator values
+            _animationHandler?.SetForward(mappedDir.y);
+            _animationHandler?.SetRight(mappedDir.x);
         }
 
         /// <summary>
