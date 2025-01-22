@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Events;
 using NUnit.Framework;
 using Wheel;
 using UI;
@@ -119,6 +120,12 @@ namespace Weapon
         /// Wheel used for reloading.
         /// </summary>
         [SerializeField] private ReloadWheel reloadWheel;
+
+        /// <summary>
+        /// The audio event to trigger when firing the revolver.
+        /// </summary>
+        [SerializeField]
+        public AudioEvent FireWeaponAudioEvent;
         
         public override void Fire()
         {
@@ -133,6 +140,7 @@ namespace Weapon
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
+                FireWeaponAudioEvent.Invoke();
             }
             NextChamber();
             

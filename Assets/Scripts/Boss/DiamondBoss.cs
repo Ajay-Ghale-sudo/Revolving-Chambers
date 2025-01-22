@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using DG.Tweening;
+using Events;
 using Interfaces;
 using State;
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.Splines;
 using Weapon;
 using Object = UnityEngine.Object;
@@ -153,6 +155,14 @@ namespace Boss
         [Tooltip("The background music for the boss.")]
         public AudioClip _backgroundMusic;
 
+        /// <summary>
+        /// The audio event played when the boss fires a bullet.
+        /// </summary>
+        [FormerlySerializedAs("_fireBulletEvent")]
+        [SerializeField]
+        [Tooltip("The audio event played when the boss fires a bullet.")]
+        public AudioEvent _fireBulletAudioEvent;
+
         private void Awake()
         {
             
@@ -294,6 +304,7 @@ namespace Boss
                 direction.Normalize();
                 var projectile = BulletManager.Instance.SpawnBullet(attackData.ammo, spawnPosition, Quaternion.LookRotation(direction));
             }
+            _fireBulletAudioEvent.Invoke();
         }
 
 

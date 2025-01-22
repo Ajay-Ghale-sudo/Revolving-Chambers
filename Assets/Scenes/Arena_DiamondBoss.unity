@@ -27432,6 +27432,10 @@ PrefabInstance:
       propertyPath: _backgroundMusicEvent
       value: 
       objectReference: {fileID: 11400000, guid: e3e53bdbb07d35fd0be9e1423611eae9, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _fireBulletAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 317e0aac3712ca51d98a0fa1639bfd8c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28428,6 +28432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2547644139278902012, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: FireWeaponAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b32899609959fa3083080b5029df0fc, type: 2}
     - target: {fileID: 6651217265798743259, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_Name
       value: Player
