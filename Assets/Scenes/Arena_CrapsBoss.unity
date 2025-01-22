@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (1)
@@ -293,15 +297,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.277351
+      value: 25.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.405958
+      value: -12.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -334,7 +338,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 69358313c1c746f45a766f8756c883ae, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (15)
@@ -484,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -7.0792723
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -521,7 +525,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: f00a3b45e05d419418b5c895310e2d70, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (10)
@@ -531,6 +535,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!1001 &174460461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0039006472
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.94933504
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.314266
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 36.633
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_Name
+      value: SM_Item_Casino_Chip_Pile_04 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dae6712e4634200468328feaa6fafb97, type: 3}
 --- !u!1001 &180310659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,6 +725,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e5471e3da1d01924b92f593292fe42d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46f4709ee6b22ec429da120e8ac5454e, type: 2}
     - target: {fileID: 919132149155446097, guid: e5471e3da1d01924b92f593292fe42d1, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_03
@@ -657,6 +738,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5471e3da1d01924b92f593292fe42d1, type: 3}
+--- !u!1001 &194087702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1842085090}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.923565
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.0792723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.954197
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.25882143
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9659252
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6327a0fb9be03e8468f725d3f70ab306, type: 2}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_Name
+      value: SM_Item_Casino_Chip_Pile_02 (39)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!4 &194087703 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+  m_PrefabInstance: {fileID: 194087702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &194198209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5367258697128839585, guid: d5a68afb70ee9004fad44325f73b146d, type: 3}
@@ -684,23 +843,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.277351
+      value: 12.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.594042
+      value: 31.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.98915404
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.1468819
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -712,7 +871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -16.893
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -873,6 +1032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d43fa51368b3e4e88ade97f3ed70b8, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (3)
@@ -1618,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 69358313c1c746f45a766f8756c883ae, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (31)
@@ -1998,7 +2161,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
     - target: {fileID: 919132149155446097, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_03
@@ -2068,6 +2231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd95c616095ed14eaf0ae786668401c, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (2)
@@ -2488,7 +2655,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 69358313c1c746f45a766f8756c883ae, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (7)
@@ -2561,7 +2728,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (8)
@@ -2641,6 +2808,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd95c616095ed14eaf0ae786668401c, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (4)
@@ -2728,7 +2899,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (32)
@@ -2764,7 +2935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2871,6 +3042,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04
@@ -2953,6 +3128,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!1001 &725905340
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1842085090}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.770882
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5521746
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660259
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999917
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_Name
+      value: SM_Item_Casino_Chip_Pile_02 (40)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!4 &725905341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+  m_PrefabInstance: {fileID: 725905340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &734510912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3135,7 +3388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3245,7 +3498,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d2d73739f359d394983245fda2d0717c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: d2d73739f359d394983245fda2d0717c, type: 3}
       propertyPath: m_Name
       value: SM_Item_Dice_01
@@ -3255,6 +3508,157 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2d73739f359d394983245fda2d0717c, type: 3}
+--- !u!1001 &774683061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0039006472
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.86692524
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4984382
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 59.793
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_Name
+      value: SM_Item_Casino_Chip_Pile_04 (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+--- !u!1001 &779455427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1842085090}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 36.92357
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.0792723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.045806885
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.25882143
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9659252
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_Name
+      value: SM_Item_Casino_Chip_Pile_02 (38)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!4 &779455428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+  m_PrefabInstance: {fileID: 779455427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &792235684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5367258697128839585, guid: d5a68afb70ee9004fad44325f73b146d, type: 3}
@@ -3457,7 +3861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.277351
+      value: 28.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3465,7 +3869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.405958
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3650,7 +4054,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 6327a0fb9be03e8468f725d3f70ab306, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (19)
@@ -3866,6 +4270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd95c616095ed14eaf0ae786668401c, type: 2}
     - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_13_King (2)
@@ -4290,6 +4698,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (5)
@@ -4450,7 +4862,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: f00a3b45e05d419418b5c895310e2d70, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (2)
@@ -4601,7 +5013,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 1d2bf9f322606684a9638d29d09fc7b0, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (11)
@@ -4674,7 +5086,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 125239b42b7c5364199a3857f6717ab9, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (1)
@@ -4898,7 +5310,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: f00a3b45e05d419418b5c895310e2d70, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (16)
@@ -5010,7 +5422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.683161
+      value: -13.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5051,7 +5463,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (26)
@@ -5199,6 +5611,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d43fa51368b3e4e88ade97f3ed70b8, type: 2}
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02
@@ -5393,6 +5809,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c056921548eb96048adf76918c4c649b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd95c616095ed14eaf0ae786668401c, type: 2}
     - target: {fileID: 919132149155446097, guid: c056921548eb96048adf76918c4c649b, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_06
@@ -5555,6 +5975,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9bf41b20c46e5df489e459be028e1678, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
     - target: {fileID: 919132149155446097, guid: 9bf41b20c46e5df489e459be028e1678, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_12_Queen
@@ -5669,7 +6093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5776,6 +6200,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c155e6a99305bb34ba3d50b3a8320f82, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d43fa51368b3e4e88ade97f3ed70b8, type: 2}
     - target: {fileID: 919132149155446097, guid: c155e6a99305bb34ba3d50b3a8320f82, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_01_Ace
@@ -5996,6 +6424,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46f4709ee6b22ec429da120e8ac5454e, type: 2}
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (2)
@@ -6070,6 +6502,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4b56cf96e5a01af4a97cc7abb3b5c524, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2dd95c616095ed14eaf0ae786668401c, type: 2}
     - target: {fileID: 919132149155446097, guid: 4b56cf96e5a01af4a97cc7abb3b5c524, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_10
@@ -6228,7 +6664,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (29)
@@ -6298,6 +6734,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
     - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_13_King
@@ -6370,7 +6810,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 125239b42b7c5364199a3857f6717ab9, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (22)
@@ -6516,7 +6956,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (24)
@@ -6778,6 +7218,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
     - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04 (1)
@@ -6855,7 +7299,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ba74d37041883843a5f62f472be5755, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (4)
@@ -7181,7 +7625,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ba74d37041883843a5f62f472be5755, type: 2}
     - target: {fileID: 919132149155446097, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_03 (2)
@@ -7251,6 +7695,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d43fa51368b3e4e88ade97f3ed70b8, type: 2}
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (1)
@@ -7447,7 +7895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7484,7 +7932,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: d358bd2ff6680f24b80ea14cea17886a, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (17)
@@ -7705,6 +8153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d43fa51368b3e4e88ade97f3ed70b8, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04
@@ -7836,6 +8288,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46f4709ee6b22ec429da120e8ac5454e, type: 2}
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (3)
@@ -8055,7 +8511,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: a6a122d706b3f274eaaf40c7248ccca0, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (6)
@@ -8125,6 +8581,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c7497bebd372d754295c4b4b815813a2, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02
@@ -8217,7 +8677,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 6327a0fb9be03e8468f725d3f70ab306, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (23)
@@ -8395,19 +8855,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.277351
+      value: 25.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.405958
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8660259
+      value: 0.66688126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8415,7 +8875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49999917
+      value: -0.745164
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8427,7 +8887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -60
+      value: -96.346
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -8436,7 +8896,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: 125239b42b7c5364199a3857f6717ab9, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (13)
@@ -24952,6 +25412,7 @@ Transform:
   - {fileID: 1688465197}
   - {fileID: 1449939230}
   - {fileID: 2119137038}
+  - {fileID: 725905341}
   - {fileID: 1618964760}
   - {fileID: 1775083396}
   - {fileID: 754210576}
@@ -24962,8 +25423,10 @@ Transform:
   - {fileID: 60855516}
   - {fileID: 1954662255}
   - {fileID: 458855926}
+  - {fileID: 779455428}
   - {fileID: 545723890}
   - {fileID: 210729777}
+  - {fileID: 194087703}
   - {fileID: 1946379909}
   - {fileID: 1328454016}
   - {fileID: 1815614366}
@@ -25113,6 +25576,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (6)
@@ -25759,7 +26226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.722649
+      value: -13.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25832,15 +26299,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.277351
+      value: 25.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.4059582
+      value: -1.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25873,7 +26340,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+      objectReference: {fileID: 2100000, guid: a6a122d706b3f274eaaf40c7248ccca0, type: 2}
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (12)
@@ -27526,5 +27993,7 @@ SceneRoots:
   - {fileID: 1107664757}
   - {fileID: 708003253}
   - {fileID: 1550680919}
+  - {fileID: 174460461}
+  - {fileID: 774683061}
   - {fileID: 1741634593}
   - {fileID: 1839127249}
