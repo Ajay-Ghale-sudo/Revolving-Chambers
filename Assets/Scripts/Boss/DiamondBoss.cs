@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using DG.Tweening;
 using Interfaces;
 using State;
@@ -138,6 +139,20 @@ namespace Boss
         [Tooltip("The diamond hazard for the boss.")]
         private GameObject _diamondHazard;
 
+        /// <summary>
+        /// The audio used for the boss intro music.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The music played during the boss intro.")]
+        public AudioClip _bossIntroMusic;
+
+        /// <summary>
+        /// The audio used for the boss' triggering background music.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The background music for the boss.")]
+        public AudioClip _backgroundMusic;
+
         private void Awake()
         {
             
@@ -154,9 +169,11 @@ namespace Boss
         /// </summary>
         private void CreateStates()
         {
-            
+            var bossIntroState = new BossIntroState(this);
+            _stateMachine.SetState(bossIntroState);
+
             var defaultMoveState = new DefaultMoveState(this);
-            _stateMachine.SetState(defaultMoveState);
+            _stateMachine.AddTransition(bossIntroState, defaultMoveState, new FuncPredicate(() => bossIntroState.IsComplete));
 
             var defaultAttackState = new DefaultAttackState(this);
             _stateMachine.AddTransition(defaultMoveState, defaultAttackState, new FuncPredicate(() => defaultAttackState.IsReady && defaultMoveState.IsComplete));
@@ -179,7 +196,6 @@ namespace Boss
         {
             UIManager.Instance.OnBossSpawned?.Invoke(name);
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
-
         }
         void Update()
         {
@@ -292,6 +308,7 @@ namespace Boss
 
         protected sealed override void Die()
         {
+            AudioManager.Instance.SetAmbientClip(null, 0.0f);
             _running = false;
             OnDeath?.Invoke();
             GameStateManager.Instance.OnBossDeath?.Invoke();
@@ -306,6 +323,46 @@ namespace Boss
         internal void DisableTrail()
         {
             _trailRenderer.emitting = false;
+        }
+    }
+
+    /// <summary>
+    /// State for boss intro.
+    /// </summary>
+    class BossIntroState : BaseState<DiamondBoss>
+    {
+        // exactly the length of the boss intro music (four bars at 170bpm)
+        private const float DurationSeconds = 5.647f;
+        private float elapsedTimeSeconds;
+        
+        public bool IsComplete = false;
+
+        public BossIntroState(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            elapsedTimeSeconds = 0f;
+            IsComplete = false;
+
+            AudioManager.Instance.SetAmbientClip(_owner._bossIntroMusic, 0.3f);
+        }
+
+        public override void OnExit()
+        {
+            AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.3f);
+        }
+
+        public override void Update()
+        {
+            if (IsComplete) return;
+            
+            elapsedTimeSeconds += Time.deltaTime;
+            if (elapsedTimeSeconds >= DurationSeconds)
+            {
+                IsComplete = true;
+            }
         }
     }
     

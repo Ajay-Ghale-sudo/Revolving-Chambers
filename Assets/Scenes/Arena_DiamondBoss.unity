@@ -27416,6 +27416,22 @@ PrefabInstance:
       propertyPath: spline
       value: 
       objectReference: {fileID: 126053350}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _bossIntroMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 22f02236914be619998f2ffa675a2b3c, type: 3}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 39552a37659b4775194720d253ccd420, type: 3}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _bossIntroMusicEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e80246c6e66cbbb60b045df7a533c539, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _backgroundMusicEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e3e53bdbb07d35fd0be9e1423611eae9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
