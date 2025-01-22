@@ -52,7 +52,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: da68c1065a9b5354bad7ca104e9d3201, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: b0c7ad7cfff638b489763af77cf9d435, type: 3}
     m_Threshold: 3
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -60,13 +60,13 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 76ba80f679b85f847a88f905c964208c, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: b0c7ad7cfff638b489763af77cf9d435, type: 3}
     m_Threshold: 5
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
-    m_CycleOffset: 0
+    m_CycleOffset: 0.5
     m_DirectBlendParameter: Speed
-    m_Mirror: 0
+    m_Mirror: 1
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 4895786af6ff00740a3511587d1aed38, type: 3}
     m_Threshold: 7
@@ -145,7 +145,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dash
-  m_Speed: 1.8
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4954808456434458276}
@@ -340,9 +340,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.5359142
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.69816625
+  m_ExitTime: 0.99782
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

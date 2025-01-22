@@ -5521,8 +5521,8 @@
     "m_ObjectId": "ce6ccac1bd17422f9a96f16438aa7264",
     "m_Title": "Detect edges using color",
     "m_Position": {
-        "x": -2841.000244140625,
-        "y": 437.0000305175781
+        "x": -2840.999755859375,
+        "y": 437.0
     }
 }
 
@@ -5643,8 +5643,8 @@
     "m_ObjectId": "d5747c54b7784aba88f4a67cb827ce95",
     "m_Title": "Detect edges using normals",
     "m_Position": {
-        "x": -2833.000244140625,
-        "y": -505.0000305175781
+        "x": -2833.0,
+        "y": -504.9999694824219
     }
 }
 

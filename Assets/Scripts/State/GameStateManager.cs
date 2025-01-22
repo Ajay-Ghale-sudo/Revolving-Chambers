@@ -65,9 +65,6 @@ namespace State
         /// </summary>
         private void BossDeath()
         {
-            // Just reload scene for now, until we have UI to show game over screen.
-            var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
         }
 
         /// <summary>

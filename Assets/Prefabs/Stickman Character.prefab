@@ -1156,7 +1156,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5281975209619655351}
-  - component: {fileID: 4658246042998954337}
+  - component: {fileID: 4024172257025514394}
+  - component: {fileID: 4966236520593662100}
   m_Layer: 0
   m_Name: Stickman Character
   m_TagString: Untagged
@@ -1182,7 +1183,20 @@ Transform:
   - {fileID: 7779800282360987547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4658246042998954337
+--- !u!114 &4024172257025514394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3982197940968271651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed52d70ac43723f45a8c9592fb653cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 4966236520593662100}
+--- !u!95 &4966236520593662100
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
