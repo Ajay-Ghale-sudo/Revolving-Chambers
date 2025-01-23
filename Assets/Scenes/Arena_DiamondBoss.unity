@@ -27416,6 +27416,26 @@ PrefabInstance:
       propertyPath: spline
       value: 
       objectReference: {fileID: 126053350}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _bossIntroMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 22f02236914be619998f2ffa675a2b3c, type: 3}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 39552a37659b4775194720d253ccd420, type: 3}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _bossIntroMusicEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e80246c6e66cbbb60b045df7a533c539, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _backgroundMusicEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e3e53bdbb07d35fd0be9e1423611eae9, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _fireBulletAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 317e0aac3712ca51d98a0fa1639bfd8c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28412,10 +28432,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2547644139278902012, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: FireWeaponAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b32899609959fa3083080b5029df0fc, type: 2}
+    - target: {fileID: 5342546783260543005, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: WheelTickAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
     - target: {fileID: 6651217265798743259, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8077752815281312923, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: _dashAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f49b11133970508ab9bcc147ec4d287, type: 2}
+    - target: {fileID: 8077752815281312923, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: _takeDamageAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 34e543c08c05c86e8a621cb2aba57fbd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

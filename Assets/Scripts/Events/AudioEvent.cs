@@ -28,7 +28,7 @@ namespace Events
         /// Pitch of the audio clip.
         /// </summary>
         [Tooltip("Playback pitch")]
-        [Range(0.0f, 3.0f)]
+        [Range(0.0f, 12.0f)]
         [SerializeField]
         public float pitch = 1;
         
