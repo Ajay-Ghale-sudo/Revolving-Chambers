@@ -405,6 +405,7 @@ namespace Boss
 
         public override void OnExit()
         {
+            _owner.transform.position = new Vector3(-19.0f, -0.45f, 0.0f);
             AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.3f);
         }
 
