@@ -1,4 +1,5 @@
 ﻿using System;
+using State;
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -40,6 +41,16 @@ namespace Weapon
         /// Action invoked when ammo is loaded.
         /// </summary>
         public Action<Ammo> OnLoadAmmo;
+
+        private void Start()
+        {
+            GameStateManager.Instance.OnPlayerDeath += StopWheel;
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnPlayerDeath -= StopWheel;
+        }
 
         /// <summary>
         /// Register a weapon with the reload manager.

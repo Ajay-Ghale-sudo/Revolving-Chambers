@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using Weapon;
 
 namespace UI
 {
@@ -32,22 +33,55 @@ namespace UI
 
         private void Awake()
         {
-            UIManager.Instance.OnChamberChanged += (i) => RotateChamber(_currentChamber, i, 0.1f);
-            UIManager.Instance.OnRevolverAmmoChange += (i, chamber) =>
+            UIManager.Instance.OnChamberChanged += OnChamberChanged;
+            UIManager.Instance.OnRevolverAmmoChange += OnRevolverAmmoChange;
+        }
+
+
+        private void OnDestroy()
+        {
+            UIManager.Instance.OnChamberChanged -= OnChamberChanged;
+            UIManager.Instance.OnRevolverAmmoChange -= OnRevolverAmmoChange;
+            
+            if (_rotateChamberRoutine != null)
             {
-                if (chamber == null) return;
-                chamber.OnFire?.AddListener(() => { RemoveAmmo(i); PlayFireAnimation();});
-                chamber.OnLoaded?.AddListener(() => SetAmmo(i, chamber.Ammo.color));
-                
-                if (chamber?.Ammo == null)
-                {
-                    RemoveAmmo(i);
-                }
-                else
-                {
-                    SetAmmo(i, chamber.Ammo.color);
-                }
-            };
+                StopCoroutine(_rotateChamberRoutine);
+            }
+        }
+
+        /// <summary>
+        /// Handle when the chamber changes
+        /// </summary>
+        /// <param name="index">Which chamber changed.</param>
+        private void OnChamberChanged(int index)
+        {
+            RotateChamber(_currentChamber, index, 0.1f);
+        }
+        
+        /// <summary>
+        /// Handle when the revolver ammo changes
+        /// </summary>
+        /// <param name="index">Index of the chamber</param>
+        /// <param name="chamber">The target chamber</param>
+        private void OnRevolverAmmoChange(int index, Revolver.RevolverChamber chamber)
+        {
+            if (index >= BulletScripts.Length || index < 0) return;
+            if (chamber == null) return;
+            chamber.OnFire?.AddListener(() =>
+            {
+                RemoveAmmo(index);
+                PlayFireAnimation();
+            });
+            chamber.OnLoaded?.AddListener(() => SetAmmo(index, chamber.Ammo.color));
+
+            if (chamber?.Ammo == null)
+            {
+                RemoveAmmo(index);
+            }
+            else
+            {
+                SetAmmo(index, chamber.Ammo.color);
+            }
         }
 
         /// <summary>

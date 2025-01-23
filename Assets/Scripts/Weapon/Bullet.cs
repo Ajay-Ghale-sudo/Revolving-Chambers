@@ -12,6 +12,11 @@ namespace Weapon
     public class Bullet : MonoBehaviour
     {
         /// <summary>
+        /// Trail renderer on the bullet
+        /// </summary>
+        [SerializeField] private TrailRenderer _trailRenderer;
+
+        /// <summary>
         /// Event invoked when the bullet hits something.
         /// </summary>
         public static Action<Bullet> OnHit;
@@ -25,7 +30,13 @@ namespace Weapon
         /// Event invoked when the bullet's lifetime ends.
         /// </summary>
         public UnityEvent OnEnd;
-        
+
+        /// <summary>
+        /// Instanced material that should be destroyed manually.
+        /// Used for changing this object's material through script.
+        /// </summary>
+        Material _instancedMaterial;
+
         /// <summary>
         /// Set the ammo for the bullet.
         /// </summary>
@@ -33,12 +44,32 @@ namespace Weapon
         public void SetAmmo(Ammo ammo)
         {
             Ammo = ammo;
-            
+
+            SetColor(ammo.color);
+
             // process lifetime
             if (Ammo.lifetime > 0)
             {
                 Invoke(nameof(Destruct), Ammo.lifetime);
             }
+        }
+
+        /// <summary>
+        /// Changes the colour of the trail renderer
+        /// TODO: change bullet colour
+        /// </summary>
+        /// <param name="colour">New colour</param>
+        public void SetColor(Color colour)
+        {
+            if (_trailRenderer == null) return;
+
+            //Clone the material and start using it from now on
+            _instancedMaterial = _trailRenderer.material;
+
+            //Set emission and colour on instanced material
+            _instancedMaterial.EnableKeyword("_EMISSION");
+            _instancedMaterial.SetColor("_EmissionColor", colour);
+            _instancedMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
         }
 
         /// <summary>
@@ -89,6 +120,9 @@ namespace Weapon
 
         private void OnDestroy()
         {
+            //Instanced materials are not managed by Unity
+            //Make sure to destroy the material
+            Destroy(_instancedMaterial);
         }
     }
 }
