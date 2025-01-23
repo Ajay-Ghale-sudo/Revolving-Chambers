@@ -28436,6 +28436,10 @@ PrefabInstance:
       propertyPath: FireWeaponAudioEvent
       value: 
       objectReference: {fileID: 11400000, guid: 6b32899609959fa3083080b5029df0fc, type: 2}
+    - target: {fileID: 5342546783260543005, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: WheelTickAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
     - target: {fileID: 6651217265798743259, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_Name
       value: Player

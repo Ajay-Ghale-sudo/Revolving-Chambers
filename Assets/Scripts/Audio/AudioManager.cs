@@ -106,7 +106,8 @@ namespace Audio
         {
             if (!audioData?.clip) return;
 
-            // Play the sound.
+            // Play the sound (don't crash).
+            _audioSource.pitch = audioData.pitch;
             _audioSource?.PlayOneShot(audioData.clip, audioData.volume);
         }
         

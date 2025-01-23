@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Events;
 using UnityEngine;
 using UnityEngine.Events;
 using Weapon;
@@ -89,6 +90,11 @@ namespace Wheel
         /// </summary>
         public Action<T> OnSectionCreated;
 
+        /// <summary>
+        /// Event for playing a wheel tick sound.
+        /// </summary>
+        public AudioEvent WheelTickAudioEvent;
+
         private void Start()
         {
             SetupWheel();
@@ -128,6 +134,14 @@ namespace Wheel
                 ReloadManager.Instance.OnSpinSectionAdded?.Invoke((int)section.Start, (int)section.End, section.SectionColor);
             }
         }
+
+        /// <summary>
+        /// Plays a wheel tick sound periodically during spinning.
+        /// </summary>
+        private void PlayWheelTick()
+        {
+            WheelTickAudioEvent?.Invoke();
+        }
         
         /// <summary>
         /// Start the wheel spinning tween.
@@ -142,6 +156,9 @@ namespace Wheel
                 .SetEase(spinCurve)
                 .SetUpdate(true)
                 .OnKill(HandleWheelStop);
+            
+            // repeatRate is 5 bullets per 1  -> 1/5
+            InvokeRepeating(nameof(PlayWheelTick), 0.0f, 0.2f);
         }
 
         /// <summary>
@@ -151,6 +168,7 @@ namespace Wheel
         {
             if (!_isSpinning) return;
             _spinTween?.Kill();
+            CancelInvoke(nameof(PlayWheelTick));
         }
         
         /// <summary>
