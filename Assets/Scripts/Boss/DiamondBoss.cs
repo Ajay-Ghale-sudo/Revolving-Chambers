@@ -163,6 +163,13 @@ namespace Boss
         [Tooltip("The audio event played when the boss fires a bullet.")]
         public AudioEvent _fireBulletAudioEvent;
 
+        /// <summary>
+        /// The object corresponding to the exit portal spawned when the boss dies.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The exit portal spawned when the boss dies.")]
+        public GameObject _bossExitPortal;
+
         private void Awake()
         {
             
@@ -319,6 +326,7 @@ namespace Boss
 
         protected sealed override void Die()
         {
+            if (_bossExitPortal != null) _bossExitPortal.SetActive(true);
             AudioManager.Instance.SetAmbientClip(null, 0.0f);
             _running = false;
             OnDeath?.Invoke();

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa41522dfa3b4ac4a73e26e967cf0622, type: 3}
-  m_Name: Event_LoadLevel_Hub
+  m_Name: Event_LoadLevel_Home
   m_EditorClassIdentifier: 
   data:
     level:
-      asset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
-      guid: 99c9720ab356a0642a771bea13969a05
+      asset: {fileID: 102900000, guid: 5aae43af1f503fc9fa039946048d9279, type: 3}
+      guid: 5aae43af1f503fc9fa039946048d9279
     loadSceneMode: 0
