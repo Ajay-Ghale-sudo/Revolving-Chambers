@@ -186,8 +186,11 @@ namespace Boss
         /// </summary>
         private void CreateStates()
         {
+            var bossIdleState = new BossIdleState(this);
+            _stateMachine.SetState(bossIdleState);
+
             var bossIntroState = new BossIntroState(this);
-            _stateMachine.SetState(bossIntroState);
+            _stateMachine.AddTransition(bossIdleState, bossIntroState, new FuncPredicate(() => bossIdleState.IsComplete));
 
             var defaultMoveState = new DefaultMoveState(this);
             _stateMachine.AddTransition(bossIntroState, defaultMoveState, new FuncPredicate(() => bossIntroState.IsComplete));
@@ -195,10 +198,10 @@ namespace Boss
             var defaultAttackState = new DefaultAttackState(this);
             _stateMachine.AddTransition(defaultMoveState, defaultAttackState, new FuncPredicate(() => defaultAttackState.IsReady && defaultMoveState.IsComplete));
             _stateMachine.AddTransition(defaultAttackState, defaultMoveState, new FuncPredicate(() => defaultAttackState.IsComplete)); 
-            
+
             var centerAttackState = new CenterAttackState(this);
             _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => health < maxHealth * 0.7f && centerAttackState.IsReady));
-            
+
             _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
             
             var deathState = new DeadState(this);
@@ -342,6 +345,38 @@ namespace Boss
         internal void DisableTrail()
         {
             _trailRenderer.emitting = false;
+        }
+    }
+
+    /// <summary>
+    /// State for boss idling before the fight.
+    /// </summary>
+    class BossIdleState : BaseState<DiamondBoss>
+    {
+        public bool IsComplete = false;
+        public BossIdleState(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            IsComplete = false;
+            _owner.OnDamage.AddListener(OnDamageTaken);
+            AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.1f);
+        }
+
+        public override void OnExit()
+        {
+            _owner.OnDamage.RemoveListener(OnDamageTaken);
+        }
+
+        public override void Update()
+        {
+        }
+
+        private void OnDamageTaken()
+        {
+            IsComplete = true;
         }
     }
 
