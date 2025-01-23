@@ -1,4 +1,5 @@
 using System;
+using Events;
 using Interfaces;
 using State;
 using UI;
@@ -142,6 +143,16 @@ namespace Player
         /// If the player is currently dying.
         /// </summary>
         private bool _isDying = false;
+
+        /// <summary>
+        /// Audio event to fire when the player dashes.
+        /// </summary>
+        public AudioEvent _dashAudioEvent;
+        
+        /// <summary>
+        /// Audio event to fire when the player takes damage.
+        /// </summary>
+        public AudioEvent _takeDamageAudioEvent;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -231,6 +242,8 @@ namespace Player
             float startTime = Time.time;
             _canDash = false;
             _isDashing = true;
+
+            _dashAudioEvent.Invoke();
             
             OnDashStart?.Invoke();
             
@@ -339,6 +352,7 @@ namespace Player
             if (_isDashing) return;
             Health -= damage.damage;
             OnDamage?.Invoke();
+            _takeDamageAudioEvent?.Invoke();
             // TODO: This likely doesn't need a direct reference to UI Manager. Low priority cleanup for later.
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
             if (Health <= 0) Die();

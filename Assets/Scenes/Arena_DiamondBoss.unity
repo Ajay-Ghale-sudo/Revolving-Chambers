@@ -28440,6 +28440,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8077752815281312923, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: _dashAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f49b11133970508ab9bcc147ec4d287, type: 2}
+    - target: {fileID: 8077752815281312923, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: _takeDamageAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 34e543c08c05c86e8a621cb2aba57fbd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
