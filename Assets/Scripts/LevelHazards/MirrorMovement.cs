@@ -19,6 +19,8 @@ namespace LevelHazards
             
             GameStateManager.Instance.OnBossIntroStart += HandleBossIntroStart;
             GameStateManager.Instance.OnBossFightStart += HandleBossFightStart;
+            GameStateManager.Instance.OnDiamondBossPhase1End += HandleDiamondBossPhase1End;
+            GameStateManager.Instance.OnDiamondBossPhase2End += HandleDiamondBossPhase2End;
             GameStateManager.Instance.OnBossDeath += HandleBossDeath;
         }
 
@@ -49,6 +51,29 @@ namespace LevelHazards
         }
 
         /// <summary>
+        /// Handler for switching from diamond boss phase 1 to phase 2.
+        /// </summary>
+        private void HandleDiamondBossPhase1End()
+        {
+        }
+
+        /// <summary>
+        /// Handler for switching from diamond boss phase 2 to phase 3.
+        /// </summary>
+        private void HandleDiamondBossPhase2End()
+        {
+            var currentScale = transform.localScale;
+            var targetScale = new Vector3(currentScale.x * 0.75f, currentScale.y, currentScale.z * 0.75f);
+            
+            DOTween.To(
+                () => transform.localScale,
+                xyz => transform.localScale = new Vector3(xyz.x, transform.localScale.y, xyz.z),
+                targetScale,
+                20.0f
+            ).SetEase(Ease.OutSine);
+        }
+
+        /// <summary>
         /// Cleanup when the boss dies.
         /// </summary>
         private void HandleBossDeath()
@@ -59,6 +84,16 @@ namespace LevelHazards
                 0.0f,
                 10.0f
             );
+
+            var currentScale = transform.localScale;
+            var targetScale = new Vector3(currentScale.x * 4.0f/3.0f, currentScale.y, currentScale.z * 4.0f/3.0f);
+            
+            DOTween.To(
+                () => transform.localScale,
+                xyz => transform.localScale = new Vector3(xyz.x, transform.localScale.y, xyz.z),
+                targetScale,
+                20.0f
+            ).SetEase(Ease.InOutSine);
         }
 
         private void OnDestroy()

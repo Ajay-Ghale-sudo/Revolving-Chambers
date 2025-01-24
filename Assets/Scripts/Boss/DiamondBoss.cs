@@ -770,6 +770,7 @@ namespace Boss
 
         public override void OnExit()
         {
+            GameStateManager.Instance.OnDiamondBossPhase1End?.Invoke();
         }
 
         /// <summary>
@@ -816,17 +817,11 @@ namespace Boss
             var defaultMoveState = new DefaultMoveState(_owner, 24);
             _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
             _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => defaultMoveState.IsComplete));
-
-            // var deathState = new DeadState(this);
-            // deathState._onDeathFinished = Die;
-            // _stateMachine.AddAnyTransition(deathState, new FuncPredicate(() => health <= 0));
-            //
-            // var finalAttackState = new FinalAttackState(this);
-            // _stateMachine.AddAnyTransition(finalAttackState, new FuncPredicate(() => health < maxHealth * 0.3f));
         }
 
         public override void OnExit()
         {
+            GameStateManager.Instance.OnDiamondBossPhase2End?.Invoke();
         }
 
         /// <summary>
@@ -848,6 +843,8 @@ namespace Boss
 
     class Phase3State : BaseState<DiamondBoss>
     {
+        private StateMachine _stateMachine;
+
         public Phase3State(DiamondBoss owner) : base(owner)
         {
         }
@@ -855,7 +852,18 @@ namespace Boss
         public override void OnEnter()
         {
             _owner.HealToFull();
-            _owner.transform.localScale = new Vector3(7.0f, 7.0f, 0.7f);
+            
+            _stateMachine = new StateMachine();
+            CreateStates();
+        }
+
+        /// <summary>
+        /// Init the states that make up phase 3 of the boss behavior.
+        /// </summary>
+        private void CreateStates()
+        {
+            var finalAttackState = new FinalAttackState(_owner);
+            _stateMachine.SetState(finalAttackState);
         }
 
         public override void OnExit()
@@ -867,7 +875,7 @@ namespace Boss
         /// </summary>
         public override void Update()
         {
-            // _stateMachine.Update();
+            _stateMachine.Update();
         }
 
         /// <summary>
@@ -875,7 +883,7 @@ namespace Boss
         /// </summary>
         public override void FixedUpdate()
         {
-            // _stateMachine.FixedUpdate(); 
+            _stateMachine.FixedUpdate(); 
         }
     }
     

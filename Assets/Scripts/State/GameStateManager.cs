@@ -33,6 +33,16 @@ namespace State
         /// Action for when a boss dies.
         /// </summary>
         public Action OnBossDeath;
+
+        /// <summary>
+        /// Action for diamond boss' phase 1 ending
+        /// </summary>
+        public Action OnDiamondBossPhase1End;
+
+        /// <summary>
+        /// Action for diamond boss' phase 2 ending
+        /// </summary>
+        public Action OnDiamondBossPhase2End;
         
         /// <summary>
         /// Action for when the player dies.
