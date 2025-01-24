@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/dev/Workspace_Vincent.unity
     guid: 6644713183956be43b2927a6a0e2b775
+  - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 5aae43af1f503fc9fa039946048d9279
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
