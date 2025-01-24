@@ -337,6 +337,7 @@ namespace Boss
                 direction.y = 0;
                 direction.Normalize();
                 var projectile = BulletManager.Instance.SpawnBullet(attackData.ammo, spawnPosition, Quaternion.LookRotation(direction));
+                projectile.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
             }
             _fireBulletAudioEvent.Invoke();
         }

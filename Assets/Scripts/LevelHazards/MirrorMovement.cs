@@ -71,6 +71,13 @@ namespace LevelHazards
                 targetScale,
                 20.0f
             ).SetEase(Ease.OutSine);
+
+            DOTween.To(
+                () => rotationTweener.timeScale,
+                newTimeScale => rotationTweener.timeScale = newTimeScale,
+                5.0f,
+                60.0f
+            ).SetEase(Ease.InSine);
         }
 
         /// <summary>
