@@ -27515,7 +27515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6403324303611350289, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4499998
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 6403324303611350289, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27557,6 +27557,10 @@ PrefabInstance:
       propertyPath: spline
       value: 
       objectReference: {fileID: 126053350}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: moveSpeed
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
       propertyPath: _idleSound
       value: 
