@@ -7,13 +7,11 @@ using Events;
 using Interfaces;
 using State;
 using UI;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.Splines;
 using Weapon;
-using Object = UnityEngine.Object;
-using Random = Unity.Mathematics.Random;
 using StateMachine = State.StateMachine;
 
 namespace Boss
@@ -180,7 +178,6 @@ namespace Boss
 
         private void Awake()
         {
-            
             _trailRenderer = GetComponent<TrailRenderer>();
             
             _stateMachine = new StateMachine();
@@ -373,6 +370,20 @@ namespace Boss
         {
             _trailRenderer.emitting = false;
         }
+
+        /// <summary>
+        /// Fires a single bullet from a specified position in a specified direction.
+        /// </summary>
+        /// <param name="worldPosition">World coordinates that the bullet should start from.</param>
+        /// <param name="worldDirection">Normalized vector that the bullet should travel along.</param>
+        public void FireBullet(float3 worldPosition, Vector3 worldDirection)
+        {
+            // Spawn bullet with provided parameters
+            var bullet = BulletManager.Instance.SpawnBullet(attackData.ammo, worldPosition, Quaternion.LookRotation(worldDirection));
+            
+            // Ensure the bullet can't collide with the boss
+            bullet.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
+        }
     }
 
     /// <summary>
@@ -463,15 +474,20 @@ namespace Boss
         private float travelDirection = 1.0f;
         private float prevTravelDirection = -1.0f;
 
+        private int numBullets = 0;
+        private float tBulletInterval = MoveAmount;
+
         public bool IsComplete = false;
-        public DefaultMoveState(DiamondBoss owner) : base(owner)
+        public DefaultMoveState(DiamondBoss owner, int numBulletsToShoot = 0) : base(owner)
         {
+            numBullets = numBulletsToShoot;
+            tBulletInterval = MoveAmount / (numBullets + 1);
         }
 
         /// <summary>
         /// Get a random direction to travel in.
         /// </summary>
-        /// <returns>Either -1 or 1f</returns>
+        /// <returns>Either -1 or 1</returns>
         float getRandomDirection()
         {
             return UnityEngine.Random.Range(0, 1) * 2 - 1;
@@ -487,6 +503,9 @@ namespace Boss
             return UnityEngine.Random.Range(0, numSegments) / (float)numSegments;
         }
 
+        /// <summary>
+        /// Logic to run when the state is entered initially.
+        /// </summary>
         public override void OnEnter()
         {
             IsComplete = false;
@@ -523,12 +542,18 @@ namespace Boss
             _owner._splineLength = _owner.spline.CalculateLength();
         }
 
+        /// <summary>
+        /// Logic to run when the state is exiting.
+        /// </summary>
         public override void OnExit()
         {
             tPrevFinish = Mathf.Repeat(tStart + tTraveled * travelDirection, 1.0f);
             _owner.transform.DOPause();
         }
 
+        /// <summary>
+        /// Logic to run on each game update.
+        /// </summary>
         public override void Update()
         {
             if (IsComplete) return;
@@ -538,6 +563,7 @@ namespace Boss
             var moveSpeed = Mathf.Lerp(_owner.moveSpeed * 1.5f, _owner.moveSpeed, remainingHealth);
 
             // Determine how far we've moved on [0.0f, MoveAmount] along the spline
+            var tTraveledPrev = tTraveled;
             tTraveled = Math.Clamp(tTraveled + moveSpeed * Time.deltaTime, 0.0f, MoveAmount);
             
             // Add that to the origin on the spline and wrap it to [0.0f, 1.0f]
@@ -546,12 +572,35 @@ namespace Boss
             // Update boss position with the resulting world coordinates
             _owner.transform.position = _owner.spline.EvaluatePosition(tAlongSpline);
             
+            // If there are any bullets to fire along this path, try to fire them
+            if (numBullets > 0)
+            {
+                var numBulletsFiredSoFar = (int)(tTraveledPrev / tBulletInterval);
+                var numBulletsFiredAfterThisUpdate = (int)(tTraveled / tBulletInterval);
+                for (var bulletIndex = numBulletsFiredSoFar; bulletIndex < numBulletsFiredAfterThisUpdate; bulletIndex++)
+                {
+                    // Bullet should be evenly-spaced along the spline, but at the height of the boss
+                    var positionAlongSpline = tStart + bulletIndex * tBulletInterval * travelDirection;
+                    var wrappedBulletPos = Mathf.Repeat(positionAlongSpline, 1.0f);
+                    var bulletWorldPosition = _owner.spline.EvaluatePosition(wrappedBulletPos);
+                    bulletWorldPosition.y = 2.0f;
+                    
+                    // Bullet should travel along the xz-plane
+                    var bulletDirection = _owner.transform.position;
+                    bulletDirection.y = 0.0f;
+                    bulletDirection.Normalize();
+                    
+                    // Spawn bullet meeting these parameters
+                    _owner.FireBullet(bulletWorldPosition, bulletDirection);
+                    _owner.FireBullet(bulletWorldPosition, bulletDirection * -1.0f);
+                }
+            }
+            
             if (tTraveled >= MoveAmount)
             {
                 IsComplete = true;
             }
         }
-        
     }
 
 
@@ -675,9 +724,12 @@ namespace Boss
 
         public override void Update()
         {
+            if (PhaseComplete) return;
             currentTime = Time.time - startTime;
+            Debug.Log($"Updating phase 2; currentTime: {currentTime}; phaseEndTime: {phaseEndTime}");
             if (currentTime >= phaseTime)
             {
+                Debug.Log("Time to end phase");
                 CompletePhase();
             }
         }
@@ -739,6 +791,8 @@ namespace Boss
 
     class Phase2State : BaseState<DiamondBoss>
     {
+        private StateMachine _stateMachine;
+        
         public Phase2State(DiamondBoss owner) : base(owner)
         {
         }
@@ -746,6 +800,29 @@ namespace Boss
         public override void OnEnter()
         {
             _owner.HealToFull();
+            
+            _stateMachine = new StateMachine();
+            CreateStates();
+        }
+
+        /// <summary>
+        /// Init the states that make up phase 2 of the boss behavior.
+        /// </summary>
+        private void CreateStates()
+        {
+            var centerAttackState = new CenterAttackState(_owner);
+            _stateMachine.SetState(centerAttackState);
+            
+            var defaultMoveState = new DefaultMoveState(_owner, 24);
+            _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
+            _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => defaultMoveState.IsComplete));
+
+            // var deathState = new DeadState(this);
+            // deathState._onDeathFinished = Die;
+            // _stateMachine.AddAnyTransition(deathState, new FuncPredicate(() => health <= 0));
+            //
+            // var finalAttackState = new FinalAttackState(this);
+            // _stateMachine.AddAnyTransition(finalAttackState, new FuncPredicate(() => health < maxHealth * 0.3f));
         }
 
         public override void OnExit()
@@ -757,7 +834,7 @@ namespace Boss
         /// </summary>
         public override void Update()
         {
-            // _stateMachine.Update();
+            _stateMachine.Update();
         }
 
         /// <summary>
@@ -765,7 +842,7 @@ namespace Boss
         /// </summary>
         public override void FixedUpdate()
         {
-            // _stateMachine.FixedUpdate(); 
+            _stateMachine.FixedUpdate(); 
         }
     }
 
