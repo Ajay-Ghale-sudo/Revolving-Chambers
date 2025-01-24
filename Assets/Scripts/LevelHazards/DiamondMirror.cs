@@ -71,7 +71,6 @@ namespace LevelHazards
             Invoke(nameof(Rise), 3f);
             OnDamage?.Invoke();
         }
-
         
         /// <summary>
         /// Cleanup when the boss dies.

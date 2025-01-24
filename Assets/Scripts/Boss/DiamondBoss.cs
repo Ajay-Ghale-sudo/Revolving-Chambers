@@ -142,6 +142,13 @@ namespace Boss
         private GameObject _diamondHazard;
 
         /// <summary>
+        /// The audio used for the boss' idle sounds before the fight.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The audio used for the boss' idle sounds before the fight.")]
+        public AudioClip _idleSound;
+
+        /// <summary>
         /// The audio used for the boss intro music.
         /// </summary>
         [SerializeField]
@@ -362,7 +369,7 @@ namespace Boss
         {
             IsComplete = false;
             _owner.OnDamage.AddListener(OnDamageTaken);
-            AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.1f);
+            AudioManager.Instance.SetAmbientClip(_owner._idleSound, 0.6f);
         }
 
         public override void OnExit()
@@ -401,12 +408,14 @@ namespace Boss
             IsComplete = false;
 
             AudioManager.Instance.SetAmbientClip(_owner._bossIntroMusic, 0.3f);
+            GameStateManager.Instance.OnBossIntroStart?.Invoke();
         }
 
         public override void OnExit()
         {
             _owner.transform.position = new Vector3(-19.0f, -0.45f, 0.0f);
             AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.3f);
+            GameStateManager.Instance.OnBossFightStart?.Invoke();
         }
 
         public override void Update()

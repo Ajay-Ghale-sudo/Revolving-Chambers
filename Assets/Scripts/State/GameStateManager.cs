@@ -20,6 +20,16 @@ namespace State
         public Action OnGameEnd;
 
         /// <summary>
+        /// Action for when a boss is first aggroed.
+        /// </summary>
+        public Action OnBossIntroStart;
+        
+        /// <summary>
+        /// Action for when a boss fight starts.
+        /// </summary>
+        public Action OnBossFightStart;
+
+        /// <summary>
         /// Action for when a boss dies.
         /// </summary>
         public Action OnBossDeath;
