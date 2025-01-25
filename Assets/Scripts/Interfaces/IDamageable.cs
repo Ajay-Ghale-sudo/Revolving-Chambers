@@ -20,6 +20,7 @@ namespace Interfaces
         /// </summary>
         /// <returns>The Event for OnDamage.</returns>
         public UnityEvent GetOnDamageEvent();
+        
         /// <summary>
         /// Take damage.
         /// </summary>
@@ -92,6 +93,11 @@ namespace Interfaces
         /// </summary>
         public float MaxHealth => maxHealth;
         
+        /// <summary>
+        /// Flag to check if damage is enabled.
+        /// </summary>
+        protected bool _damageEnabled = true;
+        
         public UnityEvent GetOnDeathEvent()
         {
             return OnDeath;
@@ -101,9 +107,29 @@ namespace Interfaces
         {
             return OnDamage;
         }
+        
+        
+        /// <summary>
+        /// Enable damage.
+        /// </summary>
+        public void EnableDamage()
+        {
+            _damageEnabled = true;
+        }
+
+        
+        /// <summary>
+        /// Disable damage.
+        /// </summary>
+        public void DisableDamage()
+        {
+            _damageEnabled = false;
+        }
 
         public virtual void TakeDamage(DamageData damage)
         {
+            if (!_damageEnabled) return;
+            
             health -= damage.damage;
             OnDamage?.Invoke();
             if (health <= 0)

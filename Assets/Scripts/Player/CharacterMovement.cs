@@ -153,6 +153,12 @@ namespace Player
         /// Audio event to fire when the player takes damage.
         /// </summary>
         public AudioEvent _takeDamageAudioEvent;
+
+        /// <summary>
+        /// Grace time for taking damage.
+        /// </summary>
+        [SerializeField]
+        private float damageGraceTime = .5f;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -347,7 +353,11 @@ namespace Player
         // IDamageable implementation \\
         public override void TakeDamage(DamageData damage)
         {
-            if (_isDashing) return;
+            if (_isDashing || !_damageEnabled) return;
+            
+            DisableDamage();
+            Invoke(nameof(EnableDamage), damageGraceTime);
+            
             Health -= damage.damage;
             OnDamage?.Invoke();
             _takeDamageAudioEvent?.Invoke();
