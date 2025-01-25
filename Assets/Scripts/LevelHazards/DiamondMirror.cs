@@ -1,7 +1,5 @@
-using System;
 using DG.Tweening;
 using Interfaces;
-using Props;
 using State;
 using UnityEngine;
 using Weapon;
@@ -88,7 +86,7 @@ namespace LevelHazards
             var target = _shootAtPlayer ? _playerTransform : _bossTransform;
             var direction = (target.position - transform.position).normalized;
             var bullet = BulletManager.Instance.SpawnBullet(_ammo, transform.position + direction * 2f, Quaternion.LookRotation(direction));
-            bullet.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
+            bullet.gameObject.layer = LayerMask.NameToLayer("BossBullet");
 
             Fix();
         }

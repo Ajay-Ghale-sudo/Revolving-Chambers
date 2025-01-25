@@ -209,25 +209,6 @@ namespace Boss
             var deathState = new DeadState(this);
             deathState._onDeathFinished = Die;
             _stateMachine.AddTransition(phase3State, deathState, new FuncPredicate(() => health <= 0.0f));
-
-            // var defaultMoveState = new DefaultMoveState(this);
-            // _stateMachine.AddTransition(bossIntroState, defaultMoveState, new FuncPredicate(() => bossIntroState.IsComplete));
-            //
-            // var defaultAttackState = new DefaultAttackState(this);
-            // _stateMachine.AddTransition(defaultMoveState, defaultAttackState, new FuncPredicate(() => defaultAttackState.IsReady && defaultMoveState.IsComplete));
-            // _stateMachine.AddTransition(defaultAttackState, defaultMoveState, new FuncPredicate(() => defaultAttackState.IsComplete)); 
-            //
-            // var centerAttackState = new CenterAttackState(this);
-            // _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => health < maxHealth * 0.7f && centerAttackState.IsReady));
-            //
-            // _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
-            //
-            // var deathState = new DeadState(this);
-            // deathState._onDeathFinished = Die;
-            // _stateMachine.AddAnyTransition(deathState, new FuncPredicate(() => health <= 0));
-            //
-            // var finalAttackState = new FinalAttackState(this);
-            // _stateMachine.AddAnyTransition(finalAttackState, new FuncPredicate(() => health < maxHealth * 0.3f));
         }
 
         void Start()
@@ -337,7 +318,7 @@ namespace Boss
                 direction.y = 0;
                 direction.Normalize();
                 var projectile = BulletManager.Instance.SpawnBullet(attackData.ammo, spawnPosition, Quaternion.LookRotation(direction));
-                projectile.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
+                projectile.gameObject.layer = LayerMask.NameToLayer("BossBullet");
             }
             _fireBulletAudioEvent.Invoke();
         }
@@ -383,7 +364,7 @@ namespace Boss
             var bullet = BulletManager.Instance.SpawnBullet(attackData.ammo, worldPosition, Quaternion.LookRotation(worldDirection));
             
             // Ensure the bullet can't collide with the boss
-            bullet.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
+            bullet.gameObject.layer = LayerMask.NameToLayer("BossBullet");
         }
     }
 
