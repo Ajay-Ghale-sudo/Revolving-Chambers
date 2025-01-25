@@ -160,6 +160,17 @@ namespace Player
         [SerializeField]
         private float damageGraceTime = .5f;
         
+        /// <summary>
+        /// Whether to lock the y position of the player.
+        /// </summary>
+        [SerializeField]
+        private bool lockYPosition = true;
+        
+        /// <summary>
+        /// The starting y position of the player.
+        /// </summary>
+        private float _yPosition;
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -170,6 +181,8 @@ namespace Player
             
             GameStateManager.Instance.OnPlayerRevive += Revive;
             
+            _yPosition = transform.position.y;
+
             // TEMP FOR TESTING
             _weapon = GetComponentInChildren<IWeapon>();
         }
@@ -189,6 +202,11 @@ namespace Player
         {
             // Move the player
             _characterController.Move(_moveVelocity * Time.deltaTime);
+
+            if (lockYPosition)
+            {
+                transform.position = new Vector3(transform.position.x, _yPosition, transform.position.z);
+            }
         }
 
         /// <summary>
@@ -249,7 +267,7 @@ namespace Player
             _canDash = false;
             _isDashing = true;
 
-            _dashAudioEvent.Invoke();
+            _dashAudioEvent?.Invoke();
             
             OnDashStart?.Invoke();
             

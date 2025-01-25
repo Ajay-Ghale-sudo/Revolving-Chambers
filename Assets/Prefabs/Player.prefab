@@ -278,6 +278,9 @@ MonoBehaviour:
   OnDashEvent:
     m_PersistentCalls:
       m_Calls: []
+  _dashAudioEvent: {fileID: 0}
+  _takeDamageAudioEvent: {fileID: 0}
+  lockYPosition: 1
 --- !u!143 &7201852112551342255
 CharacterController:
   m_ObjectHideFlags: 0
@@ -352,6 +355,7 @@ MonoBehaviour:
   OnWheelStop:
     m_PersistentCalls:
       m_Calls: []
+  WheelTickAudioEvent: {fileID: 0}
   cooldown: 30
 --- !u!96 &6570056444777745814
 TrailRenderer:
