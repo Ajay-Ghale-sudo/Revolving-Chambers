@@ -7,12 +7,11 @@ using Events;
 using Interfaces;
 using State;
 using UI;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.Splines;
 using Weapon;
-using Object = UnityEngine.Object;
 using StateMachine = State.StateMachine;
 
 namespace Boss
@@ -142,6 +141,13 @@ namespace Boss
         private GameObject _diamondHazard;
 
         /// <summary>
+        /// The audio used for the boss' idle sounds before the fight.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The audio used for the boss' idle sounds before the fight.")]
+        public AudioClip _idleSound;
+
+        /// <summary>
         /// The audio used for the boss intro music.
         /// </summary>
         [SerializeField]
@@ -172,12 +178,11 @@ namespace Boss
 
         private void Awake()
         {
-            
             _trailRenderer = GetComponent<TrailRenderer>();
             
             _stateMachine = new StateMachine();
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            
+
             CreateStates();
         }
         
@@ -186,27 +191,24 @@ namespace Boss
         /// </summary>
         private void CreateStates()
         {
+            var bossIdleState = new BossIdleState(this);
+            _stateMachine.SetState(bossIdleState);
+
             var bossIntroState = new BossIntroState(this);
-            _stateMachine.SetState(bossIntroState);
+            _stateMachine.AddTransition(bossIdleState, bossIntroState, new FuncPredicate(() => bossIdleState.IsComplete));
 
-            var defaultMoveState = new DefaultMoveState(this);
-            _stateMachine.AddTransition(bossIntroState, defaultMoveState, new FuncPredicate(() => bossIntroState.IsComplete));
+            var phase1State = new Phase1State(this);
+            _stateMachine.AddTransition(bossIntroState, phase1State, new FuncPredicate(() => bossIntroState.IsComplete));
+            
+            var phase2State = new Phase2State(this);
+            _stateMachine.AddTransition(phase1State, phase2State, new FuncPredicate(() => health <= 0.0f));
 
-            var defaultAttackState = new DefaultAttackState(this);
-            _stateMachine.AddTransition(defaultMoveState, defaultAttackState, new FuncPredicate(() => defaultAttackState.IsReady && defaultMoveState.IsComplete));
-            _stateMachine.AddTransition(defaultAttackState, defaultMoveState, new FuncPredicate(() => defaultAttackState.IsComplete)); 
-            
-            var centerAttackState = new CenterAttackState(this);
-            _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => health < maxHealth * 0.7f && centerAttackState.IsReady));
-            
-            _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
-            
+            var phase3State = new Phase3State(this);
+            _stateMachine.AddTransition(phase2State, phase3State, new FuncPredicate(() => health <= 0.0f));
+
             var deathState = new DeadState(this);
             deathState._onDeathFinished = Die;
-            _stateMachine.AddAnyTransition(deathState, new FuncPredicate(() => health <= 0));
-            
-            var finalAttackState = new FinalAttackState(this);
-            _stateMachine.AddAnyTransition(finalAttackState, new FuncPredicate(() => health < maxHealth * 0.3f));
+            _stateMachine.AddTransition(phase3State, deathState, new FuncPredicate(() => health <= 0.0f));
         }
 
         void Start()
@@ -224,6 +226,12 @@ namespace Boss
            _stateMachine.FixedUpdate(); 
         }
 
+        public void HealToFull()
+        {
+            health = maxHealth;
+            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
+        }
+        
         /// <summary>
         /// Coroutine for the attack pattern.
         /// </summary>
@@ -310,6 +318,7 @@ namespace Boss
                 direction.y = 0;
                 direction.Normalize();
                 var projectile = BulletManager.Instance.SpawnBullet(attackData.ammo, spawnPosition, Quaternion.LookRotation(direction));
+                projectile.gameObject.layer = LayerMask.NameToLayer("BossBullet");
             }
             _fireBulletAudioEvent.Invoke();
         }
@@ -343,6 +352,52 @@ namespace Boss
         {
             _trailRenderer.emitting = false;
         }
+
+        /// <summary>
+        /// Fires a single bullet from a specified position in a specified direction.
+        /// </summary>
+        /// <param name="worldPosition">World coordinates that the bullet should start from.</param>
+        /// <param name="worldDirection">Normalized vector that the bullet should travel along.</param>
+        public void FireBullet(float3 worldPosition, Vector3 worldDirection)
+        {
+            // Spawn bullet with provided parameters
+            var bullet = BulletManager.Instance.SpawnBullet(attackData.ammo, worldPosition, Quaternion.LookRotation(worldDirection));
+            
+            // Ensure the bullet can't collide with the boss
+            bullet.gameObject.layer = LayerMask.NameToLayer("BossBullet");
+        }
+    }
+
+    /// <summary>
+    /// State for boss idling before the fight.
+    /// </summary>
+    class BossIdleState : BaseState<DiamondBoss>
+    {
+        public bool IsComplete = false;
+        public BossIdleState(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            IsComplete = false;
+            _owner.OnDamage.AddListener(OnDamageTaken);
+            AudioManager.Instance.SetAmbientClip(_owner._idleSound, 0.5f);
+        }
+
+        public override void OnExit()
+        {
+            _owner.OnDamage.RemoveListener(OnDamageTaken);
+        }
+
+        public override void Update()
+        {
+        }
+
+        private void OnDamageTaken()
+        {
+            IsComplete = true;
+        }
     }
 
     /// <summary>
@@ -365,12 +420,14 @@ namespace Boss
             elapsedTimeSeconds = 0f;
             IsComplete = false;
 
-            AudioManager.Instance.SetAmbientClip(_owner._bossIntroMusic, 0.3f);
+            AudioManager.Instance.SetAmbientClip(_owner._bossIntroMusic, 0.6f);
+            GameStateManager.Instance.OnBossIntroStart?.Invoke();
         }
 
         public override void OnExit()
         {
-            AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.3f);
+            AudioManager.Instance.SetAmbientClip(_owner._backgroundMusic, 0.6f);
+            GameStateManager.Instance.OnBossFightStart?.Invoke();
         }
 
         public override void Update()
@@ -391,18 +448,75 @@ namespace Boss
     /// </summary>
     class DefaultMoveState : BaseState<DiamondBoss>
     {
-        private float startingDistance = 0f;
-        private float moveAmount = 0.25f;
+        private float tStart = 0.0f;
+        private float tTraveled = 0.0f;
+        private float tPrevFinish = 0.0f;
+        private const float MoveAmount = 0.25f;
+
+        private float travelDirection = 1.0f;
+        private float prevTravelDirection = -1.0f;
+
+        private int numBullets = 0;
+        private float tBulletInterval = MoveAmount;
 
         public bool IsComplete = false;
-        public DefaultMoveState(DiamondBoss owner) : base(owner)
+        public DefaultMoveState(DiamondBoss owner, int numBulletsToShoot = 0) : base(owner)
         {
+            numBullets = numBulletsToShoot;
+            tBulletInterval = MoveAmount / (numBullets + 1);
         }
 
+        /// <summary>
+        /// Get a random direction to travel in.
+        /// </summary>
+        /// <returns>Either -1 or 1</returns>
+        float getRandomDirection()
+        {
+            return UnityEngine.Random.Range(0, 1) * 2 - 1;
+        }
+
+        /// <summary>
+        /// Get a random segment position to start at.
+        /// </summary>
+        /// <returns>A value corresponding to the boundary between segments (a multiple of MoveAmount)</returns>
+        float getRandomSegmentPosition()
+        {
+            const int numSegments = (int)(1.0f / MoveAmount);
+            return UnityEngine.Random.Range(0, numSegments) / (float)numSegments;
+        }
+
+        /// <summary>
+        /// Logic to run when the state is entered initially.
+        /// </summary>
         public override void OnEnter()
         {
             IsComplete = false;
-            startingDistance = _owner._currentDistance;
+
+            // If above half health, move continuously (ie. don't teleport)
+            if (_owner.Health >= _owner.MaxHealth / 2.0f)
+            {
+                tStart = tPrevFinish;
+                travelDirection = 1.0f;
+            }
+            // If lower than half health, force a teleport in a different segment each cycle
+            else
+            {
+                // Re-roll start position until it starts in a new segment
+                do tStart = getRandomSegmentPosition(); while ((Math.Abs(tStart - tPrevFinish) < 0.01f));
+                
+                // Also, if new move action will place the boss in the same place, move it in the other direction
+                travelDirection = getRandomDirection();
+                var wrappedFinishPosition = Mathf.Repeat(tStart + MoveAmount * travelDirection, 1.0f);
+                var deltaWithPrevFinish = Math.Abs(wrappedFinishPosition - tPrevFinish);
+                if (deltaWithPrevFinish < 0.01f)
+                {
+                    travelDirection *= -1;
+                }
+            }
+            
+            tTraveled = 0.0f;
+            
+            _owner.transform.position = _owner.spline.EvaluatePosition(tStart);
             // _owner._trailRenderer.emitting = false;
             _owner.transform.DORotate(_owner.rotationVector, _owner.rotationDuration, _owner.rotateMode)
                 .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
@@ -410,36 +524,65 @@ namespace Boss
             _owner._splineLength = _owner.spline.CalculateLength();
         }
 
+        /// <summary>
+        /// Logic to run when the state is exiting.
+        /// </summary>
         public override void OnExit()
         {
+            tPrevFinish = Mathf.Repeat(tStart + tTraveled * travelDirection, 1.0f);
             _owner.transform.DOPause();
         }
 
+        /// <summary>
+        /// Logic to run on each game update.
+        /// </summary>
         public override void Update()
         {
             if (IsComplete) return;
-            // Calculate the target position on the spline.
-            // Sets the world position for the player to move to calculated by the normalized value currentDistance.
-            Vector3 targetPosition = _owner.spline.EvaluatePosition(_owner._currentDistance);
             
             // Determine move speed based of remaining health
             var remainingHealth = _owner.Health / _owner.MaxHealth;
-            var moveSpeed = Mathf.Lerp(_owner.moveSpeed * 5f, _owner.moveSpeed, remainingHealth);
+            var moveSpeed = Mathf.Lerp(_owner.moveSpeed * 1.5f, _owner.moveSpeed, remainingHealth);
+
+            // Determine how far we've moved on [0.0f, MoveAmount] along the spline
+            var tTraveledPrev = tTraveled;
+            tTraveled = Math.Clamp(tTraveled + moveSpeed * Time.deltaTime, 0.0f, MoveAmount);
             
-            // Move the character towards the target position on the spline.
-            _owner.transform.position = Vector3.MoveTowards(_owner.transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            // Add that to the origin on the spline and wrap it to [0.0f, 1.0f]
+            var tAlongSpline = Mathf.Repeat(tStart + tTraveled * travelDirection, 1.0f);
             
+            // Update boss position with the resulting world coordinates
+            _owner.transform.position = _owner.spline.EvaluatePosition(tAlongSpline);
             
-            // calculate how far along we are 0 -> 1.0
-            _owner._currentDistance = (_owner._currentDistance + ((moveSpeed * Time.deltaTime) / _owner._splineLength)) % 1f;
+            // If there are any bullets to fire along this path, try to fire them
+            if (numBullets > 0)
+            {
+                var numBulletsFiredSoFar = (int)(tTraveledPrev / tBulletInterval);
+                var numBulletsFiredAfterThisUpdate = (int)(tTraveled / tBulletInterval);
+                for (var bulletIndex = numBulletsFiredSoFar; bulletIndex < numBulletsFiredAfterThisUpdate; bulletIndex++)
+                {
+                    // Bullet should be evenly-spaced along the spline, but at the height of the boss
+                    var positionAlongSpline = tStart + bulletIndex * tBulletInterval * travelDirection;
+                    var wrappedBulletPos = Mathf.Repeat(positionAlongSpline, 1.0f);
+                    var bulletWorldPosition = _owner.spline.EvaluatePosition(wrappedBulletPos);
+                    bulletWorldPosition.y = 2.0f;
+                    
+                    // Bullet should travel along the xz-plane
+                    var bulletDirection = _owner.transform.position;
+                    bulletDirection.y = 0.0f;
+                    bulletDirection.Normalize();
+                    
+                    // Spawn bullet meeting these parameters
+                    _owner.FireBullet(bulletWorldPosition, bulletDirection);
+                    _owner.FireBullet(bulletWorldPosition, bulletDirection * -1.0f);
+                }
+            }
             
-            if (_owner._currentDistance - startingDistance >= moveAmount || _owner._currentDistance < startingDistance)
+            if (tTraveled >= MoveAmount)
             {
                 IsComplete = true;
             }
-            
         }
-        
     }
 
 
@@ -518,6 +661,8 @@ namespace Boss
         /// </summary>
         private float phaseTime;
 
+        private float inputPhaseTime = 0.0f;
+
         private float phaseEndTime = 0;
         
         /// <summary>
@@ -529,8 +674,9 @@ namespace Boss
         
         private Vector3 _startingPosition;
         
-        public CenterAttackState(DiamondBoss owner) : base(owner)
+        public CenterAttackState(DiamondBoss owner, float newPhaseTime = 0.0f) : base(owner)
         {
+            inputPhaseTime = newPhaseTime;
         }
 
         public override void OnEnter()
@@ -549,11 +695,12 @@ namespace Boss
             _owner.StartSecondaryAttackPattern();
             
             // Random time to complete phase
-            phaseTime = UnityEngine.Random.Range(5f, 10f);
+            phaseTime = inputPhaseTime <= 0.0f ? UnityEngine.Random.Range(5f, 10f) : inputPhaseTime;
         }
         
         public override void OnExit()
         {
+            phaseTime = 0.0f;
             phaseEndTime = Time.time;
             _owner.transform.position = _startingPosition;
             _owner.StopAttackPattern();
@@ -563,15 +710,165 @@ namespace Boss
 
         public override void Update()
         {
+            if (PhaseComplete) return;
             currentTime = Time.time - startTime;
             if (currentTime >= phaseTime)
             {
                 CompletePhase();
             }
         }
+
         private void CompletePhase()
         {
             PhaseComplete = true;
+        }
+    }
+
+    class Phase1State : BaseState<DiamondBoss>
+    {
+        private StateMachine _stateMachine;
+        
+        public Phase1State(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            _owner.HealToFull();
+            
+            _stateMachine = new StateMachine();
+            CreateStates();
+        }
+
+        /// <summary>
+        /// Init the states that make up phase 1 of the boss behavior.
+        /// </summary>
+        private void CreateStates()
+        {
+            var defaultMoveState = new DefaultMoveState(_owner);
+            _stateMachine.SetState(defaultMoveState);
+            
+            var defaultAttackState = new DefaultAttackState(_owner);
+            _stateMachine.AddTransition(defaultMoveState, defaultAttackState, new FuncPredicate(() => defaultAttackState.IsReady && defaultMoveState.IsComplete));
+            _stateMachine.AddTransition(defaultAttackState, defaultMoveState, new FuncPredicate(() => defaultAttackState.IsComplete)); 
+        }
+
+        public override void OnExit()
+        {
+            GameStateManager.Instance.OnDiamondBossPhase1End?.Invoke();
+        }
+
+        /// <summary>
+        /// On update, pass event through to nested state machine.
+        /// </summary>
+        public override void Update()
+        {
+            _stateMachine.Update();
+        }
+
+        /// <summary>
+        /// On fixed update, pass event through to nested state machine.
+        /// </summary>
+        public override void FixedUpdate()
+        {
+            _stateMachine.FixedUpdate(); 
+        }
+    }
+
+    class Phase2State : BaseState<DiamondBoss>
+    {
+        private StateMachine _stateMachine;
+        
+        public Phase2State(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            _owner.HealToFull();
+            
+            _stateMachine = new StateMachine();
+            CreateStates();
+        }
+
+        /// <summary>
+        /// Init the states that make up phase 2 of the boss behavior.
+        /// </summary>
+        private void CreateStates()
+        {
+            var centerAttackState = new CenterAttackState(_owner, 3.0f);
+            _stateMachine.SetState(centerAttackState);
+            
+            var defaultMoveState = new DefaultMoveState(_owner, 24);
+            _stateMachine.AddTransition(centerAttackState, defaultMoveState, new FuncPredicate(() => centerAttackState.PhaseComplete));
+            _stateMachine.AddTransition(defaultMoveState, centerAttackState, new FuncPredicate(() => defaultMoveState.IsComplete));
+        }
+
+        public override void OnExit()
+        {
+            GameStateManager.Instance.OnDiamondBossPhase2End?.Invoke();
+        }
+
+        /// <summary>
+        /// On update, pass event through to nested state machine.
+        /// </summary>
+        public override void Update()
+        {
+            _stateMachine.Update();
+        }
+
+        /// <summary>
+        /// On fixed update, pass event through to nested state machine.
+        /// </summary>
+        public override void FixedUpdate()
+        {
+            _stateMachine.FixedUpdate(); 
+        }
+    }
+
+    class Phase3State : BaseState<DiamondBoss>
+    {
+        private StateMachine _stateMachine;
+
+        public Phase3State(DiamondBoss owner) : base(owner)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            _owner.HealToFull();
+            
+            _stateMachine = new StateMachine();
+            CreateStates();
+        }
+
+        /// <summary>
+        /// Init the states that make up phase 3 of the boss behavior.
+        /// </summary>
+        private void CreateStates()
+        {
+            var finalAttackState = new FinalAttackState(_owner);
+            _stateMachine.SetState(finalAttackState);
+        }
+
+        public override void OnExit()
+        {
+        }
+
+        /// <summary>
+        /// On update, pass event through to nested state machine.
+        /// </summary>
+        public override void Update()
+        {
+            _stateMachine.Update();
+        }
+
+        /// <summary>
+        /// On fixed update, pass event through to nested state machine.
+        /// </summary>
+        public override void FixedUpdate()
+        {
+            _stateMachine.FixedUpdate(); 
         }
     }
     

@@ -137,6 +137,7 @@ namespace Weapon
                 Invoke(nameof(EnableFire), fireRate);
                 bullet.transform.position = muzzleTransform.position;
                 bullet.transform.rotation = Quaternion.LookRotation(GetFireDirection());
+                bullet.gameObject.layer = LayerMask.NameToLayer("PlayerBullet");
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;

@@ -20,9 +20,29 @@ namespace State
         public Action OnGameEnd;
 
         /// <summary>
+        /// Action for when a boss is first aggroed.
+        /// </summary>
+        public Action OnBossIntroStart;
+        
+        /// <summary>
+        /// Action for when a boss fight starts.
+        /// </summary>
+        public Action OnBossFightStart;
+
+        /// <summary>
         /// Action for when a boss dies.
         /// </summary>
         public Action OnBossDeath;
+
+        /// <summary>
+        /// Action for diamond boss' phase 1 ending
+        /// </summary>
+        public Action OnDiamondBossPhase1End;
+
+        /// <summary>
+        /// Action for diamond boss' phase 2 ending
+        /// </summary>
+        public Action OnDiamondBossPhase2End;
         
         /// <summary>
         /// Action for when the player dies.

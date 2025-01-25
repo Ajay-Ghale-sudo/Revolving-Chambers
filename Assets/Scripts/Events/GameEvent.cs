@@ -41,7 +41,6 @@ namespace Events
         /// <param name="invoker">GameObject that invoked this event.</param>
         protected virtual void OnInvoke(GameObject invoker = null)
         {
-            Debug.Log("GameEvent Invoked: " + this.name);
         }
     }
     
