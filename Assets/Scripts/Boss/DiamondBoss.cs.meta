@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 86f41fb25178a1c4fac6551e14aa2748
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spline: {instanceID: 0}
+  - _diamondHazard: {instanceID: 0}
+  - _backgroundMusicEvent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

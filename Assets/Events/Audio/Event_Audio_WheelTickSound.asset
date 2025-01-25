@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa41522dfa3b4ac4a73e26e967cf0622, type: 3}
-  m_Name: Event_LoadLevel_Hub
+  m_Script: {fileID: 11500000, guid: 0f2f18f6c7084608ac986194bf94a51b, type: 3}
+  m_Name: Event_Audio_WheelTickSound
   m_EditorClassIdentifier: 
   data:
-    level:
-      asset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
-      guid: 99c9720ab356a0642a771bea13969a05
-    loadSceneMode: 0
+    clip: {fileID: 8300000, guid: 0638772689b06119f8806c5bd1b2c437, type: 3}
+    volume: 0.23
+    pitch: 9.91
+    loop: 0
