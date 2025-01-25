@@ -87,7 +87,8 @@ namespace LevelHazards
             // Default to shooting at player for now
             var target = _shootAtPlayer ? _playerTransform : _bossTransform;
             var direction = (target.position - transform.position).normalized;
-            BulletManager.Instance.SpawnBullet(_ammo, transform.position + direction * 2f, Quaternion.LookRotation(direction));
+            var bullet = BulletManager.Instance.SpawnBullet(_ammo, transform.position + direction * 2f, Quaternion.LookRotation(direction));
+            bullet.gameObject.layer = LayerMask.NameToLayer("BossProjectile");
 
             Fix();
         }
