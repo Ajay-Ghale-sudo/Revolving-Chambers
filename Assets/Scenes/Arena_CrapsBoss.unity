@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -342,6 +346,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -442,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_13_King (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -530,6 +542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -602,6 +618,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -738,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5471e3da1d01924b92f593292fe42d1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -810,6 +834,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -893,6 +921,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1044,6 +1076,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1420,6 +1456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1790,6 +1830,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2171,6 +2215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2243,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2572,6 +2624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2665,6 +2721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2737,6 +2797,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2820,6 +2884,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2909,6 +2977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2981,6 +3053,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3055,6 +3131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3128,6 +3208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3200,6 +3284,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3278,6 +3366,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3435,6 +3527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3508,6 +3604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Dice_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2d73739f359d394983245fda2d0717c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3580,6 +3680,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3658,6 +3762,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3917,6 +4025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4068,6 +4180,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4287,6 +4403,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_13_King (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4570,6 +4690,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08388844e21e4b544b62d16142c89c6b, type: 3}
+--- !u!1 &862015177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 862015179}
+  - component: {fileID: 862015178}
+  m_Layer: 0
+  m_Name: DiceSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &862015178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862015177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94525cd6e99e41cbabfc25c760b2a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dicePrefab: {fileID: 7615672775434218233, guid: 8c733990f9cb15940bba49406bbb4be0, type: 3}
+--- !u!4 &862015179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862015177}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.0000004023313, z: -0, w: 1}
+  m_LocalPosition: {x: -11.28, y: 14.42, z: -23.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &899758598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4715,6 +4880,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4877,6 +5046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5028,6 +5201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5100,6 +5277,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5178,6 +5359,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5324,6 +5509,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5483,6 +5672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5634,6 +5827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5764,6 +5961,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08388844e21e4b544b62d16142c89c6b, type: 3}
   m_PrefabInstance: {fileID: 340196172}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1158305355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1158305357}
+  - component: {fileID: 1158305356}
+  m_Layer: 0
+  m_Name: DiceSpawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1158305356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158305355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94525cd6e99e41cbabfc25c760b2a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dicePrefab: {fileID: 7615672775434218233, guid: 8c733990f9cb15940bba49406bbb4be0, type: 3}
+--- !u!4 &1158305357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158305355}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
+  m_LocalPosition: {x: 8.35, y: 14.7, z: 25.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1001 &1163195152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5831,6 +6073,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c056921548eb96048adf76918c4c649b, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c056921548eb96048adf76918c4c649b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5998,11 +6244,60 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_12_Queen
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9bf41b20c46e5df489e459be028e1678, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bf41b20c46e5df489e459be028e1678, type: 3}
+--- !u!1 &1207528445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207528447}
+  - component: {fileID: 1207528448}
+  m_Layer: 0
+  m_Name: DiceSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207528447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207528445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
+  m_LocalPosition: {x: -9.85, y: 14.89, z: 25.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &1207528448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207528445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94525cd6e99e41cbabfc25c760b2a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dicePrefab: {fileID: 7615672775434218233, guid: 8c733990f9cb15940bba49406bbb4be0, type: 3}
 --- !u!4 &1211343666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08388844e21e4b544b62d16142c89c6b, type: 3}
@@ -6155,6 +6450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6227,6 +6526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c155e6a99305bb34ba3d50b3a8320f82, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_01_Ace
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c155e6a99305bb34ba3d50b3a8320f82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6306,11 +6609,60 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+--- !u!1 &1290738738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290738740}
+  - component: {fileID: 1290738739}
+  m_Layer: 0
+  m_Name: DiceSpawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1290738739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290738738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94525cd6e99e41cbabfc25c760b2a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dicePrefab: {fileID: 7615672775434218233, guid: 8c733990f9cb15940bba49406bbb4be0, type: 3}
+--- !u!4 &1290738740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290738738}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.0000004023313, z: -0, w: 1}
+  m_LocalPosition: {x: 1.52, y: 11.6, z: -24.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1299470569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6452,6 +6804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6529,6 +6885,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4b56cf96e5a01af4a97cc7abb3b5c524, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b56cf96e5a01af4a97cc7abb3b5c524, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6689,6 +7049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6761,6 +7125,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_13_King
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26877d78415fce94d94f6f7aab188a40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6839,6 +7207,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6985,6 +7357,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7256,6 +7632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dae6712e4634200468328feaa6fafb97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7333,6 +7713,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7412,11 +7796,63 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
+--- !u!114 &1578047597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c49f7402d649368b95eef349a91229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 2500
+  maxHealth: 2500
+  spreadShotAmmo: {fileID: 11400000, guid: e06036cd073fc984a8c31be52f99a15f, type: 2}
+  spreadShotAmount: 5
+  diceSpawners:
+  - {fileID: 1207528448}
+  - {fileID: 1158305356}
+  - {fileID: 862015178}
+  - {fileID: 1290738739}
+--- !u!65 &1578047601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03976343, y: 0.039763447, z: 0.03976341}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1582992236
 Mesh:
   m_ObjectHideFlags: 0
@@ -7660,6 +8096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_03 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 853e23d9a1d3dc74da2a4dc85c1b475f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7732,6 +8172,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7810,6 +8254,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7966,6 +8414,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8191,6 +8643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8206,7 +8662,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130699728661263206, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 130699728661263206, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8214,7 +8670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 130699728661263206, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 130699728661263206, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8247,6 +8703,10 @@ PrefabInstance:
     - target: {fileID: 6651217265798743259, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201852112551342255, guid: fd32788fc2c393c429a201fd43b8dfff, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8325,6 +8785,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8546,6 +9010,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8618,6 +9086,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8711,6 +9183,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8931,6 +9407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9085,7 +9565,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 742fd1cb5149c0f489c4e4f4dcd840e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2116441653}
   m_SourcePrefab: {fileID: 100100000, guid: 742fd1cb5149c0f489c4e4f4dcd840e8, type: 3}
 --- !u!1 &1840215093 stripped
 GameObject:
@@ -25621,6 +26104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_04 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95cfe4d1da0c40d4f9553494205d693e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25797,6 +26284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25942,19 +26433,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621072195164253331, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621072195164253331, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621072195164253331, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1621072195164253331, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -237.33333
       objectReference: {fileID: 0}
     - target: {fileID: 1873527380704374369, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMax.y
@@ -26014,19 +26505,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2857507226018323455, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2857507226018323455, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2857507226018323455, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2857507226018323455, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 3093576860602154699, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_Name
@@ -26114,18 +26605,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4956459316855700903, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4956459316855700903, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4956459316855700903, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4956459316855700903, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: -142.66666
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349957156657388040, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6830427914151870126, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
@@ -26309,6 +26804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26381,6 +26880,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27844,6 +28347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27854,6 +28361,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08388844e21e4b544b62d16142c89c6b, type: 3}
   m_PrefabInstance: {fileID: 317618366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2116441650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 742fd1cb5149c0f489c4e4f4dcd840e8, type: 3}
+  m_PrefabInstance: {fileID: 1839127249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2116441653
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116441650}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5477895764229888955, guid: 742fd1cb5149c0f489c4e4f4dcd840e8, type: 3}
 --- !u!1001 &2119137037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27921,6 +28455,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
       propertyPath: m_Name
       value: SM_Item_Casino_Chip_Pile_02 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a70888ab7df335341b129eb0cb5df78e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27996,6 +28534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Item_Playing_Card_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2468cdc06587fad4288de9ffdfa295e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28016,6 +28558,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08388844e21e4b544b62d16142c89c6b, type: 3}
   m_PrefabInstance: {fileID: 1409533958}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &543450652122185600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 25}
+  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &919132148450075962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543450652122185600}
+  - component: {fileID: 3469287838254460965}
+  - component: {fileID: 1711813854459954415}
+  - component: {fileID: 1578047597}
+  - component: {fileID: 1578047601}
+  m_Layer: 0
+  m_Name: High Roller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1711813854459954415
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b1e15ee6ae671f64e93734c50f6a9d38, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &3469287838254460965
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  m_Mesh: {fileID: 5376213963352736066, guid: f839ba84eb2de534f89b868e31ca3927, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -28027,3 +28657,8 @@ SceneRoots:
   - {fileID: 1323215817}
   - {fileID: 1842085090}
   - {fileID: 1107664757}
+  - {fileID: 543450652122185600}
+  - {fileID: 1207528447}
+  - {fileID: 1158305357}
+  - {fileID: 862015179}
+  - {fileID: 1290738740}
