@@ -182,7 +182,7 @@ namespace Boss
             
             _stateMachine = new StateMachine();
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            
+
             CreateStates();
         }
         
@@ -680,6 +680,8 @@ namespace Boss
         /// </summary>
         private float phaseTime;
 
+        private float inputPhaseTime = 0.0f;
+
         private float phaseEndTime = 0;
         
         /// <summary>
@@ -691,8 +693,9 @@ namespace Boss
         
         private Vector3 _startingPosition;
         
-        public CenterAttackState(DiamondBoss owner) : base(owner)
+        public CenterAttackState(DiamondBoss owner, float newPhaseTime = 0.0f) : base(owner)
         {
+            inputPhaseTime = newPhaseTime;
         }
 
         public override void OnEnter()
@@ -711,11 +714,12 @@ namespace Boss
             _owner.StartSecondaryAttackPattern();
             
             // Random time to complete phase
-            phaseTime = UnityEngine.Random.Range(5f, 10f);
+            phaseTime = inputPhaseTime <= 0.0f ? UnityEngine.Random.Range(5f, 10f) : inputPhaseTime;
         }
         
         public override void OnExit()
         {
+            phaseTime = 0.0f;
             phaseEndTime = Time.time;
             _owner.transform.position = _startingPosition;
             _owner.StopAttackPattern();
@@ -727,13 +731,12 @@ namespace Boss
         {
             if (PhaseComplete) return;
             currentTime = Time.time - startTime;
-            Debug.Log($"Updating phase 2; currentTime: {currentTime}; phaseEndTime: {phaseEndTime}");
             if (currentTime >= phaseTime)
             {
-                Debug.Log("Time to end phase");
                 CompletePhase();
             }
         }
+
         private void CompletePhase()
         {
             PhaseComplete = true;
@@ -812,7 +815,7 @@ namespace Boss
         /// </summary>
         private void CreateStates()
         {
-            var centerAttackState = new CenterAttackState(_owner);
+            var centerAttackState = new CenterAttackState(_owner, 3.0f);
             _stateMachine.SetState(centerAttackState);
             
             var defaultMoveState = new DefaultMoveState(_owner, 24);
