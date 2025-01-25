@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1847904391885413053}
   - component: {fileID: 3411714386892427186}
   - component: {fileID: 7812817317002423959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8576117351993674856}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -149,3 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671ff5701cd64cc586441bfdffe3e963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls: []
