@@ -226,7 +226,7 @@ namespace Player
         /// </summary>
         void OnAttack()
         {
-            if (_isDashing) return;
+            if (_isDashing || _isDying) return;
             _weapon?.Fire();
         }
 
