@@ -5,24 +5,6 @@ jobs:
 - job: Build
   displayName: 'Build and Deploy to Playtest Environment'
 
-
-  steps:
-  - task: UnitySetupTask@2
-    inputs:
-      installWebGLModule: true
-
-  - task: UnityBuildTask@3
-    inputs:
-      buildTarget: 'WebGL'
-      outputPath: '$(Build.BinariesDirectory)'
-      outputFileName: 'drop'
-
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Build.BinariesDirectory)'
-      Contents: '**'
-      TargetFolder: '/games/build'
-
 - deployment: DeployPlaytest
   displayName: 'Deploy to Playtest Environment'
   environment: 'playtest'  # This is where you specify your environment
@@ -31,7 +13,18 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - script: |
-            echo "Deploying to Playtest environment..."
-            # Add your deployment steps here
-          displayName: 'Deploy Step'
+        - task: UnitySetupTask@2
+          inputs:
+            installWebGLModule: true
+
+        - task: UnityBuildTask@3
+          inputs:
+            buildTarget: 'WebGL'
+            outputPath: '$(Build.BinariesDirectory)'
+            outputFileName: 'drop'
+
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Build.BinariesDirectory)'
+            Contents: '**'
+            TargetFolder: '/games/build'
