@@ -1,24 +1,38 @@
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
-steps:
-- task: UnitySetupTask@2
-  inputs:
-    installWebGLModule: true
+jobs:
+- job: Build
+  displayName: 'Build and Deploy to Playtest Environment'
+  
+  pool:
+    vmImage: 'ubuntu-latest'
 
-- task: UnityBuildTask@3
-  inputs:
-    buildTarget: 'WebGL'
-    outputPath: '$(Build.BinariesDirectory)'
-    outputFileName: 'drop'
+  steps:
+  - task: UnitySetupTask@2
+    inputs:
+      installWebGLModule: true
 
+  - task: UnityBuildTask@3
+    inputs:
+      buildTarget: 'WebGL'
+      outputPath: '$(Build.BinariesDirectory)'
+      outputFileName: 'drop'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Build.BinariesDirectory)'
-    Contents: '**'
-    TargetFolder: '/games/build'
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.BinariesDirectory)'
+      Contents: '**'
+      TargetFolder: '/games/build'
+
+- deployment: DeployPlaytest
+  displayName: 'Deploy to Playtest Environment'
+  environment: 'playtest'
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - script: |
+            echo "Deploying to Playtest environment..."
+            # Add your deployment steps here
+          displayName: 'Deploy Step'
