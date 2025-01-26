@@ -1,0 +1,21 @@
+- task: UnitySetupTask@2
+  inputs:
+    installWebGLModule: true
+
+- task: UnityBuildTask@3
+  inputs:
+    buildTarget: 'WebGL'
+    outputPath: '$(Build.BinariesDirectory)'
+    outputFileName: 'drop'
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.BinariesDirectory)'
+    Contents: '**'
+    TargetFolder: '/games/build'
