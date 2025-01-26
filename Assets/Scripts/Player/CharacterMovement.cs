@@ -312,11 +312,18 @@ namespace Player
             // Get cursor 
             Vector3 mousePos = Mouse.current.position.ReadValue();
             Ray ray = _mainCamera.ScreenPointToRay(mousePos);
+            Vector3 targetPos;
+            if (!Physics.Raycast(ray, out RaycastHit hit))
+            {
+                // Fallback to ground level if no hit
+                var groundPlane = new Plane(Vector3.up, Vector3.zero);
+                groundPlane.Raycast(ray, out float distance);
+                hit.point = ray.GetPoint(distance);
+                
+            }
             
-            if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-            
+            targetPos = new Vector3(hit.point.x, _capsule.transform.position.y, hit.point.z);
             // Aim towards hit point X and Z
-            var targetPos = new Vector3(hit.point.x, _capsule.transform.position.y, hit.point.z);
             _capsule.transform.LookAt(targetPos);
         }
 
