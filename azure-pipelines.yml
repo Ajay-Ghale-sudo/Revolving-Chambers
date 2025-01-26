@@ -6,7 +6,7 @@ jobs:
   displayName: 'Build and Deploy to Playtest Environment'
   
   pool:
-    vmImage: 'ubuntu-latest'  # Or whichever image you prefer
+    name: Default  # Or whichever image you prefer
 
   steps:
   - task: UnitySetupTask@2
