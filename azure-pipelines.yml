@@ -4,9 +4,7 @@ trigger:
 jobs:
 - job: Build
   displayName: 'Build and Deploy to Playtest Environment'
-  
-  pool:
-    name: Default  # Or whichever image you prefer
+
 
   steps:
   - task: UnitySetupTask@2
