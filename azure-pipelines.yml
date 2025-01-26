@@ -6,7 +6,7 @@ jobs:
   displayName: 'Build and Deploy to Playtest Environment'
   
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-latest'  # Or whichever image you prefer
 
   steps:
   - task: UnitySetupTask@2
@@ -27,7 +27,8 @@ jobs:
 
 - deployment: DeployPlaytest
   displayName: 'Deploy to Playtest Environment'
-  environment: 'playtest'
+  environment: 'playtest'  # This is where you specify your environment
+  dependsOn: Build  # Ensures the DeployPlaytest job runs after the Build job
   strategy:
     runOnce:
       deploy:
