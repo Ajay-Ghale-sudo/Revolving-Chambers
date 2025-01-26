@@ -1,6 +1,9 @@
 trigger:
 - master
 
+pool:
+ name: self-hosted
+
 jobs:
 - job: Build
   displayName: 'Build and Deploy to Playtest Environment'
