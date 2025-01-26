@@ -141,11 +141,8 @@ namespace Weapon
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
-<<<<<<< HEAD
 
                 OnFire?.Invoke();
-=======
->>>>>>> master
                 FireWeaponAudioEvent?.Invoke();
             }
             NextChamber();

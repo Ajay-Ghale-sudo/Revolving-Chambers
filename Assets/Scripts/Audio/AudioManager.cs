@@ -122,5 +122,11 @@ namespace Audio
             // Play the sound at the specified position.
             AudioSource.PlayClipAtPoint(audioData.clip, audioData.location, audioData.volume); 
         }
+        
+        public void AdjustPlayRate(float rate)
+        {
+            _audioSource.pitch = rate;
+            _ambientAudioSource.pitch = rate;
+        }
     }
 }
