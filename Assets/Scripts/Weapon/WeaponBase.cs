@@ -34,7 +34,7 @@ namespace Weapon
         /// <summary>
         /// Event invoked when the weapon is fired.
         /// </summary>
-        public UnityAction OnFire;
+        public UnityEvent OnFire;
         
         /// <summary>
         ///  Event invoked when the weapon is reloaded.
