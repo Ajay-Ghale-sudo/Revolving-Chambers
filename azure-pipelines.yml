@@ -7,6 +7,7 @@ trigger:
 
 pool:
    name: Default
+   environment: playtest
 
 steps:
 - task: UnitySetupTask@2
