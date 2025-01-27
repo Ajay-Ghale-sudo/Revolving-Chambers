@@ -1,0 +1,34 @@
+trigger:
+- master
+
+pool:
+ name: self-hosted
+
+jobs:
+- job: Build
+  displayName: 'Build and Deploy to Playtest Environment'
+
+- deployment: DeployPlaytest
+  displayName: 'Deploy to Playtest Environment'
+  environment: 'playtest'  # This is where you specify your environment
+  dependsOn: Build  # Ensures the DeployPlaytest job runs after the Build job
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - task: UnityBuildTask@3
+          inputs:
+            unityEditorsPathMode: 'specify'
+            customUnityEditorsPath: '/home/tyler/Unity/Hub/Editor/'
+            unityProjectPath: '/home/tyler/projects/RevolvingChambers'
+            buildTarget: 'WebGL'
+            outputPath: '/home/tyler/projects/RevolvingChambers/build'
+            outputFileName: 'game'
+            additionalCmdArgs: '-nographics'
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '/home/tyler/projects/RevolvingChambers/build'
+            Contents: '**'
+            TargetFolder: '/mnt/game-assets/games/RevolvingChambers'
+            CleanTargetFolder: true
+            OverWrite: true
