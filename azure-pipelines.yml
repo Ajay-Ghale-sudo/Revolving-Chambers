@@ -24,3 +24,4 @@ jobs:
             buildTarget: 'WebGL'
             outputPath: '/home/tyler/projects/RevolvingChambers/build'
             outputFileName: 'game'
+            additionalCmdArgs: '-nographics'
