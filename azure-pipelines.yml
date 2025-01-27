@@ -16,18 +16,11 @@ jobs:
     runOnce:
       deploy:
         steps:
-        # - task: UnitySetupTask@2
-        #   inputs:
-        #     installWebGLModule: true
-
         - task: UnityBuildTask@3
           inputs:
+            unityEditorsPathMode: 'specify'
+            customUnityEditorsPath: '/home/Unity/Hub/Editor/6000.0.33f1/Editor/'
+            unityProjectPath: '/home//projects/RevolvingChambers'
             buildTarget: 'WebGL'
-            outputPath: '$(Build.BinariesDirectory)'
-            outputFileName: 'drop'
-
-        - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(Build.BinariesDirectory)'
-            Contents: '**'
-            TargetFolder: '/games/build'
+            outputPath: '/home//projects/RevolvingChambers/build'
+            outputFileName: 'game'
