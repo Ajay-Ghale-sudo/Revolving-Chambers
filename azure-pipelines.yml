@@ -19,7 +19,7 @@ jobs:
         - task: UnityBuildTask@3
           inputs:
             unityEditorsPathMode: 'specify'
-            customUnityEditorsPath: '/home/tyler/Unity/Hub/Editor/6000.0.33f1/Editor/'
+            customUnityEditorsPath: '/home/tyler/Unity/Hub/'
             unityProjectPath: '/home/tyler/projects/RevolvingChambers'
             buildTarget: 'WebGL'
             outputPath: '/home/tyler/projects/RevolvingChambers/build'
