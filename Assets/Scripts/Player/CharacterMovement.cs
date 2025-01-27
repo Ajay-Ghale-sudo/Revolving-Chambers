@@ -186,6 +186,9 @@ namespace Player
 
             // TEMP FOR TESTING
             _weapon = GetComponentInChildren<IWeapon>();
+            
+            // Lock cursor to window
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         // Update is called once per frame

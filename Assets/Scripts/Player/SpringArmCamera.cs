@@ -46,6 +46,27 @@ namespace Player
         private float maxZoomDistance = 15f;
         
         /// <summary>
+        /// Maximum pan distance.
+        /// </summary>
+        [Tooltip("Maximum pan distance")]
+        [SerializeField]
+        private float maxPanDistance = 12f;
+        
+        /// <summary>
+        /// Pan speed of the camera.
+        /// </summary>
+        [Tooltip("Pan speed of the camera")]
+        [SerializeField]
+        private float panSpeed = 5f;
+        
+        /// <summary>
+        /// Enable cursor tracking.
+        /// </summary>
+        [Tooltip("Enable cursor tracking")]
+        [SerializeField]
+        private bool trackCursor = true;
+        
+        /// <summary>
         /// Zoom speed of the camera.
         /// </summary>
         [Tooltip("Zoom speed of the camera")]
@@ -238,12 +259,39 @@ namespace Player
         }
 
         /// <summary>
+        /// Calculate the offset of the cursor. Used to determine the camera position between the target and the cursor.
+        /// </summary>
+        /// <returns>Middle point between cursor and target.</returns>
+        private Vector3 CalculateCursorOffset()
+        {
+            if (!trackCursor) return target.position;
+            
+            // Get the cursor position in world space
+            var cameraDistance = Mathf.Abs(transform.position.y - target.position.y);
+            var mousePos = Mouse.current.position.ReadValue();
+            var mouseVector = new Vector3(mousePos.x, mousePos.y, cameraDistance);
+            var cursorPosition = _camera.ScreenToWorldPoint(mouseVector);
+            cursorPosition.y = targetPosition.y;
+            
+            // Ensure the new point will still have the target in camera view
+            var distance = Vector3.Distance(target.position, cursorPosition);
+            if (distance > maxPanDistance)
+            {
+                cursorPosition = target.position + (cursorPosition - target.position).normalized * maxPanDistance;
+            }
+            
+            // Calculate the middle point between the target and the cursor
+            var middlePoint = (target.position + cursorPosition) / 2f;
+            return middlePoint;
+        }
+        
+        /// <summary>
         /// Calculate the next position of the camera.
         /// </summary>
         private void CalculatePosition()
         {
            // Calculate target position
-           targetPosition = target.position + Vector3.up * heightOffset;
+           targetPosition = CalculateCursorOffset() + Vector3.up * heightOffset;
            
            // Calculate desired camera position based on fixed angle and current arm length
            var offset = Quaternion.Euler(pitchAngle, 0, 0) * Vector3.back * currentArmLength;
@@ -255,7 +303,9 @@ namespace Player
 
            // No zooming while camera shaking for now
            if (_shakeTween?.IsActive() ?? false) return;
-           transform.position = currentPosition;
+           // Get difference between Current and Target position and smooth motion
+           var difference = currentPosition - transform.position;
+           transform.position += difference * (panSpeed * Time.deltaTime);
            transform.rotation = Quaternion.LookRotation(targetPosition - currentPosition, Vector3.up);
         }
 
