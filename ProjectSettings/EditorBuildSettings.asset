@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 51e81112b4e11ee4891a34c270f357de
+  - enabled: 1
     path: Assets/Scenes/Arena_DiamondBoss.unity
     guid: ee257f521bd7a854485308fd14e3077d
   - enabled: 1
