@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Events;
 using Interfaces;
 using State;
@@ -362,6 +363,7 @@ namespace Player
             _isDying = false;
             Health = 5;
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
+            AudioManager.Instance.AdjustPlayRate(1f);
         }
 
         /// <summary>
@@ -373,6 +375,7 @@ namespace Player
             _isDying = true;
             OnDeath?.Invoke();
             GameStateManager.Instance.OnPlayerDeath?.Invoke();
+            AudioManager.Instance.AdjustPlayRate(0.5f);
         }
 
         // IDamageable implementation \\

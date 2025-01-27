@@ -100,6 +100,11 @@ namespace Wheel
             SetupWheel();
         }
 
+        private void OnDestroy()
+        {
+            CancelInvoke(nameof(PlayWheelTick));
+        }
+
         protected virtual void SetupWheel()
         {
             var totalProbability = 0f;
