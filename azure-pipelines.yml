@@ -25,3 +25,10 @@ jobs:
             outputPath: '/home/tyler/projects/RevolvingChambers/build'
             outputFileName: 'game'
             additionalCmdArgs: '-nographics'
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '/home/tyler/projects/RevolvingChambers/build'
+            Contents: '**'
+            TargetFolder: '/mnt/game-assets/games/RevolvingChambers'
+            CleanTargetFolder: true
+            OverWrite: true
