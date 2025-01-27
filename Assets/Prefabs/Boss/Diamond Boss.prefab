@@ -288,8 +288,8 @@ Transform:
   m_GameObject: {fileID: 3072513135373434077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.696, z: 0}
-  m_LocalScale: {x: 0.57142854, y: 0.57142854, z: 0.57142854}
+  m_LocalPosition: {x: 0, y: 0.524, z: 0}
+  m_LocalScale: {x: 0.1506413, y: 0.1506413, z: 0.1506413}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 630447018794406896}
@@ -584,8 +584,8 @@ Transform:
   m_GameObject: {fileID: 4830395429153532496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6959999, z: 0}
-  m_LocalScale: {x: 0.28571427, y: 0.28571427, z: 0.28571427}
+  m_LocalPosition: {x: 0, y: 0.5239999, z: 0}
+  m_LocalScale: {x: 0.11904, y: 0.11904, z: 0.11904}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4511154738448242562}
@@ -735,6 +735,11 @@ MonoBehaviour:
   rotationDuration: 1
   rotateMode: 1
   _diamondHazard: {fileID: 2441022780045660052, guid: 36859c2a7e6d12c4ba0a0a5413e06f72, type: 3}
+  _idleSound: {fileID: 0}
+  _bossIntroMusic: {fileID: 0}
+  _backgroundMusic: {fileID: 0}
+  _fireBulletAudioEvent: {fileID: 0}
+  _bossExitPortal: {fileID: 0}
 --- !u!96 &2673582074278812743
 TrailRenderer:
   serializedVersion: 3

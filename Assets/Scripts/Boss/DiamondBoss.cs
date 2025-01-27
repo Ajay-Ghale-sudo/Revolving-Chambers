@@ -687,7 +687,7 @@ namespace Boss
             _startingPosition = _owner.transform.position;
             
             // Teleport to center of arena
-            _owner.transform.position = Vector3.zero + new Vector3(0, 1, 0);
+            _owner.transform.position = new Vector3(0f, -0.6f, 0f);
             _owner.transform.DORotate(_owner.rotationVector, _owner.rotationDuration / 3, _owner.rotateMode)
                 .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
             
@@ -917,8 +917,8 @@ namespace Boss
         public override void OnEnter()
         {
             _owner._trailRenderer.emitting = true;
-            
-            _owner.transform.position = Vector3.zero + new Vector3(0, 1, 0);
+
+            _owner.transform.position = new Vector3(0f, -0.6f, 0f);
             _owner.transform.DORotate(_owner.rotationVector, _owner.rotationDuration / 3, _owner.rotateMode)
                 .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
             

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boss
   - PlayerBullet
+  - BossBullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - PlayerBullet
   - Player
   - BossBullet
-  - 
+  - HazardBullet
   - 
   - 
   - 
