@@ -72,5 +72,27 @@ namespace Player
 
             _particleSystem.Emit(count);
         }
+
+        /// <summary>
+        /// Sets the trigger for "Death"
+        /// </summary>
+        public void Play_Death()
+        {
+            if (_animator == null) return;
+
+            _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            _animator.SetTrigger("Death");
+        }
+
+        /// <summary>
+        /// Sets the trigger for "Revive"
+        /// </summary>
+        public void Play_Revive()
+        {
+            if (_animator == null) return;
+
+            _animator.updateMode = AnimatorUpdateMode.Normal;
+            _animator.SetTrigger("Revive");
+        }
     }
 }

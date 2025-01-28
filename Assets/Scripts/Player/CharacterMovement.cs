@@ -365,6 +365,7 @@ namespace Player
         {
             _isDying = false;
             Health = 5;
+            _animationHandler?.Play_Revive();
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
             AudioManager.Instance.AdjustPlayRate(1f);
         }
@@ -377,6 +378,7 @@ namespace Player
             if (_isDying) return;
             _isDying = true;
             OnDeath?.Invoke();
+            _animationHandler?.Play_Death();
             GameStateManager.Instance.OnPlayerDeath?.Invoke();
             AudioManager.Instance.AdjustPlayRate(0.5f);
         }
