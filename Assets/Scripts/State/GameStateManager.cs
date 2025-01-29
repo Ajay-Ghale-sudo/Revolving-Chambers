@@ -67,6 +67,15 @@ namespace State
             OnBossDeath += BossDeath;
             OnPlayerRevive += PlayerRevive;
             OnGameOver += GameOver;
+            OnGameStart += GameStart;
+        }
+
+        private void OnDestroy()
+        {
+            OnPlayerDeath -= PlayerDeath;
+            OnBossDeath -= BossDeath;
+            OnPlayerRevive -= PlayerRevive;
+            OnGameOver -= GameOver;
         }
 
         /// <summary>
@@ -97,10 +106,18 @@ namespace State
             Time.timeScale = 1f;
         }
 
+        /// <summary>
+        /// Handle game start.
+        /// </summary>
+        private void GameStart()
+        {
+            Time.timeScale = 1f;
+        }
+
         private void GameOver()
         {
             // TODO: Show game over screen
-            DOTween.KillAll(); 
+            DOTween.Clear();
             Time.timeScale = 1f;
             // Just reload scene for now, until we have UI to show game over screen.
             
@@ -109,7 +126,8 @@ namespace State
         
         private void LoadMainMenu()
         {
-            SceneManager.LoadScene(0);
+            // get main menu scene index
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }

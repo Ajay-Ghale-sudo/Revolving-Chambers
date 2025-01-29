@@ -39,6 +39,7 @@ namespace Audio
             _audioListener.enabled = false;
             
             GameStateManager.Instance.OnGameOver += OnGameOver;
+            GameStateManager.Instance.OnGameStart += ResetGlobalAudioPitch;
         }
         
         /// <summary>
@@ -62,6 +63,7 @@ namespace Audio
             LocationAudioEvent.OnLocationAudioEvent -= PlaySoundAtPosition;
             
             GameStateManager.Instance.OnGameOver -= OnGameOver;
+            GameStateManager.Instance.OnGameStart -= ResetGlobalAudioPitch;
         }
 
         /// <summary>
@@ -128,23 +130,41 @@ namespace Audio
             AudioSource.PlayClipAtPoint(audioData.clip, audioData.location, audioData.volume); 
         }
         
-        public void AdjustPlayRate(float rate)
+        /// <summary>
+        /// Adjust audio pitch
+        /// </summary>
+        /// <param name="rate"></param>
+        public void AdjustGlobalPitch(float rate)
         {
             _audioSource.pitch = rate;
             _ambientAudioSource.pitch = rate;
         }
         
+        /// <summary>
+        /// Reset audio playrate
+        /// </summary>
+        public void ResetGlobalAudioPitch()
+        {
+            _audioSource.pitch = 1f;
+            _ambientAudioSource.pitch = 1f;
+        }
+        
+        /// <summary>
+        /// Pause all audio.
+        /// </summary>
         public void PauseAudio()
         {
             _audioSource?.Pause();
             _ambientAudioSource?.Pause();
         }
 
+        /// <summary>
+        /// Handle game over.
+        /// </summary>
         private void OnGameOver()
         {
-            AdjustPlayRate(1f);
+            ResetGlobalAudioPitch();
             PauseAudio();
-            
             // TODO: Eventually play game over sound.
         }
     }

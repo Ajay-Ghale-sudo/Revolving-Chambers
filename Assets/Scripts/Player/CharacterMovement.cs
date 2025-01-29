@@ -369,7 +369,7 @@ namespace Player
             Health = 5;
             _animationHandler?.Play_Revive();
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
-            AudioManager.Instance.AdjustPlayRate(1f);
+            AudioManager.Instance.AdjustGlobalPitch(1f);
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace Player
             OnDeath?.Invoke();
             _animationHandler?.Play_Death();
             GameStateManager.Instance.OnPlayerDeath?.Invoke();
-            AudioManager.Instance.AdjustPlayRate(0.5f);
+            AudioManager.Instance.AdjustGlobalPitch(0.5f);
         }
 
         // IDamageable implementation \\

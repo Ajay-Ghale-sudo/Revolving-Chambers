@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122b02fb1f634cd3a860a1dbf0a299a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
   OnChamberChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -111,6 +114,7 @@ MonoBehaviour:
   chamberCount: 5
   fireRate: 0.2
   reloadWheel: {fileID: 4597473847999530873}
+  FireWeaponAudioEvent: {fileID: 11400000, guid: 6b32899609959fa3083080b5029df0fc, type: 2}
 --- !u!114 &4597473847999530873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +171,8 @@ MonoBehaviour:
   OnWheelStop:
     m_PersistentCalls:
       m_Calls: []
+  WheelTickAudioEvent: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
+  ammoLoadouts: []
 --- !u!1 &5253306214395512921
 GameObject:
   m_ObjectHideFlags: 0
