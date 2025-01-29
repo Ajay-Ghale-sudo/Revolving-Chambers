@@ -10086,8 +10086,8 @@ MonoBehaviour:
   OnDashEvent:
     m_PersistentCalls:
       m_Calls: []
-  _dashAudioEvent: {fileID: 0}
-  _takeDamageAudioEvent: {fileID: 0}
+  _dashAudioEvent: {fileID: 11400000, guid: 4f49b11133970508ab9bcc147ec4d287, type: 2}
+  _takeDamageAudioEvent: {fileID: 11400000, guid: 34e543c08c05c86e8a621cb2aba57fbd, type: 2}
   damageGraceTime: 0.5
   lockYPosition: 1
 --- !u!143 &7201852112551342255
