@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HUBScene.unity
     guid: 4dc82d986bd1cd448aeb36aae9800597
+  - enabled: 1
+    path: Assets/Scenes/Arena_RouletteBoss.unity
+    guid: 14af1f064beb5f54bba18258c3d20741
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
