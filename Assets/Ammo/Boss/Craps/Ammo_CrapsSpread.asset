@@ -15,8 +15,8 @@ MonoBehaviour:
   damage:
     damage: 1
     type: 2
-  projectilePrefab: {fileID: 8576117351993674856, guid: 9f600bb3d06972146a7ec70b8c5be9c2, type: 3}
-  velocity: 35
-  lifetime: 15
+  projectilePrefab: {fileID: 8576117351993674856, guid: e092a2a035966e24db123b23fa59bba5, type: 3}
+  velocity: 17
+  lifetime: 25
   color: {r: 1, g: 1, b: 1, a: 1}
   OnEndEvents: []

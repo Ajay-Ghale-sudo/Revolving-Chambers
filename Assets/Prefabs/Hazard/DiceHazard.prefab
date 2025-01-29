@@ -248,7 +248,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7615672775434218233}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -259,7 +259,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -292,7 +292,10 @@ MonoBehaviour:
   collisionDamage:
     damage: 1
     type: 2
+  projectileCount: 6
+  attackRate: 1
   ammo: {fileID: 11400000, guid: 73eeaf8972485d34487761a6d3c21ec5, type: 2}
+  FlyAwaySpeed: 3
   diceFaces:
   - {fileID: 3312228036873771635}
   - {fileID: 7541825056365813322}
