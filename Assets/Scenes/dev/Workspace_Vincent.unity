@@ -538,7 +538,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2751993412349029458, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ebfd281ea8449e74e9dde810d9164ada, type: 3}
 --- !u!1 &1271953222
 GameObject:
@@ -1099,6 +1102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hazard_Circle
       objectReference: {fileID: 0}
+    - target: {fileID: 5817053566968444394, guid: 59d84a05689b4dd4eb0dbae414e4fe7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1112,10 +1119,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1023595046223799858, guid: 0b4945774e78f8648aae04eafea212f0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2872132126384391079, guid: 0b4945774e78f8648aae04eafea212f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1156,10 +1159,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4550651238580059536, guid: 0b4945774e78f8648aae04eafea212f0, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -6675784461909872013, guid: e746e6648ee784a4ca94165d1eba191a, type: 3}
     - target: {fileID: 7253852798277320349, guid: 0b4945774e78f8648aae04eafea212f0, type: 3}
       propertyPath: m_Name
       value: TerrainWheel
@@ -1220,6 +1219,10 @@ PrefabInstance:
     - target: {fileID: 7531289771656075421, guid: f5f9207acbc89444396b7ae50c19cc9a, type: 3}
       propertyPath: m_Name
       value: Hazard_Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531289771656075421, guid: f5f9207acbc89444396b7ae50c19cc9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
