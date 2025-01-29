@@ -1,5 +1,6 @@
 ﻿using System;
 using Events;
+using State;
 using UnityEngine;
 using Utility;
 
@@ -36,6 +37,8 @@ namespace Audio
             LocationAudioEvent.OnLocationAudioEvent += PlaySoundAtPosition;
             _audioListener ??= gameObject.AddComponent<AudioListener>();
             _audioListener.enabled = false;
+            
+            GameStateManager.Instance.OnGameOver += OnGameOver;
         }
         
         /// <summary>
@@ -57,6 +60,8 @@ namespace Audio
         {
             AudioEvent.OnAudioEvent -= PlaySound;
             LocationAudioEvent.OnLocationAudioEvent -= PlaySoundAtPosition;
+            
+            GameStateManager.Instance.OnGameOver -= OnGameOver;
         }
 
         /// <summary>
@@ -127,6 +132,20 @@ namespace Audio
         {
             _audioSource.pitch = rate;
             _ambientAudioSource.pitch = rate;
+        }
+        
+        public void PauseAudio()
+        {
+            _audioSource?.Pause();
+            _ambientAudioSource?.Pause();
+        }
+
+        private void OnGameOver()
+        {
+            AdjustPlayRate(1f);
+            PauseAudio();
+            
+            // TODO: Eventually play game over sound.
         }
     }
 }

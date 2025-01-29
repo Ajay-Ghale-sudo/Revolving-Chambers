@@ -204,6 +204,7 @@ namespace Player
         /// </summary>
         void Move()
         {
+            if (_isDying) return;
             // Move the player
             _characterController.Move(_moveVelocity * Time.deltaTime);
 
@@ -313,6 +314,7 @@ namespace Player
         /// </summary>
         private void LookTowardsCursor()
         {
+            if (_isDying) return;
             // Get cursor 
             Vector3 mousePos = Mouse.current.position.ReadValue();
             Ray ray = _mainCamera.ScreenPointToRay(mousePos);

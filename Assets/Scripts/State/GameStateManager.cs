@@ -1,5 +1,7 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 
 namespace State
@@ -98,11 +100,16 @@ namespace State
         private void GameOver()
         {
             // TODO: Show game over screen
-            
+            DOTween.KillAll(); 
             Time.timeScale = 1f;
             // Just reload scene for now, until we have UI to show game over screen.
-            var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
+            
+            Invoke(nameof(LoadMainMenu), 3f);
+        }
+        
+        private void LoadMainMenu()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

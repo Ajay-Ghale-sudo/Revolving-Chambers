@@ -52,6 +52,7 @@ namespace LevelHazards
 
         private void EnableCollider()
         {
+            if (!_mirrorCollider) return;
             _mirrorCollider.enabled = true;
         }
 
@@ -106,7 +107,7 @@ namespace LevelHazards
             var direction = (target.position - transform.position);
             direction.y = 0;
             direction.Normalize();
-            var firePos = transform.position + new Vector3(0, -1f, 0);
+            var firePos = transform.position + new Vector3(0, -2f, 0);
             var bullet = BulletManager.Instance.SpawnBullet(_ammo, firePos + direction * 2f, Quaternion.LookRotation(direction));
             //bullet.gameObject.layer = LayerMask.NameToLayer("BossBullet");
 
