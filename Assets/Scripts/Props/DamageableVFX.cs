@@ -11,15 +11,20 @@ namespace Props
     public class DamageableVFX : MonoBehaviour
     {
         /// <summary>
-        /// Original material on this gameobject at Start().
-        /// </summary>
-        Material _originalSharedMaterial;
-
-        /// <summary>
         /// Instanced material that should be destroyed manually.
         /// Used for changing this object's material through script.
         /// </summary>
         Material _instancedMaterial;
+
+        /// <summary>
+        /// The default colour of emission (when resetting)
+        /// </summary>
+        Color _defaultColor;
+
+        /// <summary>
+        /// The renderer for this gameobject
+        /// </summary>
+        Renderer _renderer;
 
         /// <summary>
         /// Cache the flicker coroutine
@@ -33,8 +38,21 @@ namespace Props
 
         private void Start()
         {
-            //Save original material
-            _originalSharedMaterial = gameObject.GetComponent<Renderer>().sharedMaterial;
+            if (gameObject.TryGetComponent(out Renderer rend))
+            {
+                //Cache renderer
+                _renderer = rend;
+
+                //Create + cache instanced material
+                //Clone the material and start using it from now on
+                _instancedMaterial = rend.material;
+
+                //Turn on emission but set it to black (basically no emission)
+                _instancedMaterial.EnableKeyword("_EMISSION");
+                _instancedMaterial.SetColor("_EmissionColor", Color.black);
+                _instancedMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+            }
+
         }
 
         private void OnDestroy()
@@ -94,16 +112,21 @@ namespace Props
         {
             if (_flashCoroutine == null) return;
 
-            //Reset material to original
-            if(gameObject.TryGetComponent<Renderer>(out Renderer r))
-            {
-                r.material = _originalSharedMaterial;
-            }
-            //Make sure instanced material is destroyed
-            Destroy(_instancedMaterial);
+            ResetColor();
 
             StopCoroutine(_flashCoroutine);
             _flashCoroutine = null;
+        }
+
+        /// <summary>
+        /// Sets the default the emission colour of the material. 
+        /// Can set to black to turn off emission effect
+        /// </summary>
+        /// <param name="color">Colour to change to</param>
+        public void SetColor(Color color)
+        {
+            _defaultColor = color;
+            _instancedMaterial.SetColor("_EmissionColor", color);
         }
 
         /// <summary>
@@ -148,30 +171,33 @@ namespace Props
         /// </summary>
         IEnumerator FlashRoutine(Color colour, float duration)
         {
-            Renderer renderer = gameObject.GetComponent<Renderer>();
             //Skip flashing if there is no renderer
-            if (renderer == null)
+            if (_renderer == null)
             {
                 _flashCoroutine = null;
                 yield break;
             }
 
-            //Clone the material and start using it from now on
-            _instancedMaterial = renderer.material;
-
-            //Set emission and colour on instanced material
-            _instancedMaterial.EnableKeyword("_EMISSION");
+            //Set emission colour on instanced material
             _instancedMaterial.SetColor("_EmissionColor", colour);
-            _instancedMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
 
             //Wait before resetting material
             yield return new WaitForSeconds(duration);
 
-            //Reset material to original
-            renderer.material = _originalSharedMaterial;
-            Destroy(_instancedMaterial);
+            ResetColor();
 
             _flashCoroutine = null;
         }
+
+        /// <summary>
+        /// Resets to the default colour
+        /// </summary>
+        public void ResetColor()
+        {
+            if (_renderer == null) return;
+
+            _instancedMaterial.SetColor("_EmissionColor", _defaultColor);
+        }
+
     }
 }

@@ -2,12 +2,18 @@ using DG.Tweening;
 using Interfaces;
 using State;
 using UnityEngine;
+using UnityEngine.Events;
 using Weapon;
+using Props;
 
 namespace LevelHazards
 {
     public class DiamondMirror : Damageable
     {
+        /// <summary>
+        /// Used to control emission effects
+        /// </summary>
+        [SerializeField] private DamageableVFX _vfxController;
         
         [SerializeField]
         private Ammo _ammo;
@@ -71,6 +77,7 @@ namespace LevelHazards
 
         public override void TakeDamage(DamageData damage)
         {
+            _vfxController?.PlayFlashColour(Color.white, 0.2f);
             if (_broken) return;
             
             switch (damage.type)
@@ -122,17 +129,25 @@ namespace LevelHazards
         private void Fix()
         {
             _broken = false;
+
+            _vfxController?.SetColor(Color.black);
         }
 
         private void DamagedByPlayer()
         {
             transform.DOMoveY(-verticalOffset, 0.5f).SetRelative(true);
+
+            //Set the emission for a long time since we will manually reset it when we fire
+            _vfxController?.SetColor(Color.grey);
         }
 
         private void DamagedByBoss()
         {
             transform.DOShakePosition(shakeDuration, shakeStrength, 5, 90f, false, true).SetRelative(true)
                 .OnComplete(() => transform.DOMoveY(-verticalOffset, retractSpeed).SetRelative(true));
+
+            //Set the emission for a long time since we will manually reset it when we fire
+            _vfxController?.SetColor(Color.red);
         }
     }
 }
