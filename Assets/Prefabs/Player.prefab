@@ -10164,7 +10164,7 @@ MonoBehaviour:
   OnWheelStop:
     m_PersistentCalls:
       m_Calls: []
-  WheelTickAudioEvent: {fileID: 0}
+  WheelTickAudioEvent: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
   cooldown: 30
 --- !u!96 &6570056444777745814
 TrailRenderer:

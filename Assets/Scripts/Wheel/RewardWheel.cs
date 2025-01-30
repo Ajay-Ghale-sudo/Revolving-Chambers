@@ -94,15 +94,29 @@ namespace Wheel
         /// Event for playing a wheel tick sound.
         /// </summary>
         public AudioEvent WheelTickAudioEvent;
+        
+        private Coroutine _wheelTickCoroutine;
+        
+        /// <summary>
+        /// Rate at which the wheel tick sound plays.
+        /// </summary>
+        private float _wheelTickRate = 0.2f;
+        
+        /// <summary>
+        /// Time since the last wheel tick.
+        /// </summary>
+        private float _wheelTickTime = 0f;
 
         private void Start()
         {
+            LoadLevelEvent.OnLoadEventEvent += StopWheel;
             SetupWheel();
         }
 
         private void OnDestroy()
         {
-            CancelInvoke(nameof(PlayWheelTick));
+            LoadLevelEvent.OnLoadEventEvent -= StopWheel;
+            StopWheel();
         }
 
         protected virtual void SetupWheel()
@@ -145,9 +159,20 @@ namespace Wheel
         /// </summary>
         private void PlayWheelTick()
         {
+            _wheelTickTime += Time.deltaTime;
+            if (_wheelTickTime < _wheelTickRate) return;
             WheelTickAudioEvent?.Invoke();
+            _wheelTickTime = 0f;
         }
-        
+
+        private void Update()
+        {
+            if (_isSpinning)
+            {
+                PlayWheelTick();
+            }
+        }
+
         /// <summary>
         /// Start the wheel spinning tween.
         /// </summary>
@@ -162,8 +187,10 @@ namespace Wheel
                 .SetUpdate(true)
                 .OnKill(HandleWheelStop);
             
+            // TODO: Find out why this is not working
             // repeatRate is 5 bullets per 1  -> 1/5
-            InvokeRepeating(nameof(PlayWheelTick), 0.0f, 0.2f);
+            // InvokeRepeating(nameof(PlayWheelTick), 0.0f, 0.2f);
+            // _wheelTickCoroutine = StartCoroutine(PlayWheelTick());
         }
 
         /// <summary>
@@ -172,8 +199,15 @@ namespace Wheel
         protected void StopWheel()
         {
             if (!_isSpinning) return;
+            // TODO: Find out why this is not working
+            // CancelInvoke(nameof(PlayWheelTick));
+            // if (_wheelTickCoroutine != null)
+            // {
+            //     StopCoroutine(_wheelTickCoroutine);
+            // }
+            // _wheelTickCoroutine = null;
+            _isSpinning = false;
             _spinTween?.Kill();
-            CancelInvoke(nameof(PlayWheelTick));
         }
         
         /// <summary>

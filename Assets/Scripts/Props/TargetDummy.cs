@@ -101,7 +101,7 @@ namespace Props
         /// <summary>
         /// Destroy the target dummy.
         /// </summary>
-        private void Die()
+        protected override void Die()
         {
             OnDeath?.Invoke();
             Destroy(gameObject);

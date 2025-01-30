@@ -78,6 +78,7 @@ namespace Wheel
 
         private void OnDestroy()
         {
+           GameStateManager.Instance.OnPlayerRevive -= PlayerRevived;
            ReloadManager.Instance.OnSpinStart -= SpinWheel;
            ReloadManager.Instance.OnSpinEnd -= StopWheel;
         }
