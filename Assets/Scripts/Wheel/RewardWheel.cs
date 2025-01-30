@@ -106,6 +106,16 @@ namespace Wheel
         /// Time since the last wheel tick.
         /// </summary>
         private float _wheelTickTime = 0f;
+        
+        /// <summary>
+        /// Number of loops the wheel has done.
+        /// </summary>
+        protected int _loopCount = 0;
+        
+        /// <summary>
+        /// Event invoked when the wheel has looped.
+        /// </summary>
+        public UnityAction OnWheelLooped;
 
         private void Start()
         {
@@ -174,6 +184,15 @@ namespace Wheel
         }
 
         /// <summary>
+        /// Called when the wheel has looped.
+        /// </summary>
+        protected virtual void WheelLooped()
+        {
+            _loopCount++;
+            OnWheelLooped?.Invoke();
+        }
+
+        /// <summary>
         /// Start the wheel spinning tween.
         /// </summary>
         protected void SpinWheel()
@@ -185,6 +204,7 @@ namespace Wheel
                 .SetLoops(-1, LoopType.Restart)
                 .SetEase(spinCurve)
                 .SetUpdate(true)
+                .OnComplete(WheelLooped)
                 .OnKill(HandleWheelStop);
             
             // TODO: Find out why this is not working
@@ -192,6 +212,7 @@ namespace Wheel
             // InvokeRepeating(nameof(PlayWheelTick), 0.0f, 0.2f);
             // _wheelTickCoroutine = StartCoroutine(PlayWheelTick());
         }
+        
 
         /// <summary>
         /// Stop the wheel spinning tween.
@@ -216,6 +237,10 @@ namespace Wheel
         /// <param name="value">Current notch value of the wheel</param>
         protected void WheelUpdate(float value)
         {
+            if (value < _currentValue)
+            {
+                WheelLooped();
+            }
             _currentValue = value;
             ReloadManager.Instance.OnSpinUpdate?.Invoke((int)_currentValue);
         }
@@ -237,6 +262,8 @@ namespace Wheel
             _selectedSection =  wheelSections.First(section => _currentValue >= section.Start && _currentValue <= section.End);
             OnWheelStop?.Invoke(_selectedSection);
             SectionSelected(_selectedSection);
+            _currentValue = 0f;
+            _loopCount = 0;
         }
         
         protected virtual void SectionSelected(T section)
