@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Interfaces;
 using State;
 using UI;
@@ -146,7 +147,16 @@ namespace Boss.Craps
             _stateMachine.SetState(new CrapsDeadState(this));
             if (_rollDiceCoroutine != null) StopCoroutine(_rollDiceCoroutine);
             _rollDiceCoroutine = null;
+            transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
+            transform.DOShakeScale(2f, 2.5f, 10, 90f);
             GameStateManager.Instance.OnBossDeath?.Invoke();
+        }
+
+        protected void OnDeathFinished()
+        {
+            GameStateManager.Instance.OnBossDeath?.Invoke();
+            print("Finished dying.");
+            gameObject.SetActive(false);
         }
     }
 }
