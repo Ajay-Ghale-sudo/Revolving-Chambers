@@ -155,7 +155,6 @@ namespace Boss.Craps
         protected void OnDeathFinished()
         {
             GameStateManager.Instance.OnBossDeath?.Invoke();
-            print("Finished dying.");
             gameObject.SetActive(false);
         }
     }
