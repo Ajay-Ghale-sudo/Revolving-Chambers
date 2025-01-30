@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Events;
 using State;
 using UnityEngine;
@@ -18,9 +19,9 @@ namespace Audio
         private AudioSource _audioSource;
 
         /// <summary>
-        /// A separate AudioSource for playing ambient audio. Allows for independent volume/settings control 
+        /// An object used to control background music. 
         /// </summary>
-        private AudioSource _ambientAudioSource;
+        private BackgroundMusicController _backgroundMusicController;
         
         /// <summary>
         /// The <see cref="AudioListener"/> attached to this GameObject. Used when there is no player audio listener.
@@ -30,8 +31,10 @@ namespace Audio
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
-            _ambientAudioSource = gameObject.AddComponent<AudioSource>();
-            _ambientAudioSource.loop = true;
+            
+            GameObject musicObject = new GameObject("BackgroundMusicController");
+            musicObject.transform.SetParent(transform);
+            _backgroundMusicController = musicObject.AddComponent<BackgroundMusicController>();
 
             AudioEvent.OnAudioEvent += PlaySound;
             LocationAudioEvent.OnLocationAudioEvent += PlaySoundAtPosition;
@@ -75,17 +78,17 @@ namespace Audio
         /// <remarks> Will stop playing if audioClip is null </remarks>
         /// <param name="ambientClip">Sound to play</param>
         /// <param name="volume">Volume from 0.0 - 1.0</param>
-        public void SetAmbientClip(AudioClip audioClip, float volume)
+        public void SetBackgroundMusic(AudioClip audioClip, float volume)
         {
             if (!audioClip)
             {
-                PlayAmbient(false);
+                PlayBackgroundMusic(false);
                 return;
             }
 
-            _ambientAudioSource.clip = audioClip;
-            _ambientAudioSource.volume = volume;
-            PlayAmbient(true);
+            ClearBackgroundMusicEffects();
+            _backgroundMusicController?.SetClip(audioClip, volume);
+            _backgroundMusicController?.Play();
         }
 
         /// <summary>
@@ -93,24 +96,103 @@ namespace Audio
         /// Used for pausing and resuming.
         /// </summary>
         /// <param name="state">start or stop</param>
-        public void PlayAmbient(bool state)
+        public void PlayBackgroundMusic(bool state)
         {
-            if (_ambientAudioSource == null) return;
+            if (_backgroundMusicController ==null) return;
 
-            if (state && _ambientAudioSource.clip)
+            if (state)
             {
-                _ambientAudioSource?.Play();
+                _backgroundMusicController?.Play();
             }
             else
             {
-                _ambientAudioSource?.Stop();
+                _backgroundMusicController?.Stop();
             }
+        }
+
+        /// <summary>
+        /// Automates a volume envelope transition on the background music.
+        /// </summary>
+        /// <param name="startVolume">Start volume level</param>
+        /// <param name="targetVolume">Target volume level</param>
+        /// <param name="tweenTime">Length of the envelope in seconds</param>
+        /// <param name="easeType">Type of easing to use for the envelope</param>
+        public void StartBackgroundMusicVolumeEnvelope(float startVolume, float targetVolume, float tweenTime,
+            Ease easeType = Ease.Linear)
+        {
+            _backgroundMusicController?.ApplyVolumeEnvelope(startVolume, targetVolume, tweenTime, easeType);
+        }
+
+        /// <summary>
+        /// Sets the cutoff frequency for the background music's lowpass filter.
+        /// </summary>
+        /// <param name="targetFreq">Cutoff frequency in Hz</param>
+        public void SetBackgroundMusicLowpassFilter(float targetFreq)
+        {
+            _backgroundMusicController?.UpdateLowpassFilter(targetFreq);
+        }
+
+        /// <summary>
+        /// Interpolates the pitch of the background music between two pitches over a specified timeframe
+        /// </summary>
+        /// <param name="startPitch">Starting pitch</param>
+        /// <param name="targetPitch">Target pitch</param>
+        /// <param name="tweenTime">Time to take in seconds</param>
+        /// <param name="easeType">Type of tween easing to use</param>
+        public void StartBackgroundMusicPitchEnvelope(float startPitch, float targetPitch, float tweenTime,
+            Ease easeType = Ease.Linear)
+        {
+            _backgroundMusicController?.ApplyPitchEnvelope(startPitch, targetPitch, tweenTime, easeType);
+        }
+
+        /// <summary>
+        /// Interpolates a highpass filter on the BGM between two cutoff frequencies over a specified timeframe.
+        /// </summary>
+        /// <param name="startFreq">Start HPF cutoff frequency in Hz</param>
+        /// <param name="targetFreq">Target HPF cutoff frequency in Hz</param>
+        /// <param name="tweenTime">Time to take in seconds</param>
+        /// <param name="easeType">Type of tween easing to use</param>
+        public void StartBackgroundMusicHighpassFilterEnvelope(float startFreq, float targetFreq, float tweenTime,
+            Ease easeType = Ease.Linear)
+        {
+            _backgroundMusicController?.ApplyHighpassFilterEnvelope(startFreq, targetFreq, tweenTime, easeType);
+        }
+
+        /// <summary>
+        /// Interpolates a lowpass filter on the BGM between two cutoff frequencies over a specified timeframe.
+        /// </summary>
+        /// <param name="startFreq">Start LPF cutoff frequency in Hz</param>
+        /// <param name="targetFreq">Final LPF cutoff frequency in Hz</param>
+        /// <param name="tweenTime">Time to take in seconds</param>
+        /// <param name="easeType">Type of tween easing to use</param>
+        public void StartBackgroundMusicLowpassFilterEnvelope(float startFreq, float targetFreq, float tweenTime,
+            Ease easeType = Ease.Linear)
+        {
+            _backgroundMusicController?.ApplyLowpassFilterEnvelope(startFreq, targetFreq, tweenTime, easeType);
+        }
+
+        /// <summary>
+        /// Interpolates a reverb level on the BGM between two reverb levels over a specified timeframe.
+        /// </summary>
+        /// <param name="startLevel">Initial volume level on [0.0, 1.0]</param>
+        /// <param name="targetLevel">Target volume level on [0.0, 1.0]</param>
+        /// <param name="tweenTime">Envelope length in seconds</param>
+        /// <param name="easeType">Type of tween easing to use</param>
+        public void StartBackgroundMusicReverbLevelEnvelope(float startLevel, float targetLevel, float tweenTime,
+            Ease easeType = Ease.Linear)
+        {
+            _backgroundMusicController?.ApplyReverbEnvelope(startLevel, targetLevel, tweenTime, easeType);
+        }
+
+        public void ClearBackgroundMusicEffects()
+        {
+            _backgroundMusicController?.ClearEffects();
         }
 
         /// <summary>
         /// Play the specified sound.
         /// </summary>
-        /// <param name="audioData">The sound to play.</param>
+        /// <param name="audioData">The sound to play</param>
         public void PlaySound(AudioEventData audioData)
         {
             if (!audioData?.clip) return;
@@ -139,7 +221,7 @@ namespace Audio
         public void AdjustGlobalPitch(float rate)
         {
             _audioSource.pitch = rate;
-            _ambientAudioSource.pitch = rate;
+            _backgroundMusicController.SetPitch(rate);
         }
         
         /// <summary>
@@ -148,7 +230,7 @@ namespace Audio
         public void ResetGlobalAudioPitch()
         {
             _audioSource.pitch = 1f;
-            _ambientAudioSource.pitch = 1f;
+            _backgroundMusicController?.SetPitch(1.0f);
         }
         
         /// <summary>
@@ -157,7 +239,7 @@ namespace Audio
         public void PauseAudio()
         {
             _audioSource?.Pause();
-            _ambientAudioSource?.Pause();
+            _backgroundMusicController?.Pause();
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Audio;
 using DG.Tweening;
 using Events;
 using UnityEngine;
@@ -60,10 +61,21 @@ namespace Props.SlotMachine
         /// </summary>
         private Tweener _leverTween;
 
+        /// <summary>
+        /// Event to play audio for the intro sequence.
+        /// </summary>
+        [SerializeField] private AudioEvent IntroAudioEvent;
+
+        /// <summary>
+        /// Audio clip for the intro background music.
+        /// </summary>
+        [SerializeField] private AudioClip IntroBackgroundMusic;
+
         private void Awake()
         {
             _slotWheels = new List<SlotWheel>(GetComponentsInChildren<SlotWheel>());
             _camera = GetComponentInChildren<Camera>();
+            AudioManager.Instance?.SetBackgroundMusic(IntroBackgroundMusic, 1.0f);
         }
 
         private void Start()
@@ -95,6 +107,10 @@ namespace Props.SlotMachine
                 .SetEase(_SlotLeverCurve)
                 .SetAutoKill(false)
                 .OnComplete(StartSpin);
+            
+            AudioManager.Instance?.StartBackgroundMusicLowpassFilterEnvelope(1000.0f, 250.0f, 1.5f);
+            AudioManager.Instance?.StartBackgroundMusicVolumeEnvelope(1.0f, 0.0f, 5.0f);
+            IntroAudioEvent?.Invoke();
         }
 
         /// <summary>
