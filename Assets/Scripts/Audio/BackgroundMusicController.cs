@@ -138,6 +138,15 @@ namespace Audio
         }
 
         /// <summary>
+        /// Pauses the current background music.
+        /// </summary>
+        public void Pause()
+        {
+            if (musicSource == null || musicSource.clip == null) return;
+            musicSource.Pause();
+        }
+
+        /// <summary>
         /// Clears the state of all effects and all effects tweens on the background music.
         /// </summary>
         public void ClearEffects()

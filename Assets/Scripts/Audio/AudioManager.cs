@@ -230,7 +230,7 @@ namespace Audio
         public void ResetGlobalAudioPitch()
         {
             _audioSource.pitch = 1f;
-            _ambientAudioSource.pitch = 1f;
+            _backgroundMusicController?.SetPitch(1.0f);
         }
         
         /// <summary>
@@ -239,7 +239,7 @@ namespace Audio
         public void PauseAudio()
         {
             _audioSource?.Pause();
-            _ambientAudioSource?.Pause();
+            _backgroundMusicController?.Pause();
         }
 
         /// <summary>
