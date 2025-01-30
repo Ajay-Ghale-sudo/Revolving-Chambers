@@ -44,6 +44,13 @@ namespace Wheel
         /// </summary>
         private bool _onCooldown = false;
         
+        /// <summary>
+        /// Number of loops before a game over.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Number of loops before a game over.")]
+        private int MaxLoops = 3;
+        
         void Start()
         {
             GameStateManager.Instance.OnPlayerDeath += SetupWheel;
@@ -82,6 +89,8 @@ namespace Wheel
 
         protected override void SectionSelected(DeathWheelSection section)
         {
+            if (_loopCount > MaxLoops) return;
+            
             base.SectionSelected(section);
             if (section.isRevive)
             {
@@ -93,6 +102,12 @@ namespace Wheel
             }
         }
 
-
+        protected override void WheelLooped()
+        {
+            base.WheelLooped();
+            if (_loopCount < MaxLoops) return;
+            
+            GameStateManager.Instance.OnGameOver?.Invoke();
+        }
     }
 }
