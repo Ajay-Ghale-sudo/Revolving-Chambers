@@ -4556,6 +4556,10 @@ PrefabInstance:
       value: 31.5
       objectReference: {fileID: 0}
     - target: {fileID: 2711281027676303071, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
+      propertyPath: IntroAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d63f424afc4f981d86dbfdc0cd4a4d2, type: 2}
+    - target: {fileID: 2711281027676303071, guid: 3f0f610a03886074b8095bd08d62d974, type: 3}
       propertyPath: ButtonClickEvent
       value: 
       objectReference: {fileID: 11400000, guid: 4c769a72bf3835870bc0b4745a38ca91, type: 2}
@@ -5366,6 +5370,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   leverRotation: 45
   _lever: {fileID: 9041018707542500142}
+  IntroAudioEvent: {fileID: 11400000, guid: 6d63f424afc4f981d86dbfdc0cd4a4d2, type: 2}
+  IntroBackgroundMusic: {fileID: 8300000, guid: c66c5aee003defeaa809294f727a92fb, type: 3}
 --- !u!1001 &5269862614395712295
 PrefabInstance:
   m_ObjectHideFlags: 0
