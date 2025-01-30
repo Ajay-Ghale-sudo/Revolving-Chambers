@@ -14,7 +14,6 @@ namespace Audio
         
         private const string BGMTweenID = "BackgroundMusicTween";
 
-        private const float DefaultMusicVolume = 1.0f;
         private const float DefaultMusicPitch = 1.0f;
         private const float DefaultHighpassCutoffFreq = 20.0f;
         private const float DefaultLowpassCutoffFreq = 25000.0f;
@@ -27,7 +26,6 @@ namespace Audio
                 musicSource = gameObject.AddComponent<AudioSource>();
             }
             musicSource.loop = true;
-            musicSource.volume = DefaultMusicVolume;
             musicSource.pitch = DefaultMusicPitch;
             
             if (!TryGetComponent(out highpassFilter))
@@ -147,7 +145,6 @@ namespace Audio
             DOTween.Kill(BGMTweenID);
             if (musicSource == null) return;
 
-            musicSource.volume = DefaultMusicVolume;
             musicSource.pitch = DefaultMusicPitch;
             
             if (highpassFilter != null) highpassFilter.cutoffFrequency = DefaultHighpassCutoffFreq;

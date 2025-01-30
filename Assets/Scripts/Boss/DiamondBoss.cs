@@ -336,10 +336,10 @@ namespace Boss
         protected sealed override void Die()
         {
             if (_bossExitPortal != null) _bossExitPortal.SetActive(true);
-            AudioManager.Instance.SetBackgroundMusic(null, 0.0f);
+            AudioManager.Instance?.SetBackgroundMusic(null, 0.0f);
             _running = false;
             OnDeath?.Invoke();
-            GameStateManager.Instance.OnBossDeath?.Invoke();
+            GameStateManager.Instance?.OnBossDeath?.Invoke();
             Destroy(gameObject);
         }
 
@@ -420,14 +420,14 @@ namespace Boss
             elapsedTimeSeconds = 0f;
             IsComplete = false;
 
-            AudioManager.Instance.SetBackgroundMusic(_owner._bossIntroMusic, 0.6f);
-            GameStateManager.Instance.OnBossIntroStart?.Invoke();
+            AudioManager.Instance?.SetBackgroundMusic(_owner._bossIntroMusic, 0.6f);
+            GameStateManager.Instance?.OnBossIntroStart?.Invoke();
         }
 
         public override void OnExit()
         {
-            AudioManager.Instance.SetBackgroundMusic(_owner._backgroundMusic, 0.6f);
-            GameStateManager.Instance.OnBossFightStart?.Invoke();
+            AudioManager.Instance?.SetBackgroundMusic(_owner._backgroundMusic, 0.6f);
+            GameStateManager.Instance?.OnBossFightStart?.Invoke();
         }
 
         public override void Update()

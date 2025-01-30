@@ -86,6 +86,7 @@ namespace Audio
                 return;
             }
 
+            ClearBackgroundMusicEffects();
             _backgroundMusicController?.SetClip(audioClip, volume);
             _backgroundMusicController?.Play();
         }
@@ -181,6 +182,11 @@ namespace Audio
             Ease easeType = Ease.Linear)
         {
             _backgroundMusicController?.ApplyReverbEnvelope(startLevel, targetLevel, tweenTime, easeType);
+        }
+
+        public void ClearBackgroundMusicEffects()
+        {
+            _backgroundMusicController?.ClearEffects();
         }
 
         /// <summary>
