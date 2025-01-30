@@ -17,7 +17,7 @@ namespace Audio
         private const float DefaultMusicVolume = 1.0f;
         private const float DefaultMusicPitch = 1.0f;
         private const float DefaultHighpassCutoffFreq = 20.0f;
-        private const float DefaultLowpassCutoffFreq = 20.0f;
+        private const float DefaultLowpassCutoffFreq = 25000.0f;
         private const float DefaultReverbLevel = -10000.0f;
 
         private void Awake()
