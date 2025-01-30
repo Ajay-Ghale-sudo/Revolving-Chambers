@@ -127,7 +127,7 @@ namespace State
         private void LoadMainMenu()
         {
             // get main menu scene index
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadScene(0);
         }
     }
 }

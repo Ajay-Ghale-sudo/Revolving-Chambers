@@ -30,6 +30,10 @@ namespace Events
     [CreateAssetMenu(fileName = "Data", menuName = "Game Events/Load Level", order = 0)]
     public class LoadLevelEvent : GameEvent<LoadLevelEventData>
     {
+        /// <summary>
+        /// Action invoked when a LoadLevelEvent is triggered.
+        /// </summary>
+        public static Action OnLoadEventEvent;
         protected override void OnInvoke(GameObject invoker = null)
         {
             base.OnInvoke(invoker);
@@ -39,7 +43,7 @@ namespace Events
                 Debug.LogWarning("No level to load in LoadLevelEvent");
                 return;
             }
-            
+            OnLoadEventEvent?.Invoke();
             SceneManager.LoadScene(data.level.BuildIndex, data.loadSceneMode);
         }
     }

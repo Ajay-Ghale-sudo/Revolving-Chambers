@@ -172,6 +172,12 @@ namespace Weapon
             Invoke(nameof(BroadcastAmmoState), 0.1f);
         }
 
+        private void OnDestroy()
+        {
+            ReloadManager.Instance.DeregisterWeapon(this);
+            ReloadManager.Instance.OnLoadAmmo -= LoadAllChambers;
+        }
+
         
         /// <summary>
         /// Broadcast the state of the ammo in the chambers.

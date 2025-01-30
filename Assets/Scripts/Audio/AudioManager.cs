@@ -40,6 +40,7 @@ namespace Audio
             
             GameStateManager.Instance.OnGameOver += OnGameOver;
             GameStateManager.Instance.OnGameStart += ResetGlobalAudioPitch;
+            GameStateManager.Instance.OnPlayerRevive += ResetGlobalAudioPitch;
         }
         
         /// <summary>
@@ -64,6 +65,7 @@ namespace Audio
             
             GameStateManager.Instance.OnGameOver -= OnGameOver;
             GameStateManager.Instance.OnGameStart -= ResetGlobalAudioPitch;
+            GameStateManager.Instance.OnPlayerRevive -= ResetGlobalAudioPitch;
         }
 
         /// <summary>

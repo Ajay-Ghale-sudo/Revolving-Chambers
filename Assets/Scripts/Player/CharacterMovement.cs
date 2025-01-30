@@ -366,23 +366,21 @@ namespace Player
         private void Revive()
         {
             _isDying = false;
-            Health = 5;
+            Health = healthRestoredOnRevive;
             _animationHandler?.Play_Revive();
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
-            AudioManager.Instance.AdjustGlobalPitch(1f);
         }
 
         /// <summary>
         /// Kill the player.
         /// </summary>
-        private void Die()
+        protected override void Die()
         {
             if (_isDying) return;
             _isDying = true;
             OnDeath?.Invoke();
             _animationHandler?.Play_Death();
             GameStateManager.Instance.OnPlayerDeath?.Invoke();
-            AudioManager.Instance.AdjustGlobalPitch(0.5f);
         }
 
         // IDamageable implementation \\
