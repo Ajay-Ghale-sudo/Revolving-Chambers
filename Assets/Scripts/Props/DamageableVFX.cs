@@ -36,7 +36,7 @@ namespace Props
         /// </summary>
         Coroutine _flashCoroutine;
 
-        private void Start()
+        private void Awake()
         {
             if (gameObject.TryGetComponent(out Renderer rend))
             {
