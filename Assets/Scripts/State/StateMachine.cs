@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine.XR;
 
 namespace State
@@ -22,7 +23,7 @@ namespace State
         /// <summary>
         /// The nodes for the state machine.
         /// </summary>
-        private Dictionary<Type, StateNode> nodes = new();
+        private Dictionary<Guid, StateNode> nodes = new();
         
         /// <summary>
         /// The transitions that can be taken from any state.
@@ -37,12 +38,12 @@ namespace State
                 ChangeState(transition.To);
             }
             
-            current.State?.Update();
+            current?.State?.Update();
         }
 
         public void FixedUpdate()
         {
-            current.State?.FixedUpdate();
+            current?.State?.FixedUpdate();
         }
 
         /// <summary>
@@ -70,11 +71,11 @@ namespace State
             if (state == current.State) return;
 
             previous = current;
-            var nextState = nodes[state.GetType()];
+            var nextState = nodes[state.id];
             
             previous.State?.OnExit();
             nextState.State.OnEnter();
-            current = nodes[state.GetType()];
+            current = nodes[state.id];
         }
 
         /// <summary>
@@ -83,17 +84,19 @@ namespace State
         /// <returns>The first <see cref="ITransition"/> which conditions are met. Null if no viable transitions are found. </returns>
         ITransition GetTransition()
         {
-            foreach (var transition in anyTransitions)
-            {
-                if (transition.Condition.Evaluate())
-                    return transition;
-            }
+            if (anyTransitions?.Count > 0)
+                foreach (var transition in anyTransitions)
+                {
+                    if (transition.Condition.Evaluate())
+                        return transition;
+                }
             
-            foreach (var transition in current.Transitions)
-            {
-                if (transition.Condition.Evaluate())
-                    return transition;
-            }
+            if (current?.Transitions?.Count > 0)
+                foreach (var transition in current.Transitions)
+                {
+                    if (transition.Condition.Evaluate())
+                        return transition;
+                }
 
             return null;
         }
@@ -135,11 +138,11 @@ namespace State
         /// <returns>The <see cref="StateNode"/> created for this State.</returns>
         StateNode GetOrAddNode(IState state)
         {
-            var node = nodes.GetValueOrDefault(state.GetType());
+            var node = nodes.GetValueOrDefault(state.id);
             if (node == null)
             {
                 node = new StateNode(state);
-                nodes.Add(state.GetType(), node);
+                nodes.Add(state.id, node);
             }
 
             return node;

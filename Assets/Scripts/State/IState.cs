@@ -1,10 +1,16 @@
-﻿namespace State
+﻿using System;
+
+namespace State
 {
     /// <summary>
     /// Interface for a state.
     /// </summary>
     public interface IState
     {
+        /// <summary>
+        /// The id of the state.
+        /// </summary>
+        Guid id { get; }
         /// <summary>
         /// Called when the state is entered.
         /// </summary>
