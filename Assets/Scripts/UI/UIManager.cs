@@ -62,5 +62,10 @@ namespace UI
         /// Action to Show/Hide the End Screen
         /// </summary>
         public Action<bool> OnShowEndScreen;
+
+        /// <summary>
+        /// Action to Show/Hide the Pause Screen
+        /// </summary>
+        public Action OnTogglePauseScreen;
     }
 }

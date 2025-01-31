@@ -13,7 +13,7 @@ namespace Props
         {
             if (SpinningPart == null) return;
 
-            SpinningPart.transform.Rotate(new Vector3(0.0f, 0.1f, 0.0f), Space.Self);
+            SpinningPart.transform.Rotate(new Vector3(0.0f, 8.0f * Time.deltaTime, 0.0f), Space.Self);
         }
     }
 }

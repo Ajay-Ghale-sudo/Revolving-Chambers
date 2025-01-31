@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utility;
+using UI;
 
 namespace State
 {
@@ -61,6 +62,16 @@ namespace State
         /// </summary>
         public Action OnGameOver;
 
+        /// <summary>
+        /// Action for when the game is paused.
+        /// </summary>
+        public Action<bool> OnGamePause;
+
+        /// <summary>
+        /// Action for when the volume slider is changed
+        /// </summary>
+        public Action<float> OnVolumeChange;
+
         private void Start()
         {
             OnPlayerDeath += PlayerDeath;
@@ -68,6 +79,8 @@ namespace State
             OnPlayerRevive += PlayerRevive;
             OnGameOver += GameOver;
             OnGameStart += GameStart;
+            OnGamePause += PauseGame;
+            OnVolumeChange += ChangeVolume;
         }
 
         private void OnDestroy()
@@ -76,6 +89,8 @@ namespace State
             OnBossDeath -= BossDeath;
             OnPlayerRevive -= PlayerRevive;
             OnGameOver -= GameOver;
+            OnGamePause -= PauseGame;
+            OnVolumeChange -= ChangeVolume;
         }
 
         /// <summary>
@@ -128,6 +143,33 @@ namespace State
         {
             // get main menu scene index
             SceneManager.LoadScene(0);
+        }
+
+        /// <summary>
+        /// Pauses the timescale and DOTweens
+        /// </summary>
+        /// <param name="state"></param>
+        private void PauseGame(bool state)
+        {
+            if (state) 
+            { 
+                Time.timeScale = 0.0f;
+                DOTween.PauseAll();
+            }
+            else 
+            { 
+                Time.timeScale = 1f;
+                DOTween.PlayAll();
+            }
+        }
+
+        /// <summary>
+        /// Change global volume
+        /// </summary>
+        /// <param name="vol"></param>
+        private void ChangeVolume(float vol)
+        {
+            AudioListener.volume = vol;
         }
     }
 }

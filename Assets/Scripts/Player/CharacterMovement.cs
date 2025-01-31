@@ -146,6 +146,11 @@ namespace Player
         private bool _isDying = false;
 
         /// <summary>
+        /// If the player is currently paused.
+        /// </summary>
+        private bool _isPaused = false;
+
+        /// <summary>
         /// Audio event to fire when the player dashes.
         /// </summary>
         public AudioEvent _dashAudioEvent;
@@ -181,6 +186,7 @@ namespace Player
             _characterController = GetComponent<CharacterController>();
             
             GameStateManager.Instance.OnPlayerRevive += Revive;
+            GameStateManager.Instance.OnGamePause += OnGamePause;
             
             _yPosition = transform.position.y;
 
@@ -196,7 +202,7 @@ namespace Player
         {
             LookTowardsCursor();
             Move();
-            UpdateAnimations();
+            if(!_isPaused) UpdateAnimations();
         }
 
         /// <summary>
@@ -204,7 +210,7 @@ namespace Player
         /// </summary>
         void Move()
         {
-            if (_isDying) return;
+            if (_isDying || _isPaused) return;
             // Move the player
             _characterController.Move(_moveVelocity * Time.deltaTime);
 
@@ -231,7 +237,7 @@ namespace Player
         /// </summary>
         void OnAttack()
         {
-            if (_isDashing || _isDying) return;
+            if (_isDashing || _isDying || _isPaused) return;
             _weapon?.Fire();
         }
 
@@ -240,6 +246,7 @@ namespace Player
         /// </summary>
         void OnDash()
         {
+            if (_isPaused) return;
             Dash();
         }
 
@@ -298,6 +305,7 @@ namespace Player
         /// </summary>
         void OnRightClick()
         {
+            if (_isPaused) return;
             UIManager.Instance.OnSpinEnd?.Invoke();
         }
         
@@ -306,7 +314,25 @@ namespace Player
         /// </summary>
         void OnReload()
         {
+            if (_isPaused) return;
             _weapon?.Reload();
+        }
+
+        /// <summary>
+        /// Handle the pause input.
+        /// </summary>
+        void OnPause()
+        {
+            UIManager.Instance.OnTogglePauseScreen?.Invoke();
+        }
+
+        /// <summary>
+        /// Do stuff when the game is paused/unpaused
+        /// </summary>
+        /// <param name="state">pause/unpause</param>
+        void OnGamePause(bool state)
+        {
+            _isPaused = state;
         }
 
         /// <summary>
@@ -314,7 +340,7 @@ namespace Player
         /// </summary>
         private void LookTowardsCursor()
         {
-            if (_isDying) return;
+            if (_isDying || _isPaused) return;
             // Get cursor 
             Vector3 mousePos = Mouse.current.position.ReadValue();
             Ray ray = _mainCamera.ScreenPointToRay(mousePos);
