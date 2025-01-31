@@ -45,7 +45,7 @@ namespace Audio
             GameStateManager.Instance.OnGameStart += ResetGlobalAudioPitch;
             GameStateManager.Instance.OnPlayerRevive += ResetGlobalAudioPitch;
         }
-        
+
         /// <summary>
         /// Enable the default <see cref="_audioListener"/>
         /// </summary>
@@ -76,7 +76,7 @@ namespace Audio
         /// Used for setting new clips.
         /// </summary>
         /// <remarks> Will stop playing if audioClip is null </remarks>
-        /// <param name="ambientClip">Sound to play</param>
+        /// <param name="audioClip">Audio clip to play as background music</param>
         /// <param name="volume">Volume from 0.0 - 1.0</param>
         public void SetBackgroundMusic(AudioClip audioClip, float volume)
         {

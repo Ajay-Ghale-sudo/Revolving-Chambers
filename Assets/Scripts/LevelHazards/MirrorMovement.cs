@@ -107,6 +107,8 @@ namespace LevelHazards
         {
             GameStateManager.Instance.OnBossIntroStart -= HandleBossIntroStart;
             GameStateManager.Instance.OnBossFightStart -= HandleBossFightStart;
+            GameStateManager.Instance.OnDiamondBossPhase1End -= HandleDiamondBossPhase1End;
+            GameStateManager.Instance.OnDiamondBossPhase2End -= HandleDiamondBossPhase2End;
             GameStateManager.Instance.OnBossDeath -= HandleBossDeath;
         }
     }

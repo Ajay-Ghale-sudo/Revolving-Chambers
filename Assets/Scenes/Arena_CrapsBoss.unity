@@ -8368,6 +8368,7 @@ MonoBehaviour:
   - {fileID: 398907266}
   - {fileID: 1718759193}
   - {fileID: 1158305356}
+  backgroundMusic: {fileID: 8300000, guid: 0f925225c9d5c1b10ba70f96230ace00, type: 3}
 --- !u!65 &1578047601
 BoxCollider:
   m_ObjectHideFlags: 0
