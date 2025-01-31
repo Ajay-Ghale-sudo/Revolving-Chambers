@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Audio;
 using Interfaces;
 using Props.SlotMachine;
 using State;
@@ -90,6 +91,11 @@ namespace Boss.Roulette
         [SerializeField]
         public SlotWheel rightWheel;
         
+        /// <summary>
+        /// Background music clip to loop.
+        /// </summary>
+        [SerializeField]
+        private AudioClip backgroundMusic;
         
         private void Awake()
         {
@@ -102,6 +108,11 @@ namespace Boss.Roulette
            UIManager.Instance.OnBossSpawned?.Invoke(name); 
            UIManager.Instance.OnBossHealthChange?.Invoke(Health / MaxHealth);
            UpdateTarget();
+           
+            if (backgroundMusic != null)
+            {
+                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.6f);
+            }
            
         }
         

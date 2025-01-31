@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+﻿using System;
 
 namespace State
 {
@@ -10,7 +10,7 @@ namespace State
         /// <summary>
         /// The id of the state.
         /// </summary>
-        GUID id { get; }
+        Guid id { get; }
         /// <summary>
         /// Called when the state is entered.
         /// </summary>

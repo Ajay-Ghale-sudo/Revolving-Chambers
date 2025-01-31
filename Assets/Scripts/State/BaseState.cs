@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
+using System;
 
 namespace State
 {
@@ -31,13 +31,13 @@ namespace State
     {
         public BaseState()
         {
-            this.id = GUID.Generate();
+            this.id = Guid.NewGuid();
         }
 
         /// <summary>
         /// Unique ID of this state instance.
         /// </summary>
-        public GUID id { get; }
+        public Guid id { get; }
 
         /// <summary>
         /// Called when the state is entered.

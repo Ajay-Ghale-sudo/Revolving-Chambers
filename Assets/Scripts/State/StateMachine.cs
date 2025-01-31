@@ -23,7 +23,7 @@ namespace State
         /// <summary>
         /// The nodes for the state machine.
         /// </summary>
-        private Dictionary<GUID, StateNode> nodes = new();
+        private Dictionary<Guid, StateNode> nodes = new();
         
         /// <summary>
         /// The transitions that can be taken from any state.
