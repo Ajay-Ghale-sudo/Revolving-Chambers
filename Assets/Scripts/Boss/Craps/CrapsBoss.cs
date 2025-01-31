@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using DG.Tweening;
 using Interfaces;
 using State;
@@ -39,6 +40,12 @@ namespace Boss.Craps
         /// </summary>
         [SerializeField]
         private List<DiceSpawner> diceSpawners;
+
+        /// <summary>
+        /// Background music clip to loop.
+        /// </summary>
+        [SerializeField]
+        private AudioClip backgroundMusic;
         
         /// <summary>
         /// Coroutine to roll dice at random intervals.
@@ -57,6 +64,11 @@ namespace Boss.Craps
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
             
             _rollDiceCoroutine = StartCoroutine(RollDiceCoroutine());
+
+            if (backgroundMusic != null)
+            {
+                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.6f);
+            }
         }
 
         private void Update()
