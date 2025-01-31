@@ -32,6 +32,12 @@ namespace Props.SlotMachine
         /// Is the wheel spinning?
         /// </summary>
         private bool _spinning = false;
+        
+        /// <summary>
+        /// Starts the Wheel spin on Start
+        /// </summary>
+        [SerializeField]
+        private bool spinOnStart = false;
 
         private void Start()
         {
@@ -41,6 +47,11 @@ namespace Props.SlotMachine
             // Set Random start rotation
             var randomRotation = Random.Range(0, 360);
             transform.Rotate(Vector3.left, randomRotation);
+            
+            if (spinOnStart)
+            {
+                StartWheel();
+            }
         }
 
         /// <summary>

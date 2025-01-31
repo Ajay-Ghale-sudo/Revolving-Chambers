@@ -26657,6 +26657,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: bbbca58c4116ade46a9a3af470aedc21, type: 3}
     - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: _diamondHazard
+      value: 
+      objectReference: {fileID: 1330052333714231834, guid: 575ce6d518abcc14f9992048f6a8dd51, type: 3}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
       propertyPath: _bossExitPortal
       value: 
       objectReference: {fileID: 457492279}

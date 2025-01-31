@@ -1,4 +1,7 @@
-﻿namespace State
+﻿using System.Collections.Generic;
+using UnityEditor;
+
+namespace State
 {
     /// <summary>
     /// Generic state implementation. 
@@ -28,9 +31,14 @@
     {
         public BaseState()
         {
-            
+            this.id = GUID.Generate();
         }
-        
+
+        /// <summary>
+        /// Unique ID of this state instance.
+        /// </summary>
+        public GUID id { get; }
+
         /// <summary>
         /// Called when the state is entered.
         /// </summary>
@@ -57,6 +65,52 @@
         /// </summary>
         public virtual void FixedUpdate()
         {
+        }
+    }
+    
+    /// <summary>
+    /// A phase of a Boss phase. Has multiple concurrent states.
+    /// </summary>
+    public class BossPhase : BaseState
+    {
+        /// <summary>
+        /// Concurrent states in this phase.
+        /// </summary>
+        private List<IState> _states = new();
+        
+        public BossPhase()
+        {
+            
+        }
+        
+        public override void OnEnter()
+        {
+            _states.ForEach(state => state.OnEnter());
+        }
+
+        public override void OnExit()
+        {
+            _states.ForEach(state => state.OnExit());
+        }
+
+        public override void Update()
+        {
+            _states.ForEach(state => state.Update());
+        }
+
+        public override void FixedUpdate()
+        {
+            _states.ForEach(state => state.FixedUpdate());
+        }
+        
+        public void AddState(IState state)
+        {
+            _states.Add(state);
+        }
+        
+        public void RemoveState(IState state)
+        {
+            _states.Remove(state);
         }
     }
 }

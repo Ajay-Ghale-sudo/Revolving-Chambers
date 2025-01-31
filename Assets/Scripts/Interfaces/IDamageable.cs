@@ -83,6 +83,11 @@ namespace Interfaces
         public float Health => health;
         
         /// <summary>
+        /// Percentage of health remaining.
+        /// </summary>
+        public float HealthPercentage => health / maxHealth;
+        
+        /// <summary>
         /// Maximum health of the object.
         /// </summary>
         [SerializeField]
@@ -97,6 +102,11 @@ namespace Interfaces
         /// Flag to check if damage is enabled.
         /// </summary>
         protected bool _damageEnabled = true;
+        
+        /// <summary>
+        /// True if health is 0.
+        /// </summary>
+        public bool IsDead => health <= 0;
         
         public UnityEvent GetOnDeathEvent()
         {
