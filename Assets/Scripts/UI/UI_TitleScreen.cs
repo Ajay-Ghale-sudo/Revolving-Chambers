@@ -1,6 +1,7 @@
 using Events;
 using UnityEngine;
 using State;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -21,11 +22,20 @@ namespace UI
         /// </summary>
         [SerializeField] private AudioEvent ButtonHoverEvent;
 
+        /// <summary>
+        /// The slider for volume control
+        /// </summary>
+        [SerializeField] private Slider _volumeSlider;
+
         private void Start()
         {
             //Bind events
             UIManager.Instance.OnShowTitleScreen += EnablePanel;
 
+            if(_volumeSlider != null)
+            {
+                _volumeSlider.value = AudioListener.volume;
+            }
         }
 
         private void OnDestroy()
@@ -89,6 +99,15 @@ namespace UI
         /// </summary>
         public void OnHover_Exit()
         {
+        }
+
+        /// <summary>
+        /// Called by slider's OnValueChanged
+        /// </summary>
+        /// <param name="value">Slider's value</param>
+        public void OnChange_Volume(float value)
+        {
+            GameStateManager.Instance?.OnVolumeChange.Invoke(value);
         }
     }
 }

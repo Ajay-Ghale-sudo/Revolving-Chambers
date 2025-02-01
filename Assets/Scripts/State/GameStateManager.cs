@@ -72,6 +72,11 @@ namespace State
         /// </summary>
         public Action<float> OnVolumeChange;
 
+        private void Awake()
+        {
+            AudioListener.volume = 0.5f;
+        }
+
         private void Start()
         {
             OnPlayerDeath += PlayerDeath;
