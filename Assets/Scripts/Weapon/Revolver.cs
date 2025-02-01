@@ -122,10 +122,22 @@ namespace Weapon
         [SerializeField] private ReloadWheel reloadWheel;
 
         /// <summary>
-        /// The audio event to trigger when firing the revolver.
+        /// Audio event to fire when shooting a good ammo type.
         /// </summary>
         [SerializeField]
-        public AudioEvent FireWeaponAudioEvent;
+        public AudioEvent PlayFireGoodAmmoSoundEvent;
+
+        /// <summary>
+        /// Audio event to fire when shooting a basic ammo type.
+        /// </summary>
+        [SerializeField]
+        public AudioEvent PlayFireBasicAmmoSoundEvent;
+
+        /// <summary>
+        /// Audio event to fire when shooting a bad ammo type.
+        /// </summary>
+        [SerializeField]
+        public AudioEvent PlayFireBadAmmoSoundEvent;
         
         public override void Fire()
         {
@@ -141,9 +153,21 @@ namespace Weapon
                 var rb = bullet.GetComponent<Rigidbody>();
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
-
+                
                 OnFire?.Invoke();
-                FireWeaponAudioEvent?.Invoke();
+                
+                if (ammo.name.Contains("Ammo_Good")) 
+                {
+                    PlayFireGoodAmmoSoundEvent?.Invoke();
+                }
+                if (ammo.name.Contains("Ammo_Basic")) 
+                {
+                    PlayFireBasicAmmoSoundEvent?.Invoke();
+                }
+                if (ammo.name.Contains("Ammo_Bad")) 
+                {
+                    PlayFireBadAmmoSoundEvent?.Invoke();
+                }
             }
             NextChamber();
             
