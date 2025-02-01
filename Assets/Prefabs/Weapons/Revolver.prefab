@@ -114,7 +114,9 @@ MonoBehaviour:
   chamberCount: 5
   fireRate: 0.2
   reloadWheel: {fileID: 4597473847999530873}
-  FireWeaponAudioEvent: {fileID: 11400000, guid: 6b32899609959fa3083080b5029df0fc, type: 2}
+  PlayFireGoodAmmoSoundEvent: {fileID: 11400000, guid: 93a829bf60cbec672a7c0b6a7a61b234, type: 2}
+  PlayFireBasicAmmoSoundEvent: {fileID: 11400000, guid: a3185b6d71dadd95085b52c327be75bc, type: 2}
+  PlayFireBadAmmoSoundEvent: {fileID: 11400000, guid: 2da1ea1284f0b87cb9ac0ad4ed8440e1, type: 2}
 --- !u!114 &4597473847999530873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +175,9 @@ MonoBehaviour:
       m_Calls: []
   WheelTickAudioEvent: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
   ammoLoadouts: []
+  PlayReloadGoodAmmoSoundEvent: {fileID: 11400000, guid: acb5b463c3c8de7788914a433389f1af, type: 2}
+  PlayReloadBasicAmmoSoundEvent: {fileID: 11400000, guid: 6c6d7b2b6f77473baa74a8ea58133e0c, type: 2}
+  PlayReloadBadAmmoSoundEvent: {fileID: 11400000, guid: ee3b1ae831086b7a18d781de027eb060, type: 2}
 --- !u!1 &5253306214395512921
 GameObject:
   m_ObjectHideFlags: 0

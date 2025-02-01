@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using DG.Tweening;
+using Events;
 using State;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +29,21 @@ namespace Wheel
         /// TODO: configured in editor for now, but should be driven from the game itself.
         /// </summary>
         [SerializeField] private List<AmmoLoadout> ammoLoadouts;
+
+        /// <summary>
+        /// Audio event that is fired when the player reloads a good ammo type.
+        /// </summary>
+        [SerializeField] public AudioEvent PlayReloadGoodAmmoSoundEvent;
+
+        /// <summary>
+        /// Audio event that is fired when the player reloads a basic ammo type.
+        /// </summary>
+        [SerializeField] public AudioEvent PlayReloadBasicAmmoSoundEvent;
+
+        /// <summary>
+        /// Audio event that is fired when the player reloads a bad ammo type.
+        /// </summary>
+        [SerializeField] public AudioEvent PlayReloadBadAmmoSoundEvent;
         
         protected override void SetupWheel()
         {
@@ -87,7 +101,21 @@ namespace Wheel
         {
             base.SectionSelected(section);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.Reward);
-            
+
+            // ugly but it works lol
+            if (_selectedSection.Reward.ToString().Contains("Ammo_Good"))
+            {
+                PlayReloadGoodAmmoSoundEvent?.Invoke();
+            }
+            else if (_selectedSection.Reward.ToString().Contains("Ammo_Basic"))
+            {
+                PlayReloadBasicAmmoSoundEvent?.Invoke();
+            }
+            else if (_selectedSection.Reward.ToString().Contains("Ammo_Bad"))
+            {
+                PlayReloadBadAmmoSoundEvent?.Invoke();
+            }
+
             ChooseRandomAmmoLoadout();
             
         }
