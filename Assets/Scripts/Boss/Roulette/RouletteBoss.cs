@@ -277,6 +277,7 @@ namespace Boss.Roulette
             
             if (health <= 0)
             {
+                GameStateManager.Instance.lastKilledBoss = BossType.Roulette;
                 Die();
             }
         }
