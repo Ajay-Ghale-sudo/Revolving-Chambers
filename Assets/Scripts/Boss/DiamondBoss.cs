@@ -336,6 +336,7 @@ namespace Boss
         protected sealed override void Die()
         {
             if (_bossExitPortal != null) _bossExitPortal.SetActive(true);
+            GameStateManager.Instance.lastKilledBoss = BossType.Diamond;
             AudioManager.Instance?.SetBackgroundMusic(null, 0.0f);
             _running = false;
             OnDeath?.Invoke();

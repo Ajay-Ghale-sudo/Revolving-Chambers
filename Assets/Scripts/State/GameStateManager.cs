@@ -71,6 +71,11 @@ namespace State
         /// Action for when the volume slider is changed
         /// </summary>
         public Action<float> OnVolumeChange;
+        
+        /// <summary>
+        ///  The Last boss killed.
+        /// </summary>
+        public BossType lastKilledBoss;
 
         private void Awake()
         {
@@ -176,5 +181,13 @@ namespace State
         {
             AudioListener.volume = vol;
         }
+    }
+    
+    public enum BossType
+    {
+        Unknown,
+        Craps,
+        Diamond,
+        Roulette
     }
 }
