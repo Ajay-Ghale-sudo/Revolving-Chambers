@@ -38,6 +38,16 @@ namespace Weapon
         Material _instancedMaterial;
 
         /// <summary>
+        /// The object that was hit by the bullet.
+        /// </summary>
+        public GameObject ObjectHit { get; private set; }
+        
+        /// <summary>
+        /// Whether the bullet is destroyed by bullet collision.
+        /// </summary>
+        [SerializeField] private bool destroyedByBulletCollision = true;
+
+        /// <summary>
         /// Set the ammo for the bullet.
         /// </summary>
         /// <param name="ammo">The new ammo type</param>
@@ -85,12 +95,18 @@ namespace Weapon
                 return;
             }
             
+            ObjectHit = other.gameObject;
+            
             OnHit?.Invoke(this);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(Ammo.damage);
             }
            
+            if (!destroyedByBulletCollision && other.gameObject.TryGetComponent<Bullet>(out var bullet))
+            {
+                return;
+            }
             Destruct(); 
         }
 

@@ -34,11 +34,11 @@ namespace UI
         /// The <see cref="Rigidbody"/> attached to this GameObject.
         /// </summary>
         private Rigidbody _rigidbody;
-        
+
         /// <summary>
         /// Whether the chip is disabled
         /// </summary>
-        bool _disabled = false;
+        public bool Disabled { get; private set; } = false;
         
         private void Awake()
         {
@@ -54,7 +54,7 @@ namespace UI
         /// </summary>
         public void ResetPosition()
         {
-            _disabled = false;
+            Disabled = false;
             _rigidbody.isKinematic = true;
             transform.position = _startPosition;
             transform.eulerAngles = _startRotation;
@@ -65,11 +65,12 @@ namespace UI
         /// </summary>
         public void Launch()
         {
+            if (Disabled) return;
             _rigidbody.isKinematic = false;
             _rigidbody.AddForce(Vector3.up * launchForce, ForceMode.Impulse);
             _rigidbody.AddTorque(Vector3.left * launchTorque, ForceMode.Impulse);
             
-            _disabled = true;
+            Disabled = true;
             Invoke(nameof(UpdateActive), 2f);
         }
 
@@ -83,7 +84,7 @@ namespace UI
         /// </summary>
         public void UpdateActive()
         {
-            gameObject.SetActive(!_disabled);
+            gameObject.SetActive(!Disabled);
         }
     }
 }

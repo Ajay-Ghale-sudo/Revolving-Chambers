@@ -121,24 +121,6 @@ namespace Weapon
         /// </summary>
         [SerializeField] private ReloadWheel reloadWheel;
 
-        /// <summary>
-        /// Audio event to fire when shooting a good ammo type.
-        /// </summary>
-        [SerializeField]
-        public AudioEvent PlayFireGoodAmmoSoundEvent;
-
-        /// <summary>
-        /// Audio event to fire when shooting a basic ammo type.
-        /// </summary>
-        [SerializeField]
-        public AudioEvent PlayFireBasicAmmoSoundEvent;
-
-        /// <summary>
-        /// Audio event to fire when shooting a bad ammo type.
-        /// </summary>
-        [SerializeField]
-        public AudioEvent PlayFireBadAmmoSoundEvent;
-        
         public override void Fire()
         {
             if (_isReloading || !_canFire) return;
@@ -154,20 +136,8 @@ namespace Weapon
                 if (rb == null) return;
                 rb.linearVelocity = muzzleTransform.forward * ammo.velocity;
                 
+                ammo.fireSound?.Invoke();
                 OnFire?.Invoke();
-                
-                if (ammo.name.Contains("Ammo_Good")) 
-                {
-                    PlayFireGoodAmmoSoundEvent?.Invoke();
-                }
-                if (ammo.name.Contains("Ammo_Basic")) 
-                {
-                    PlayFireBasicAmmoSoundEvent?.Invoke();
-                }
-                if (ammo.name.Contains("Ammo_Bad")) 
-                {
-                    PlayFireBadAmmoSoundEvent?.Invoke();
-                }
             }
             NextChamber();
             

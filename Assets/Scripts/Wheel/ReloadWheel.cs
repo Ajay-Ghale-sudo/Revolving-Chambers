@@ -30,21 +30,6 @@ namespace Wheel
         /// </summary>
         [SerializeField] private List<AmmoLoadout> ammoLoadouts;
 
-        /// <summary>
-        /// Audio event that is fired when the player reloads a good ammo type.
-        /// </summary>
-        [SerializeField] public AudioEvent PlayReloadGoodAmmoSoundEvent;
-
-        /// <summary>
-        /// Audio event that is fired when the player reloads a basic ammo type.
-        /// </summary>
-        [SerializeField] public AudioEvent PlayReloadBasicAmmoSoundEvent;
-
-        /// <summary>
-        /// Audio event that is fired when the player reloads a bad ammo type.
-        /// </summary>
-        [SerializeField] public AudioEvent PlayReloadBadAmmoSoundEvent;
-        
         protected override void SetupWheel()
         {
             // Update the wheel sections with the ammo loadouts.
@@ -101,23 +86,8 @@ namespace Wheel
         {
             base.SectionSelected(section);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.Reward);
-
-            // ugly but it works lol
-            if (_selectedSection.Reward.ToString().Contains("Ammo_Good"))
-            {
-                PlayReloadGoodAmmoSoundEvent?.Invoke();
-            }
-            else if (_selectedSection.Reward.ToString().Contains("Ammo_Basic"))
-            {
-                PlayReloadBasicAmmoSoundEvent?.Invoke();
-            }
-            else if (_selectedSection.Reward.ToString().Contains("Ammo_Bad"))
-            {
-                PlayReloadBadAmmoSoundEvent?.Invoke();
-            }
-
+            _selectedSection.Reward.loadSound?.Invoke();
             ChooseRandomAmmoLoadout();
-            
         }
     }
 }

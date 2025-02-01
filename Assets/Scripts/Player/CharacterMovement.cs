@@ -94,6 +94,11 @@ namespace Player
         /// Health of the player. Represented in hits they can take.
         /// </summary>
         [SerializeField] private new int Health = 5;
+        
+        /// <summary>
+        /// Max health of the player. Represented in hits they can take.
+        /// </summary>
+        [SerializeField] private new int MaxHealth = 5;
 
         /// <summary>
         /// Health restored on revive.
@@ -187,6 +192,7 @@ namespace Player
             
             GameStateManager.Instance.OnPlayerRevive += Revive;
             GameStateManager.Instance.OnGamePause += OnGamePause;
+            GameStateManager.Instance.OnPlayerHeal += Heal;
             
             _yPosition = transform.position.y;
 
@@ -195,6 +201,13 @@ namespace Player
             
             // Lock cursor to window
             Cursor.lockState = CursorLockMode.Confined;
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnPlayerRevive -= Revive;
+            GameStateManager.Instance.OnGamePause -= OnGamePause;
+            GameStateManager.Instance.OnPlayerHeal -= Heal;
         }
 
         // Update is called once per frame
@@ -394,6 +407,12 @@ namespace Player
             _isDying = false;
             Health = healthRestoredOnRevive;
             _animationHandler?.Play_Revive();
+            UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
+        }
+        
+        private void Heal(int amount)
+        {
+            Health = Mathf.Clamp(Health + amount, 0, MaxHealth);
             UIManager.Instance.OnPlayerHealthChange?.Invoke(Health);
         }
 
