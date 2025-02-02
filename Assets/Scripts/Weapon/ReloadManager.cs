@@ -50,6 +50,7 @@ namespace Weapon
         private void OnDestroy()
         {
             GameStateManager.Instance.OnPlayerDeath -= StopWheel;
+            UIManager.Instance.OnSpinEnd -= StopWheel;
         }
 
         /// <summary>

@@ -87,10 +87,12 @@ namespace Wheel
         private void OnDestroy()
         {
             GameStateManager.Instance.OnPlayerDeath -= SetupWheel;
+            UIManager.Instance.OnSpinEnd -= StopWheel;
         }
 
         protected override void SectionSelected(DeathWheelSection section)
         {
+            UIManager.Instance.OnSpinEnd -= StopWheel;
             if (_loopCount > MaxLoops) return;
             
             base.SectionSelected(section);

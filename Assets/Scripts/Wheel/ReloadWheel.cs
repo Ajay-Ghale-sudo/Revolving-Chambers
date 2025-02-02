@@ -24,6 +24,13 @@ namespace Wheel
     /// </summary>
     public class ReloadWheel : RewardWheel<AmmoWheelSection>
     {
+        
+        /// <summary>
+        /// Cooldown before next reload trigger.
+        /// HACK: Used because of double trigger bug.
+        /// </summary>
+        private bool _cooldown = false;
+        
         /// <summary>
         /// Ammo loadouts for the wheel.
         /// TODO: configured in editor for now, but should be driven from the game itself.
@@ -84,10 +91,22 @@ namespace Wheel
 
         protected override void SectionSelected(AmmoWheelSection section)
         {
+            if (_cooldown) return;
+            
+            _cooldown = true;
+            Invoke(nameof(DisableCooldown), 1f);
             base.SectionSelected(section);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.Reward);
             _selectedSection.Reward.loadSound?.Invoke();
             ChooseRandomAmmoLoadout();
+        }
+        
+        /// <summary>
+        /// Disable the cooldown.
+        /// </summary>
+        protected void DisableCooldown()
+        {
+            _cooldown = false;
         }
     }
 }
