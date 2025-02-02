@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f2f18f6c7084608ac986194bf94a51b, type: 3}
-  m_Name: Event_Audio_WheelTickSound
+  m_Name: Event_Audio_RouletteBossDeath
   m_EditorClassIdentifier: 
   data:
-    clip: {fileID: 8300000, guid: 18b3179267a1af7bdbcebf16455b799e, type: 3}
-    volume: 0.23
+    clip: {fileID: 8300000, guid: 39962d10b42548155a9fd689a6006a4d, type: 3}
+    volume: 0.898
     pitch: 1
     loop: 0

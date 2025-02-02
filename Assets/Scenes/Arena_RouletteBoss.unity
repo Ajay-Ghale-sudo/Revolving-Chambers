@@ -40521,7 +40521,7 @@ PrefabInstance:
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: backgroundMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 39552a37659b4775194720d253ccd420, type: 3}
+      objectReference: {fileID: 8300000, guid: eb26b799c4b7bdb16b31315de311de97, type: 3}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: _spreadShotAmount
       value: 8
@@ -40529,7 +40529,7 @@ PrefabInstance:
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: PlayDeathSoundEvent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: f2e262db1918add62b9818207db88362, type: 2}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: PlayHazardSoundEvent
       value: 
@@ -40557,11 +40557,11 @@ PrefabInstance:
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: PlayShootBulletSoundEvent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: a16b3f98213df4ae6838c1de9bdaebe1, type: 2}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: PlaySpreadShotBulletSoundEvent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: cf1289f83e03de4e3b933c5a678ccea6, type: 2}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
       value: 4
