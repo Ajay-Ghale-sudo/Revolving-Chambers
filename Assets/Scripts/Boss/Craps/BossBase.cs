@@ -41,6 +41,15 @@ namespace Boss.Craps
         public void NextPhase()
         {
             --currentPhase;
+            OnPhaseChange();
+            UIManager.Instance.OnBossPhaseChange?.Invoke(currentPhase);
+        }
+
+        /// <summary>
+        /// Handle when the boss phase changes.
+        /// </summary>
+        protected virtual void OnPhaseChange()
+        {
             UIManager.Instance.OnBossPhaseChange?.Invoke(currentPhase);
         }
     }

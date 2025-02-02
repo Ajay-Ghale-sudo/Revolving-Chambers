@@ -161,13 +161,13 @@ namespace Boss.Roulette
             phase2.AddState(shootState);
             phase2.AddState(hazardState);
 
-            _stateMachine.AddTransition(phase1, phase2, new FuncPredicate(() => health < MaxHealth * .75f));
+            _stateMachine.AddTransition(phase1, phase2, new FuncPredicate(() => currentPhase == 2));
 
             phase3.AddState(spreadShotState);
             phase3.AddState(hazardState);
 
-            _stateMachine.AddTransition(phase2, phase3, new FuncPredicate(() => health < MaxHealth * .5f));
-            _stateMachine.AddAnyTransition(deadState, new FuncPredicate(() => health <= 0));
+            _stateMachine.AddTransition(phase2, phase3, new FuncPredicate(() => currentPhase == 1));
+            _stateMachine.AddAnyTransition(deadState, new FuncPredicate(() => currentPhase == 0));
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace Boss.Roulette
 
             if (health <= 0)
             {
-                Die();
+                NextPhase();
             }
         }
 
@@ -317,6 +317,18 @@ namespace Boss.Roulette
             DeactivateHazards();
             GameStateManager.Instance.lastKilledBoss = BossType.Roulette;
             GameStateManager.Instance.OnBossDeath?.Invoke();
+        }
+
+        protected override void OnPhaseChange()
+        {
+            if (currentPhase == 0)
+            {
+                Die();
+                return;
+            }
+            
+            health = maxHealth;
+            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
         }
     }
 }

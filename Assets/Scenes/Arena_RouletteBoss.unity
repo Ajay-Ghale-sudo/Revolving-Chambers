@@ -40500,7 +40500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: health
-      value: 2000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: leftWheel
@@ -40508,7 +40508,11 @@ PrefabInstance:
       objectReference: {fileID: 464243404}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
+      propertyPath: phaseCount
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: rightWheel
