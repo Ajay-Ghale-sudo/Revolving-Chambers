@@ -193,6 +193,7 @@ namespace Player
             GameStateManager.Instance.OnPlayerRevive += Revive;
             GameStateManager.Instance.OnGamePause += OnGamePause;
             GameStateManager.Instance.OnPlayerHeal += Heal;
+            GameStateManager.Instance.OnBossDeath += DisableDamage;
             
             _yPosition = transform.position.y;
 
@@ -209,6 +210,7 @@ namespace Player
             GameStateManager.Instance.OnPlayerRevive -= Revive;
             GameStateManager.Instance.OnGamePause -= OnGamePause;
             GameStateManager.Instance.OnPlayerHeal -= Heal;
+            GameStateManager.Instance.OnBossDeath -= DisableDamage;
         }
 
         // Update is called once per frame

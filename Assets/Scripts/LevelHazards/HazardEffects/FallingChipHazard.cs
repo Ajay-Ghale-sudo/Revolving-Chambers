@@ -1,7 +1,9 @@
+using System;
 using Events;
 using UnityEngine;
 using UnityEngine.Events;
 using Interfaces;
+using State;
 
 namespace LevelHazards
 {
@@ -42,6 +44,17 @@ namespace LevelHazards
         /// Only trigger once per launch
         /// </summary>
         private bool _triggered = false;
+
+
+        private void Start()
+        {
+            GameStateManager.Instance.OnBossDeath += OnAttackEnd;
+        }
+        
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnBossDeath -= OnAttackEnd;
+        }
 
         /// <summary>
         /// Launch the falling hazard effect.

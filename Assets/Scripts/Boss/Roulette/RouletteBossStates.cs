@@ -115,8 +115,6 @@ namespace Boss.Roulette
         {
             base.OnEnter();
             _owner.leftWheel.StopWheel();
-            Trigger();
-
             _owner.ActivateHazards();
         }
 

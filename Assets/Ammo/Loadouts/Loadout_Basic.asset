@@ -20,5 +20,8 @@ MonoBehaviour:
     probability: 0.2
     Reward: {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
   - name: Basic
-    probability: 0.5
+    probability: 0.4
     Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  - name: Fast
+    probability: 0.1
+    Reward: {fileID: 11400000, guid: e8c376c914856fd4ba5bc9f032ca21a7, type: 2}

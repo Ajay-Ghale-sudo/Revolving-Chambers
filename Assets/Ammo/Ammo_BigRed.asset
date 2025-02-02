@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ammo_BigRed
   m_EditorClassIdentifier: 
   damage:
-    damage: 50
+    damage: 40
     type: 1
   projectilePrefab: {fileID: 8576117351993674856, guid: 2c4a8532c53328f45baa44b6878a7f9a, type: 3}
   velocity: 25

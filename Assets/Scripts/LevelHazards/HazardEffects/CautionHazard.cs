@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 using Interfaces;
 using DG.Tweening;
+using State;
 
 namespace LevelHazards
 {
@@ -91,10 +92,13 @@ namespace LevelHazards
             _originalUVs = _barrierMesh.mesh.uv;
             _movingUVs = _barrierMesh.mesh.uv;
 
+            GameStateManager.Instance.OnBossDeath += DisableHazard;
+
         }
 
         public void OnDestroy()
         {
+            GameStateManager.Instance.OnBossDeath -= DisableHazard;
             Destroy(_instancedMesh);
             Destroy(_instancedMaterial);
         }

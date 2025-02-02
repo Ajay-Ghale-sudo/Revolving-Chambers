@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using Events;
 using Interfaces;
+using State;
 using UnityEngine;
 using Weapon;
 
@@ -84,7 +85,13 @@ namespace Boss.Craps
 
         private void Start()
         {
+            GameStateManager.Instance.OnBossDeath += FlyAway;
             Launch();
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnBossDeath -= FlyAway;
         }
 
         /// <summary>

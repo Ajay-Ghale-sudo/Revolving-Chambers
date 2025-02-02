@@ -345,7 +345,7 @@ namespace Boss
             AudioManager.Instance?.SetBackgroundMusic(null, 0.0f);
             _running = false;
             OnDeath?.Invoke();
-            GameStateManager.Instance?.OnBossDeath?.Invoke();
+            // GameStateManager.Instance?.OnBossDeath?.Invoke();
             Destroy(gameObject);
         }
 
@@ -914,6 +914,7 @@ namespace Boss
         /// </summary>
         public override void OnEnter()
         {
+            GameStateManager.Instance.OnBossDeath?.Invoke();
             _owner.NextPhase();
             _owner._trailRenderer.emitting = false;
             _owner.transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
