@@ -330,7 +330,7 @@ namespace Boss
 
         public override void TakeDamage(DamageData damage)
         {
-            if (damage.type != DamageType.Player) return;
+            if (damage.type != DamageType.Player || !_damageEnabled) return;
             health -= damage.damage;
             OnDamage?.Invoke();
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
@@ -351,11 +351,13 @@ namespace Boss
 
         internal void EnableTrail()
         {
+            _trailRenderer.enabled = true;
             _trailRenderer.emitting = true;
         }
         
         internal void DisableTrail()
         {
+            _trailRenderer.enabled = false;
             _trailRenderer.emitting = false;
         }
 
@@ -414,6 +416,7 @@ namespace Boss
         // exactly the length of the boss intro music (four bars at 170bpm)
         private const float DurationSeconds = 5.647f;
         private float elapsedTimeSeconds;
+        private Tweener _rotationTween;
         
         public bool IsComplete = false;
 
@@ -425,6 +428,11 @@ namespace Boss
         {
             elapsedTimeSeconds = 0f;
             IsComplete = false;
+            
+            _owner.DisableDamage();
+            
+            _rotationTween = _owner.transform.DOLocalRotate(new Vector3(0f, 360f * 1.5f, 0f), DurationSeconds, RotateMode.FastBeyond360)
+                .SetLoops(-1).SetRelative(true).SetEase(Ease.InExpo);
 
             AudioManager.Instance?.SetBackgroundMusic(_owner._bossIntroMusic, 0.4f);
             GameStateManager.Instance?.OnBossIntroStart?.Invoke();
@@ -432,6 +440,8 @@ namespace Boss
 
         public override void OnExit()
         {
+            _rotationTween.Kill();
+            _owner.EnableDamage();
             AudioManager.Instance?.SetBackgroundMusic(_owner._backgroundMusic, 0.4f);
             GameStateManager.Instance?.OnBossFightStart?.Invoke();
         }
@@ -509,7 +519,10 @@ namespace Boss
             {
                 // Re-roll start position until it starts in a new segment
                 do tStart = getRandomSegmentPosition(); while ((Math.Abs(tStart - tPrevFinish) < 0.01f));
-
+                
+                _owner.EnableTrail();
+                _owner.Invoke(nameof(_owner.DisableTrail), 1f);
+                
                 // play teleport noise
                 _owner.PlayTeleportAudioEvent?.Invoke();
                 
@@ -592,6 +605,7 @@ namespace Boss
             
             if (tTraveled >= MoveAmount)
             {
+                _owner.EnableTrail();
                 IsComplete = true;
             }
         }
@@ -693,7 +707,7 @@ namespace Boss
         {
             PhaseComplete = false;
             startTime = Time.time;
-            _owner._trailRenderer.emitting = true;
+            _owner.EnableTrail();
             _startingPosition = _owner.transform.position;
             
             // Teleport to center of arena
