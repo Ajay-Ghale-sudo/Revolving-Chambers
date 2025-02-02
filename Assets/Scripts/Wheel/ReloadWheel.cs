@@ -94,7 +94,7 @@ namespace Wheel
             if (_cooldown) return;
             
             _cooldown = true;
-            Invoke(nameof(DisableCooldown), 1f);
+            Invoke(nameof(DisableCooldown), .25f);
             base.SectionSelected(section);
             ReloadManager.Instance.OnLoadAmmo?.Invoke(_selectedSection.Reward);
             _selectedSection.Reward.loadSound?.Invoke();
