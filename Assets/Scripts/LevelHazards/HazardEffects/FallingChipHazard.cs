@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 using UnityEngine.Events;
 using Interfaces;
@@ -34,6 +35,8 @@ namespace LevelHazards
         /// </summary>
         [SerializeField] private DamageData _damageData;
 
+        [SerializeField] private AudioEvent PlayChipLandThunkAudioEvent;
+
         /// <summary>
         /// Track if triggered.
         /// Only trigger once per launch
@@ -64,6 +67,8 @@ namespace LevelHazards
             if (_impactParticleSystem == null) return;
 
             _impactParticleSystem.Emit(count);
+
+                PlayChipLandThunkAudioEvent?.Invoke();
         }
 
         /// <summary>

@@ -177,6 +177,10 @@ namespace Boss
         [Tooltip("The exit portal spawned when the boss dies.")]
         public GameObject _bossExitPortal;
 
+        [SerializeField] public AudioEvent PlayTeleportAudioEvent;
+        [SerializeField] public AudioEvent PlayPhase2AttackAudioEvent;
+        [SerializeField] public AudioEvent PlayTakeDamageAudioEvent;
+
         private void Awake()
         {
             _trailRenderer = GetComponent<TrailRenderer>();
@@ -331,6 +335,7 @@ namespace Boss
             OnDamage?.Invoke();
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
             PlayDamageEffect(Color.red);
+            PlayTakeDamageAudioEvent?.Invoke();
         }
 
         protected sealed override void Die()
@@ -504,6 +509,9 @@ namespace Boss
             {
                 // Re-roll start position until it starts in a new segment
                 do tStart = getRandomSegmentPosition(); while ((Math.Abs(tStart - tPrevFinish) < 0.01f));
+
+                // play teleport noise
+                _owner.PlayTeleportAudioEvent?.Invoke();
                 
                 // Also, if new move action will place the boss in the same place, move it in the other direction
                 travelDirection = getRandomDirection();
@@ -576,6 +584,9 @@ namespace Boss
                     // Spawn bullet meeting these parameters
                     _owner.FireBullet(bulletWorldPosition, bulletDirection);
                     _owner.FireBullet(bulletWorldPosition, bulletDirection * -1.0f);
+                    
+                    // play a sound for each pair of bullets fired
+                    _owner.PlayPhase2AttackAudioEvent?.Invoke();
                 }
             }
             
@@ -689,6 +700,9 @@ namespace Boss
             _owner.transform.position = new Vector3(0f, -0.6f, 0f);
             _owner.transform.DORotate(_owner.rotationVector, _owner.rotationDuration / 3, _owner.rotateMode)
                 .SetLoops(-1).SetRelative(true).SetEase(Ease.Linear);
+            
+            // play teleport noise
+            _owner.PlayTeleportAudioEvent?.Invoke();
             
             _owner.StopAttackPattern();
             _owner.StartSecondaryAttackPattern();

@@ -26688,6 +26688,18 @@ PrefabInstance:
       propertyPath: _fireBulletAudioEvent
       value: 
       objectReference: {fileID: 11400000, guid: 317e0aac3712ca51d98a0fa1639bfd8c, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: PlayTeleportAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 8abbcdd6f231bd9f78292a321e6cdadd, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: PlayTakeDamageAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cb05facd73a2e195974170f59963cca, type: 2}
+    - target: {fileID: 7728396292606905365, guid: 6b026bd08cc01fa49a5551d01802efb9, type: 3}
+      propertyPath: PlayPhase2AttackAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e10d4d5ecec5cc21aa0a5bfd6f66bfa5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

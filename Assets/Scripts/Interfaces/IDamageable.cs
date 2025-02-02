@@ -91,7 +91,7 @@ namespace Interfaces
         /// Maximum health of the object.
         /// </summary>
         [SerializeField]
-        protected float maxHealth = 1;
+        protected float maxHealth = 100;
         
         /// <summary>
         /// Maximum health of the object.
