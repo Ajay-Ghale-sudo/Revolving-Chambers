@@ -116,6 +116,8 @@ namespace Boss.Roulette
             base.OnEnter();
             _owner.leftWheel.StopWheel();
             Trigger();
+
+            _owner.ActivateHazards();
         }
 
         public override void OnExit()
@@ -133,9 +135,8 @@ namespace Boss.Roulette
 
         private void Trigger()
         {
-            
-            _owner.ActivateHazards();
             if (_owner.HealthPercentage < .5f) _owner.SpawnHazard();
+            if (_owner.HealthPercentage < .75f) _owner.ActivateHazards();
         }
 
         public override void FixedUpdate()

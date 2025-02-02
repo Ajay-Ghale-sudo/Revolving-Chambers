@@ -9,6 +9,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using Weapon;
+using LevelHazards;
 
 namespace Boss.Roulette
 {
@@ -86,6 +87,11 @@ namespace Boss.Roulette
         /// Background music clip to loop.
         /// </summary>
         [SerializeField] private AudioClip backgroundMusic;
+
+        /// <summary>
+        /// Parent for caution box hazards
+        /// </summary>
+        [SerializeField] private GameObject _cautionHazardParent;
 
         private void Awake()
         {
@@ -224,12 +230,21 @@ namespace Boss.Roulette
         /// </summary>
         public void ActivateHazards()
         {
-            foreach (var hazard in _hazards)
+            if (_cautionHazardParent != null)
             {
-                hazard.SetActive(true);
+                _cautionHazardParent.transform.rotation = Quaternion.Euler(new Vector3(0.0f, UnityEngine.Random.Range(10.0f, -10.0f), 0.0f));
             }
 
-            Invoke(nameof(DeactivateHazards), hazardDuration);
+            foreach (var hazard in _hazards)
+            {
+                if (hazard.TryGetComponent(out DelayedHazard delayedHazard))
+                {
+                    delayedHazard.gameObject.SetActive(true);
+                    delayedHazard.Launch_Destination(delayedHazard.gameObject.transform.position);
+                }
+            }
+
+            //Invoke(nameof(DeactivateHazards), hazardDuration);
         }
 
         /// <summary>

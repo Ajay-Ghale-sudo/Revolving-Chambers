@@ -217,5 +217,11 @@ namespace LevelHazards
         {
             Destroy(_instancedMaterial);
         }
+
+        public void ResetHazard()
+        {
+            //reset color
+            _instancedMaterial?.SetColor("_EmissionColor", new Color32(0, 0, 0, 5));
+        }
     }
 }
