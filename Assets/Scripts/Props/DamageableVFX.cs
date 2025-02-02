@@ -20,6 +20,13 @@ namespace Props
         /// The default colour of emission (when resetting)
         /// </summary>
         Color _defaultColor;
+        
+        
+        [SerializeField]
+        Color flashColour = Color.red;
+        
+        [SerializeField]
+        float _flickerDuration = 1.5f;
 
         /// <summary>
         /// The renderer for this gameobject
@@ -62,6 +69,16 @@ namespace Props
             Destroy(_instancedMaterial);
         }
 
+        public void Flicker()
+        {
+            PlayFlicker();
+        }
+
+        public void Flash()
+        {
+            PlayFlashColour(flashColour);
+        }
+        
         /// <summary>
         /// Plays a flicker effect on the gameobject
         /// </summary>

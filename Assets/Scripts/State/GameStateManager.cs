@@ -157,7 +157,7 @@ namespace State
         private void LoadMainMenu()
         {
             // get main menu scene index
-            SceneManager.LoadScene(0);
+            // SceneManager.LoadScene(0);
         }
 
         /// <summary>

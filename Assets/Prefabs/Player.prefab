@@ -10091,6 +10091,7 @@ MonoBehaviour:
   _takeDamageAudioEvent: {fileID: 11400000, guid: 34e543c08c05c86e8a621cb2aba57fbd, type: 2}
   damageGraceTime: 0.5
   lockYPosition: 1
+  OnGameOver: {fileID: 11400000, guid: ba8a2375cdaae4a43b402ae8c36cd612, type: 2}
 --- !u!143 &7201852112551342255
 CharacterController:
   m_ObjectHideFlags: 0

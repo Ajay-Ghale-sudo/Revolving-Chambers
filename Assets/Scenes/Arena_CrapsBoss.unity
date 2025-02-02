@@ -8484,7 +8484,19 @@ MonoBehaviour:
         m_CallState: 2
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3469287838254460966}
+        m_TargetAssemblyTypeName: Props.DamageableVFX, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   health: 1450
   maxHealth: 1450
   phaseCount: 1
@@ -29665,6 +29677,7 @@ GameObject:
   - component: {fileID: 1711813854459954415}
   - component: {fileID: 1578047597}
   - component: {fileID: 1578047601}
+  - component: {fileID: 3469287838254460966}
   m_Layer: 0
   m_Name: high roller
   m_TagString: Untagged
@@ -29725,6 +29738,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148450075962}
   m_Mesh: {fileID: 5376213963352736066, guid: f839ba84eb2de534f89b868e31ca3927, type: 3}
+--- !u!114 &3469287838254460966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148450075962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29902ad015e3d2e4a8751cef2a4b6d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 0, b: 0, a: 1}
+  _flickerDuration: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

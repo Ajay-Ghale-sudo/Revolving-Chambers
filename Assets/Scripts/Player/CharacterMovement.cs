@@ -181,6 +181,11 @@ namespace Player
         /// The starting y position of the player.
         /// </summary>
         private float _yPosition;
+
+        /// <summary>
+        /// Event invoked when the player dies.
+        /// </summary>
+        [SerializeField] private GameEvent OnGameOver;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -194,6 +199,7 @@ namespace Player
             GameStateManager.Instance.OnGamePause += OnGamePause;
             GameStateManager.Instance.OnPlayerHeal += Heal;
             GameStateManager.Instance.OnBossDeath += DisableDamage;
+            GameStateManager.Instance.OnGameOver += HandleGameOver;
             
             _yPosition = transform.position.y;
 
@@ -211,6 +217,7 @@ namespace Player
             GameStateManager.Instance.OnGamePause -= OnGamePause;
             GameStateManager.Instance.OnPlayerHeal -= Heal;
             GameStateManager.Instance.OnBossDeath -= DisableDamage;
+            GameStateManager.Instance.OnGameOver -= HandleGameOver;
         }
 
         // Update is called once per frame
@@ -219,6 +226,11 @@ namespace Player
             LookTowardsCursor();
             Move();
             if(!_isPaused) UpdateAnimations();
+        }
+
+        private void HandleGameOver()
+        {
+            OnGameOver?.Invoke();
         }
 
         /// <summary>
