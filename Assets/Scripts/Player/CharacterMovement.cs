@@ -319,6 +319,7 @@ namespace Player
         /// </summary>
         void OnRightClick()
         {
+            if (!Input.GetMouseButtonDown(1)) return;
             if (_isPaused) return;
             UIManager.Instance.OnSpinEnd?.Invoke();
         }
@@ -410,6 +411,7 @@ namespace Player
         /// </summary>
         private void Revive()
         {
+            if (!_isDying) return;
             _isDying = false;
             Health = healthRestoredOnRevive;
             _animationHandler?.Play_Revive();

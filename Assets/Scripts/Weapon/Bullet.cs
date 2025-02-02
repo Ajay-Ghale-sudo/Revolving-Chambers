@@ -119,7 +119,6 @@ namespace Weapon
                 foreach (var endEvent in Ammo.OnEndEvents)
                 {
                     if (endEvent is not IGameEvent gameEvent) continue;
-                    Debug.Log("Invoking game event " + gameEvent);
                     if (gameObject)
                         gameEvent.Invoke(gameObject);
                 }

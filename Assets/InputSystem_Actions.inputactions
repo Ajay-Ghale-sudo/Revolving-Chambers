@@ -513,17 +513,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3bd21a0e-f126-466e-800f-de27e2777aca",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Reload",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7e4f3d97-f80b-41d5-aa19-026287ae7964",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
