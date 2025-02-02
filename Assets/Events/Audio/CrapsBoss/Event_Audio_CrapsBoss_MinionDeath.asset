@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f2f18f6c7084608ac986194bf94a51b, type: 3}
-  m_Name: Event_Audio_CrapsBoss_Death
+  m_Name: Event_Audio_CrapsBoss_MinionDeath
   m_EditorClassIdentifier: 
   data:
-    clip: {fileID: 8300000, guid: 279af77cecef6cb2f8b39c7c776ce534, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 753c0597d327c756e9e21ebebe0293e5, type: 3}
+    volume: 0.931
     pitch: 1
     loop: 0

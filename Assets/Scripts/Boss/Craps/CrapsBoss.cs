@@ -173,7 +173,6 @@ namespace Boss.Craps
         protected override void Die()
         {
             base.Die();
-
             GameStateManager.Instance.lastKilledBoss = BossType.Craps;
             _stateMachine.SetState(new CrapsDeadState(this));
             if (_rollDiceCoroutine != null) StopCoroutine(_rollDiceCoroutine);

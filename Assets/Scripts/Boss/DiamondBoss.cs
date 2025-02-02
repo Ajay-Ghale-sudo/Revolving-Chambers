@@ -585,8 +585,7 @@ namespace Boss
             }
         }
     }
-
-
+    
     class DefaultAttackState : BaseState<DiamondBoss>
     {
         private float lastActiveTime = 0;
@@ -624,7 +623,6 @@ namespace Boss
             duration = Mathf.Lerp(2f, .5f, _owner.Health / _owner.MaxHealth);
             
             _owner.Invoke(nameof(DiamondBoss.DisableTrail), 1f);
-            
         }
         
         public override void OnExit()
