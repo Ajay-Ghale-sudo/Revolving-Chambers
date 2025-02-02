@@ -201,6 +201,7 @@ namespace Player
             
             // Lock cursor to window
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
         }
 
         private void OnDestroy()
@@ -337,6 +338,11 @@ namespace Player
         void OnPause()
         {
             UIManager.Instance.OnTogglePauseScreen?.Invoke();
+        }
+
+        void OnPoint(InputValue value)
+        {
+            UIManager.Instance.OnPointerMove?.Invoke(value.Get<Vector2>());
         }
 
         /// <summary>

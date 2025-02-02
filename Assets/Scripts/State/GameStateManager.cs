@@ -150,7 +150,7 @@ namespace State
             DOTween.Clear();
             Time.timeScale = 1f;
             // Just reload scene for now, until we have UI to show game over screen.
-            
+
             Invoke(nameof(LoadMainMenu), 3f);
         }
         

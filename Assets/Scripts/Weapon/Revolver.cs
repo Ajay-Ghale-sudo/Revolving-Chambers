@@ -253,6 +253,7 @@ namespace Weapon
             CurrentChamberIndex = (CurrentChamberIndex + 1) % chambers.Count;
             OnChamberChanged?.Invoke();
             UIManager.Instance.OnChamberChanged?.Invoke(CurrentChamberIndex);
+            UIManager.Instance.OnNextChamber?.Invoke(GetChamber(CurrentChamberIndex));
         }
 
         private void LoadAllChambers(Ammo ammo)

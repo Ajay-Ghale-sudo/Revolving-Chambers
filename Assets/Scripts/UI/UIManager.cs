@@ -1,6 +1,7 @@
 ﻿using System;
 using Utility;
 using Weapon;
+using UnityEngine;
 
 namespace UI
 {
@@ -77,5 +78,20 @@ namespace UI
         /// Action to Show/Hide the Pause Screen
         /// </summary>
         public Action OnTogglePauseScreen;
+
+        /// <summary>
+        /// Action when mouse pointer is moved
+        /// </summary>
+        public Action<Vector2> OnPointerMove;
+
+        /// <summary>
+        /// Action for when the chamber of the <see cref="Revolver"/> changes.
+        /// </summary>
+        public Action<Revolver.RevolverChamber> OnNextChamber;
+
+        /// <summary>
+        /// Action when death wheel starts
+        /// </summary>
+        public Action OnDeathWheelStart;
     }
 }

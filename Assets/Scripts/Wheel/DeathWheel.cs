@@ -64,6 +64,8 @@ namespace Wheel
             }
             
             _onCooldown = true;
+            UIManager.Instance.OnDeathWheelStart?.Invoke();
+
             base.SetupWheel();
             
             StopWheel();
