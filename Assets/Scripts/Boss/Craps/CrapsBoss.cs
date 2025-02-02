@@ -180,7 +180,6 @@ namespace Boss.Craps
             transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
             transform.DOShakeScale(2f, 2.5f, 10, 90f);
             NextPhase();
-            GameStateManager.Instance.OnBossDeath?.Invoke();
             DeathAudioEvent?.Invoke();
         }
 
