@@ -5,11 +5,12 @@ namespace Props.Triggers
     /// <summary>
     /// Trigger that activates when the object is loaded.
     /// </summary>
-    public class OnLoadTrigger : TriggerBase 
+    public class OnLoadTrigger : TriggerBase
     {
+        [SerializeField] private float delay = 0.0f;
         private void Start()
         {
-            Trigger();
+            Invoke(nameof(Trigger), delay);
         }
     }
 }
