@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using DG.Tweening;
+using Events;
 using Interfaces;
 using State;
 using UI;
@@ -44,6 +45,26 @@ namespace Boss.Craps
         /// </summary>
         [SerializeField]
         private AudioClip backgroundMusic;
+
+        /// <summary>
+        /// Audio event to fire on boss death.
+        /// </summary>
+        [SerializeField] private AudioEvent DeathAudioEvent;
+        
+        /// <summary>
+        /// Audio event to fire when the boss takes damage.
+        /// </summary>
+        [SerializeField] private AudioEvent TakeDamageAudioEvent;
+        
+        /// <summary>
+        /// Audio event to fire when the boss moves.
+        /// </summary>
+        [SerializeField] public AudioEvent MoveAudioEvent;
+
+        /// <summary>
+        /// Audio event to fire when the boss shoots bullets.
+        /// </summary>
+        [SerializeField] private AudioEvent ShootBulletAudioEvent;
         
         /// <summary>
         /// Coroutine to roll dice at random intervals.
@@ -62,7 +83,7 @@ namespace Boss.Craps
             _rollDiceCoroutine = StartCoroutine(RollDiceCoroutine());
             if (backgroundMusic != null)
             {
-                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.6f);
+                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.4f);
             }
         }
 
@@ -106,6 +127,8 @@ namespace Boss.Craps
 
                 var bullet = BulletManager.Instance.SpawnBullet(spreadShotAmmo, spawnPos, Quaternion.LookRotation(direction));
             }
+
+            ShootBulletAudioEvent?.Invoke();
         }
 
         /// <summary>
@@ -141,6 +164,7 @@ namespace Boss.Craps
             if (damage.type != DamageType.Player) return;
             base.TakeDamage(damage);
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
+            TakeDamageAudioEvent?.Invoke();
         }
 
         /// <summary>
@@ -157,6 +181,8 @@ namespace Boss.Craps
             transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
             transform.DOShakeScale(2f, 2.5f, 10, 90f);
             NextPhase();
+            GameStateManager.Instance.OnBossDeath?.Invoke();
+            DeathAudioEvent?.Invoke();
         }
 
         protected void OnDeathFinished()

@@ -100,7 +100,7 @@ namespace Boss.Roulette
 
             if (backgroundMusic != null)
             {
-                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.6f);
+                AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.4f);
             }
         }
 

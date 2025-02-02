@@ -421,13 +421,13 @@ namespace Boss
             elapsedTimeSeconds = 0f;
             IsComplete = false;
 
-            AudioManager.Instance?.SetBackgroundMusic(_owner._bossIntroMusic, 0.6f);
+            AudioManager.Instance?.SetBackgroundMusic(_owner._bossIntroMusic, 0.4f);
             GameStateManager.Instance?.OnBossIntroStart?.Invoke();
         }
 
         public override void OnExit()
         {
-            AudioManager.Instance?.SetBackgroundMusic(_owner._backgroundMusic, 0.6f);
+            AudioManager.Instance?.SetBackgroundMusic(_owner._backgroundMusic, 0.4f);
             GameStateManager.Instance?.OnBossFightStart?.Invoke();
         }
 

@@ -129,3 +129,11 @@ MonoBehaviour:
       m_Calls: []
   health: 500
   maxHealth: 100
+  spreadShotAmmo: {fileID: 0}
+  spreadShotAmount: 5
+  diceSpawners: []
+  backgroundMusic: {fileID: 0}
+  DeathAudioEvent: {fileID: 0}
+  TakeDamageAudioEvent: {fileID: 0}
+  MoveAudioEvent: {fileID: 0}
+  ShootBulletAudioEvent: {fileID: 0}
