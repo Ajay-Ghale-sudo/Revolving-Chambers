@@ -181,11 +181,11 @@ namespace Boss.Craps
             transform.DOShakeScale(2f, 2.5f, 10, 90f);
             NextPhase();
             DeathAudioEvent?.Invoke();
+            GameStateManager.Instance.OnBossDeath?.Invoke();
         }
 
         protected void OnDeathFinished()
         {
-            GameStateManager.Instance.OnBossDeath?.Invoke();
             gameObject.SetActive(false);
         }
     }

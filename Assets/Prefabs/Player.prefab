@@ -10054,6 +10054,7 @@ MonoBehaviour:
   _animationHandler: {fileID: 7429569442750636978}
   MoveSpeed: 7
   Health: 5
+  MaxHealth: 5
   healthRestoredOnRevive: 3
   dashSettings:
     duration: 0.15
@@ -10166,6 +10167,7 @@ MonoBehaviour:
       m_Calls: []
   WheelTickAudioEvent: {fileID: 11400000, guid: 5aa65f323e80f049a91e4d37d769ba07, type: 2}
   cooldown: 30
+  MaxLoops: 3
 --- !u!96 &6570056444777745814
 TrailRenderer:
   serializedVersion: 3
@@ -10986,18 +10988,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
-      propertyPath: ammoLoadouts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
-      propertyPath: 'ammoLoadouts.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c64f2b3596785041afac34d887adc4d, type: 2}
-    - target: {fileID: 4597473847999530873, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
-      propertyPath: 'ammoLoadouts.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 0464d23045dcfd04cab5737dfd88eac8, type: 2}
     - target: {fileID: 6247063595010272664, guid: 08d76c68bf2636746aeb90aad2a55f65, type: 3}
       propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.size
       value: 1

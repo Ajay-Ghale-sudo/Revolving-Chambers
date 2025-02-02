@@ -252,6 +252,8 @@ namespace Boss.Roulette
         /// </summary>
         public void DeactivateHazards()
         {
+            _cautionHazardParent?.SetActive(false);
+            
             foreach (var hazard in _hazards)
             {
                 hazard.SetActive(false);
@@ -280,9 +282,16 @@ namespace Boss.Roulette
 
             if (health <= 0)
             {
-                GameStateManager.Instance.lastKilledBoss = BossType.Roulette;
                 Die();
             }
+        }
+
+        protected override void Die()
+        {
+            base.Die();
+            DeactivateHazards();
+            GameStateManager.Instance.lastKilledBoss = BossType.Roulette;
+            GameStateManager.Instance.OnBossDeath?.Invoke();
         }
     }
 }
