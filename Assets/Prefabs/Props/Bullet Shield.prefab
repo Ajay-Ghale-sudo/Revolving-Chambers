@@ -173,6 +173,9 @@ MonoBehaviour:
   OnReset:
     m_PersistentCalls:
       m_Calls: []
+  OnBlocked:
+    m_PersistentCalls:
+      m_Calls: []
   _collider: {fileID: 5100967364342068686}
   _vfxController: {fileID: 1374787871842273948}
   _pivot: {fileID: 8115874916533396266}
@@ -180,6 +183,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
   - {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
   - {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
+  - {fileID: 11400000, guid: e8c376c914856fd4ba5bc9f032ca21a7, type: 2}
   _disabledTime: 3
 --- !u!54 &7084731271707251337
 Rigidbody:

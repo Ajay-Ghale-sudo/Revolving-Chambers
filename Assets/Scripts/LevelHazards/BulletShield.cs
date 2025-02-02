@@ -216,13 +216,15 @@ namespace LevelHazards
             if (_impregnable)
             {
                 //Change emission colour
-                _vfxController?.SetColor(Color.yellow);
+                _vfxController?.SetColor(Color.black);
+                _vfxController?.SetAlbedo(Color.black);
                 return;
             }
 
             if (_acceptedAmmo != null)
             {
                 _vfxController?.SetColor(_acceptedAmmo.color);
+                _vfxController?.SetAlbedo(_acceptedAmmo.color);
             }
         }
 

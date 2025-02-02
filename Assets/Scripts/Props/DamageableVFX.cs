@@ -199,5 +199,11 @@ namespace Props
             _instancedMaterial.SetColor("_EmissionColor", _defaultColor);
         }
 
+        public void SetAlbedo(Color color)
+        {
+            if (_renderer == null) return;
+
+            _instancedMaterial.color = color;
+        }
     }
 }
