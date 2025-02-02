@@ -16758,7 +16758,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c056921548eb96048adf76918c4c649b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 46f4709ee6b22ec429da120e8ac5454e, type: 2}
+      objectReference: {fileID: 2100000, guid: 46ee45fb229e3e54e858513eea65bac3, type: 2}
+    - target: {fileID: -5754084199372789682, guid: c056921548eb96048adf76918c4c649b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2429589922851099364, guid: c155e6a99305bb34ba3d50b3a8320f82, type: 3}
     - target: {fileID: 919132149155446097, guid: c056921548eb96048adf76918c4c649b, type: 3}
       propertyPath: m_Name
       value: SM_Item_Playing_Card_06 (4)
