@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89589dba04ef49f9b440023588627625, type: 3}
-  m_Name: Ammo_Basic
+  m_Name: Ammo_Fast
   m_EditorClassIdentifier: 
   damage:
-    damage: 25
+    damage: 50
     type: 1
   projectilePrefab: {fileID: 8576117351993674856, guid: 9b5f432abb4030849b1fe9a317764c28, type: 3}
-  velocity: 50
+  velocity: 150
   lifetime: 25
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.7987421, g: 0.74511325, b: 0.07786467, a: 1}
   OnEndEvents:
   - {fileID: 11400000, guid: a41795cb00c06c6418b7ed2d08b22940, type: 2}
   fireSound: {fileID: 11400000, guid: a3185b6d71dadd95085b52c327be75bc, type: 2}

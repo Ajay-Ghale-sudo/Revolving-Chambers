@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89589dba04ef49f9b440023588627625, type: 3}
-  m_Name: Ammo_Good
+  m_Name: Ammo_BigRed
   m_EditorClassIdentifier: 
   damage:
-    damage: 25
+    damage: 50
     type: 1
-  projectilePrefab: {fileID: 8576117351993674856, guid: 9b5f432abb4030849b1fe9a317764c28, type: 3}
-  velocity: 150
-  lifetime: 5
-  color: {r: 0, g: 1, b: 0.09329414, a: 1}
+  projectilePrefab: {fileID: 8576117351993674856, guid: 2c4a8532c53328f45baa44b6878a7f9a, type: 3}
+  velocity: 25
+  lifetime: 25
+  color: {r: 1, g: 0, b: 0, a: 1}
   OnEndEvents: []
+  fireSound: {fileID: 11400000, guid: 2da1ea1284f0b87cb9ac0ad4ed8440e1, type: 2}
+  loadSound: {fileID: 11400000, guid: ee3b1ae831086b7a18d781de027eb060, type: 2}

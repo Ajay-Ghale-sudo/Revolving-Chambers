@@ -45,5 +45,15 @@ namespace Weapon
         /// </summary>
         [SerializeReference]
         public List<ScriptableObject> OnEndEvents;
+        
+        /// <summary>
+        /// Sound to play when the bullet is fired.
+        /// </summary>
+        public AudioEvent fireSound;
+        
+        /// <summary>
+        /// Sound to play when the bullet is loaded.
+        /// </summary>
+        public AudioEvent loadSound;
     }
 }

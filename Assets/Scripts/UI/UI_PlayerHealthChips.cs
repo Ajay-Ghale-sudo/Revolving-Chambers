@@ -84,7 +84,8 @@ namespace UI
                 }
                 else
                 {
-                    _healthSegments[i].gameObject.SetActive(shouldBeActive);
+                    healthSegment.gameObject.SetActive(shouldBeActive);
+                    healthSegment.ResetPosition();
                 }
             }
         }

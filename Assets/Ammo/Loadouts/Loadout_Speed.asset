@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e6a74d055514a9daaeaa0eacad7e150, type: 3}
-  m_Name: Loadout_Good
+  m_Name: Loadout_Speed
   m_EditorClassIdentifier: 
   ammoSections:
   - name: Basic
     probability: 0.2
     Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
-  - name: Fast
-    probability: 0.1
-    Reward: {fileID: 11400000, guid: e8c376c914856fd4ba5bc9f032ca21a7, type: 2}
-  - name: Base
-    probability: 0.3
-    Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
   - name: Good
     probability: 0.2
     Reward: {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
-  - name: Bad
+  - name: Red
     probability: 0.2
     Reward: {fileID: 11400000, guid: fdf11b380d55fe740ab50e980709a8a4, type: 2}
+  - name: Basic
+    probability: 0.3
+    Reward: {fileID: 11400000, guid: 033a954641092fa4993c7abad4949bef, type: 2}
+  - name: Fast
+    probability: 0.1
+    Reward: {fileID: 11400000, guid: e8c376c914856fd4ba5bc9f032ca21a7, type: 2}

@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89589dba04ef49f9b440023588627625, type: 3}
-  m_Name: Ammo_Bad
+  m_Name: Ammo_LifeSteal
   m_EditorClassIdentifier: 
   damage:
-    damage: 15
+    damage: 10
     type: 1
   projectilePrefab: {fileID: 8576117351993674856, guid: 9b5f432abb4030849b1fe9a317764c28, type: 3}
-  velocity: 10
-  lifetime: 5
-  color: {r: 1, g: 0, b: 0, a: 1}
-  OnEndEvents: []
+  velocity: 50
+  lifetime: 25
+  color: {r: 0, g: 1, b: 0.09329414, a: 1}
+  OnEndEvents:
+  - {fileID: 11400000, guid: 01f7d52b1585d6f4ca5b8bb67d09fab7, type: 2}
+  fireSound: {fileID: 11400000, guid: 93a829bf60cbec672a7c0b6a7a61b234, type: 2}
+  loadSound: {fileID: 11400000, guid: acb5b463c3c8de7788914a433389f1af, type: 2}

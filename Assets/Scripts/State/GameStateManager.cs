@@ -58,6 +58,11 @@ namespace State
         public Action OnPlayerRevive;
 
         /// <summary>
+        /// Action for when the player is healed.
+        /// </summary>
+        public Action<int> OnPlayerHeal;
+
+        /// <summary>
         /// Action for when the game is over.
         /// </summary>
         public Action OnGameOver;
