@@ -185,8 +185,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4fa110fd627815478961364f862047d, type: 2}
   - {fileID: 11400000, guid: e8c376c914856fd4ba5bc9f032ca21a7, type: 2}
   _disabledTime: 3
-  PlayBlockedSoundEvent: {fileID: 0}
-  PlayDamagedSoundEvent: {fileID: 0}
+  PlayBlockedSoundEvent: {fileID: 11400000, guid: 0ce5a688d760530159c6fcd449e59c03, type: 2}
+  PlayDamagedSoundEvent: {fileID: 11400000, guid: 1e3bca232f7ca9fd8ae7b0d6288c90cd, type: 2}
 --- !u!54 &7084731271707251337
 Rigidbody:
   m_ObjectHideFlags: 0
