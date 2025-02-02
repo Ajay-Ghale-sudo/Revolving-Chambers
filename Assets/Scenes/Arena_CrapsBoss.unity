@@ -8398,9 +8398,9 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1739826247}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1739826244}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9746,34 +9746,14 @@ GameObject:
   - component: {fileID: 1739826248}
   - component: {fileID: 1739826247}
   - component: {fileID: 1739826246}
-  - component: {fileID: 1739826245}
+  - component: {fileID: 1739826249}
   m_Layer: 0
   m_Name: LoadBoss2Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1739826245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739826244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d9db318a964fddbe20d9cf9311cc3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagFilter: 
-  triggerOnce: 0
-  events:
-  - {fileID: 11400000, guid: ba8a2375cdaae4a43b402ae8c36cd612, type: 2}
-  OnTriggered:
-    m_PersistentCalls:
-      m_Calls: []
-  invokeWithCollider: 0
+  m_IsActive: 0
 --- !u!114 &1739826246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9801,17 +9781,17 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1783
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 157.66663, y: 4.446172, z: 97.66667}
+  m_Center: {x: -8.333365, y: -0.27691388, z: -1.6666604}
 --- !u!4 &1739826248
 Transform:
   m_ObjectHideFlags: 0
@@ -9827,6 +9807,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1739826249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739826244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7638ca285bfd48c1b2fd476a6c808a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagFilter: Player
+  triggerOnce: 1
+  events:
+  - {fileID: 11400000, guid: ba8a2375cdaae4a43b402ae8c36cd612, type: 2}
+  OnTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  delay: 2
 --- !u!1001 &1741634593
 PrefabInstance:
   m_ObjectHideFlags: 0

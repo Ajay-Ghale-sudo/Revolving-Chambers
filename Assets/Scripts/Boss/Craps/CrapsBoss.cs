@@ -162,7 +162,7 @@ namespace Boss.Craps
             _rollDiceCoroutine = null;
             transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
             transform.DOShakeScale(2f, 2.5f, 10, 90f);
-            GameStateManager.Instance.OnBossDeath?.Invoke();
+            //GameStateManager.Instance.OnBossDeath?.Invoke();
         }
 
         protected void OnDeathFinished()
