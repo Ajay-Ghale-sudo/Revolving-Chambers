@@ -8496,6 +8496,10 @@ MonoBehaviour:
   - {fileID: 1718759193}
   - {fileID: 1158305356}
   backgroundMusic: {fileID: 8300000, guid: 0f925225c9d5c1b10ba70f96230ace00, type: 3}
+  DeathAudioEvent: {fileID: 11400000, guid: 6dcd8dd6058fca705aff7a6780fd30e3, type: 2}
+  TakeDamageAudioEvent: {fileID: 11400000, guid: 9bb1094ad19b218639974039acf8a807, type: 2}
+  MoveAudioEvent: {fileID: 11400000, guid: e5c0123144d5afaa4b5ed102f62e58e2, type: 2}
+  ShootBulletAudioEvent: {fileID: 11400000, guid: 96e0652d71669809785622fb7b64d8f8, type: 2}
 --- !u!65 &1578047601
 BoxCollider:
   m_ObjectHideFlags: 0

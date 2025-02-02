@@ -192,6 +192,7 @@ MonoBehaviour:
   _damageData:
     damage: 1
     type: 3
+  PlayChipLandThunkAudioEvent: {fileID: 11400000, guid: 67eba35804da6ae20a91f99c99fb5db4, type: 2}
 --- !u!95 &5231441646050727151
 Animator:
   serializedVersion: 7

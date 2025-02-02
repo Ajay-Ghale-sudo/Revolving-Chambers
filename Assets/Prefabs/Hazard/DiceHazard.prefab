@@ -297,6 +297,9 @@ MonoBehaviour:
   attackRate: 1
   ammo: {fileID: 11400000, guid: 73eeaf8972485d34487761a6d3c21ec5, type: 2}
   FlyAwaySpeed: 3
+  PlayDeathSoundEvent: {fileID: 11400000, guid: 4c79238b0aa92dfcf8489d648a2dcb16, type: 2}
+  PlayShootBulletSoundEvent: {fileID: 11400000, guid: ea30d3706adb7c9bda408359281f0965, type: 2}
+  AnnoyingHumSound: {fileID: 8300000, guid: 0393588794257c6da93fd73073e42669, type: 3}
   diceFaces:
   - {fileID: 3312228036873771635}
   - {fileID: 7541825056365813322}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Events;
 using Interfaces;
 using UnityEngine;
 using Weapon;
@@ -54,6 +55,12 @@ namespace Boss.Craps
         /// Speed at which to fly away.
         /// </summary>
         [SerializeField] private float FlyAwaySpeed = 3f;
+
+        [SerializeField] private AudioEvent PlayDeathSoundEvent;
+
+        [SerializeField] private AudioEvent PlayShootBulletSoundEvent;
+
+        [SerializeField] private AudioClip AnnoyingHumSound;
         
         /// <summary>
         /// Flag to check if damage has been dealt.
@@ -89,6 +96,7 @@ namespace Boss.Craps
             while (true)
             {
                 Fire();
+                PlayShootBulletSoundEvent?.Invoke();
                 yield return new WaitForSeconds(attackRate);
             }
         }
@@ -272,6 +280,7 @@ namespace Boss.Craps
         protected override void Die()
         {
             base.Die();
+            PlayDeathSoundEvent?.Invoke();
             FlyAway();
         }
     }

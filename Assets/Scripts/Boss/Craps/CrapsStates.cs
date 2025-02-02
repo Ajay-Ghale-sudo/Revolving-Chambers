@@ -171,6 +171,8 @@ namespace Boss.Craps
                     MoveBack();
                     break;
             }
+
+            _owner?.MoveAudioEvent?.Invoke();
         }
 
         private void MoveLeft()

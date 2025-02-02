@@ -13,7 +13,7 @@ namespace Props
         
         private void Awake()
         {
-            AudioManager.Instance?.SetBackgroundMusic(_backgroundMusicClip, 0.6f);
+            AudioManager.Instance?.SetBackgroundMusic(_backgroundMusicClip, 0.4f);
         }
     }
 }

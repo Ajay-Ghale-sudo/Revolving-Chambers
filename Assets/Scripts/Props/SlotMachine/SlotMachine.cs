@@ -75,7 +75,7 @@ namespace Props.SlotMachine
         {
             _slotWheels = new List<SlotWheel>(GetComponentsInChildren<SlotWheel>());
             _camera = GetComponentInChildren<Camera>();
-            AudioManager.Instance?.SetBackgroundMusic(IntroBackgroundMusic, 1.0f);
+            AudioManager.Instance?.SetBackgroundMusic(IntroBackgroundMusic, 0.4f);
         }
 
         private void Start()

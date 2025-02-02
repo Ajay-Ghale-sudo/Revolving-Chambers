@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f2f18f6c7084608ac986194bf94a51b, type: 3}
-  m_Name: Event_Audio_Gameplay_PlayerFireBasicAmmo
+  m_Name: Event_Audio_CrapsBoss_Death
   m_EditorClassIdentifier: 
   data:
-    clip: {fileID: 8300000, guid: 78652ecdecd6d3b738fcbd412dbcbd21, type: 3}
-    volume: 0.55
-    pitch: 1
+    clip: {fileID: 8300000, guid: 279af77cecef6cb2f8b39c7c776ce534, type: 3}
+    volume: 0.681
+    pitch: 0.8
     loop: 0

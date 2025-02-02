@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f2f18f6c7084608ac986194bf94a51b, type: 3}
-  m_Name: Event_Audio_Gameplay_PlayerFireBasicAmmo
+  m_Name: Event_Audio_DiamondBossTakeDamage
   m_EditorClassIdentifier: 
   data:
-    clip: {fileID: 8300000, guid: 78652ecdecd6d3b738fcbd412dbcbd21, type: 3}
-    volume: 0.55
+    clip: {fileID: 8300000, guid: 17f362512cca5dddab010a0c9c9d1e81, type: 3}
+    volume: 0.448
     pitch: 1
     loop: 0
