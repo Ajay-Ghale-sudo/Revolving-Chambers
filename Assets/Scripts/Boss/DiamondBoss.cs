@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
+using Boss.Craps;
 using DG.Tweening;
 using Events;
 using Interfaces;
@@ -37,7 +38,7 @@ namespace Boss
         /// </summary>
         public float cooldown;
     }
-    public class DiamondBoss : Damageable 
+    public class DiamondBoss : BossBase 
     {
 
         /// <summary>
@@ -213,8 +214,7 @@ namespace Boss
 
         void Start()
         {
-            UIManager.Instance.OnBossSpawned?.Invoke(name);
-            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
+            InitBoss();
         }
         void Update()
         {
@@ -787,6 +787,7 @@ namespace Boss
         public override void OnEnter()
         {
             _owner.HealToFull();
+            _owner.NextPhase();
             
             _stateMachine = new StateMachine();
             CreateStates();
@@ -838,6 +839,7 @@ namespace Boss
         public override void OnEnter()
         {
             _owner.HealToFull();
+            _owner.NextPhase();
             
             _stateMachine = new StateMachine();
             CreateStates();
@@ -900,6 +902,7 @@ namespace Boss
         /// </summary>
         public override void OnEnter()
         {
+            _owner.NextPhase();
             _owner._trailRenderer.emitting = false;
             _owner.transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
             _owner.transform.DOShakeScale(2f, 2.5f, 10, 90f);

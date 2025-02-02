@@ -16,25 +16,23 @@ namespace Boss.Craps
     /// <summary>
     /// Craps Table Boss. Giant dice boss that rolls around the arena.
     /// </summary>
-    public class CrapsBoss : Damageable 
+    public class CrapsBoss : BossBase
     {
         /// <summary>
         /// State machine for the boss
         /// </summary>
         private StateMachine _stateMachine;
-        
+
         /// <summary>
         /// Ammo the boss will shoot.
         /// </summary>
-        [SerializeField]
-        private Ammo spreadShotAmmo;
-        
+        [SerializeField] private Ammo spreadShotAmmo;
+
         /// <summary>
         /// Amount of ammo to shoot in a spread shot.
         /// </summary>
-        [SerializeField]
-        private int spreadShotAmount = 5;
-        
+        [SerializeField] private int spreadShotAmount = 5;
+
         /// <summary>
         /// List of dice spawners to spawn dice from.
         /// </summary>
@@ -60,11 +58,8 @@ namespace Boss.Craps
 
         private void Start()
         {
-            UIManager.Instance.OnBossSpawned?.Invoke(name);
-            UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
-            
+            InitBoss();
             _rollDiceCoroutine = StartCoroutine(RollDiceCoroutine());
-
             if (backgroundMusic != null)
             {
                 AudioManager.Instance?.SetBackgroundMusic(backgroundMusic, 0.6f);
@@ -83,7 +78,7 @@ namespace Boss.Craps
         {
             var idleState = new CrapsIdleState(this);
             var rollingState = new SideRollingState(this);
-            
+
             _stateMachine.SetState(rollingState);
         }
 
@@ -108,11 +103,11 @@ namespace Boss.Craps
                 var angle = 45 / spreadShotAmount * -bulletNum;
                 direction = Quaternion.AngleAxis(angle, Vector3.up) * direction;
                 direction.Normalize();
-                
-                var bullet = BulletManager.Instance.SpawnBullet(spreadShotAmmo, spawnPos, Quaternion.LookRotation(direction));                
+
+                var bullet = BulletManager.Instance.SpawnBullet(spreadShotAmmo, spawnPos, Quaternion.LookRotation(direction));
             }
         }
-        
+
         /// <summary>
         /// Coroutine to roll dice at random intervals.
         /// </summary>
@@ -136,7 +131,7 @@ namespace Boss.Craps
             var randomIndex = UnityEngine.Random.Range(0, diceSpawners.Count);
             diceSpawners[randomIndex].SpawnDice();
         }
-        
+
         /// <summary>
         /// Process incoming damage.
         /// </summary>
@@ -146,7 +141,6 @@ namespace Boss.Craps
             if (damage.type != DamageType.Player) return;
             base.TakeDamage(damage);
             UIManager.Instance.OnBossHealthChange?.Invoke(health / maxHealth);
-            
         }
 
         /// <summary>
@@ -162,6 +156,7 @@ namespace Boss.Craps
             _rollDiceCoroutine = null;
             transform.DOShakePosition(2f, 2.5f, 10, 90f, false, true).OnComplete(OnDeathFinished);
             transform.DOShakeScale(2f, 2.5f, 10, 90f);
+            NextPhase();
         }
 
         protected void OnDeathFinished()
