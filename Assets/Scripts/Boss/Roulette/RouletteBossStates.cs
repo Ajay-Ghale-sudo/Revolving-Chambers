@@ -155,6 +155,7 @@ namespace Boss.Roulette
         {
             base.OnEnter();
             _owner.rightWheel.StopWheel();
+            _owner.NextPhase();
         }
 
         public override void OnExit()

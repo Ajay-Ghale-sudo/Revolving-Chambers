@@ -8467,6 +8467,7 @@ MonoBehaviour:
       m_Calls: []
   health: 1450
   maxHealth: 1450
+  phaseCount: 1
   spreadShotAmmo: {fileID: 11400000, guid: e06036cd073fc984a8c31be52f99a15f, type: 2}
   spreadShotAmount: 4
   diceSpawners:
