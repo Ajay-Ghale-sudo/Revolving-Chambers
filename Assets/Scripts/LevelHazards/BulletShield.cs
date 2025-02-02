@@ -6,6 +6,7 @@ using DG.Tweening;
 using Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using Events;
 
 namespace LevelHazards
 {
@@ -61,6 +62,16 @@ namespace LevelHazards
         /// </summary>
         [Tooltip("How long the shield will be disabled.")]
         [SerializeField] private float _disabledTime;
+        
+        /// <summary>
+        /// Audio event triggered when damage blocked.
+        /// </summary>
+        [SerializeField] private AudioEvent PlayBlockedSoundEvent;
+        
+        /// <summary>
+        /// Audio event triggered when shield is damaged.
+        /// </summary>
+        [SerializeField] private AudioEvent PlayDamagedSoundEvent;
 
         /// <summary>
         /// The ammo type that can disable this shield.
@@ -98,8 +109,11 @@ namespace LevelHazards
 
                 if(bullet.Ammo != null && bullet.Ammo == _acceptedAmmo)
                 {
+                    PlayDamagedSoundEvent?.Invoke();
                     DisableShield();
+                    return;
                 }
+                PlayBlockedSoundEvent?.Invoke();
             }
         }
 

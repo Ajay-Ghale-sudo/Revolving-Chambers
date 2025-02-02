@@ -40527,6 +40527,14 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
+      propertyPath: PlayDeathSoundEvent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
+      propertyPath: PlayHazardSoundEvent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: _cautionHazardParent
       value: 
       objectReference: {fileID: 963432352}
@@ -40546,6 +40554,14 @@ PrefabInstance:
       propertyPath: '_hazards.Array.data[2]'
       value: 
       objectReference: {fileID: 969668741}
+    - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
+      propertyPath: PlayShootBulletSoundEvent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
+      propertyPath: PlaySpreadShotBulletSoundEvent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2262177022754212301, guid: d9674d5d4527f4f4e930b352c945ae10, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
       value: 4

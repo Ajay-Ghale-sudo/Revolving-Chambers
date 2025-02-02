@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Audio;
 using Boss.Craps;
+using Events;
 using Interfaces;
 using Props.SlotMachine;
 using State;
@@ -92,6 +93,26 @@ namespace Boss.Roulette
         /// Parent for caution box hazards
         /// </summary>
         [SerializeField] private GameObject _cautionHazardParent;
+        
+        /// <summary>
+        /// Sound when the boss shoots a bullet
+        /// </summary>
+        [SerializeField] private AudioEvent PlayShootBulletSoundEvent;
+        
+        /// <summary>
+        /// Sound when the boss shoots a spread shot
+        /// </summary>
+        [SerializeField] private AudioEvent PlaySpreadShotBulletSoundEvent;
+        
+        /// <summary>
+        /// Sound when the boss activates hazards
+        /// </summary>
+        [SerializeField] private AudioEvent PlayHazardSoundEvent;
+        
+        /// <summary>
+        /// Sound when the boss dies
+        /// </summary>
+        [SerializeField] private AudioEvent PlayDeathSoundEvent;
 
         private void Awake()
         {
@@ -186,6 +207,7 @@ namespace Boss.Roulette
             var rotation = Quaternion.LookRotation(direction);
 
             var bullet = BulletManager.Instance.SpawnBullet(_ammo, muzzleTransform.position + direction * 2f, rotation);
+            PlayShootBulletSoundEvent?.Invoke();
             OnShotFired?.Invoke();
         }
 
@@ -214,6 +236,7 @@ namespace Boss.Roulette
                 var bullet = BulletManager.Instance.SpawnBullet(_ammo, spawnPos, Quaternion.LookRotation(direction));
             }
 
+            PlaySpreadShotBulletSoundEvent?.Invoke();
             OnShotFired?.Invoke();
         }
 
@@ -230,6 +253,7 @@ namespace Boss.Roulette
         /// </summary>
         public void ActivateHazards()
         {
+            PlayHazardSoundEvent?.Invoke();
             if (_cautionHazardParent != null)
             {
                 _cautionHazardParent.transform.rotation = Quaternion.Euler(new Vector3(0.0f, UnityEngine.Random.Range(10.0f, -10.0f), 0.0f));
@@ -289,6 +313,7 @@ namespace Boss.Roulette
         protected override void Die()
         {
             base.Die();
+            PlayDeathSoundEvent?.Invoke();
             DeactivateHazards();
             GameStateManager.Instance.lastKilledBoss = BossType.Roulette;
             GameStateManager.Instance.OnBossDeath?.Invoke();
