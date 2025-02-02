@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3438734664993957114}
   - component: {fileID: 5853971848092969927}
   - component: {fileID: 6190197556007678669}
+  - component: {fileID: 393673898412308622}
   m_Layer: 0
   m_Name: DiceHazard
   m_TagString: Untagged
@@ -285,7 +286,19 @@ MonoBehaviour:
       m_Calls: []
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393673898412308622}
+        m_TargetAssemblyTypeName: Props.DamageableVFX, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   health: 25
   maxHealth: 25
   launchForce: 800
@@ -432,6 +445,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &393673898412308622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615672775434218233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29902ad015e3d2e4a8751cef2a4b6d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 0, b: 0, a: 0.57254905}
+  _flickerDuration: 1.5
 --- !u!1 &8035125199961390288
 GameObject:
   m_ObjectHideFlags: 0
